@@ -1,0 +1,290 @@
+%!TEX program = xelatex
+\documentclass[cn,11pt,blue,hide]{elegantbook}
+% \definecolor{structurecolor}{RGB}{34,87,126}
+% \definecolor{main}{RGB}{85,132,172}    
+% \definecolor{second}{RGB}{149,209,204}    
+% \definecolor{third}{RGB}{34,87,126}
+
+\title{《量子多体理论》笔记}
+\subtitle{Quantum Theory of Many-Particle System}
+
+\teacher{金彪}
+\author{张迎姬~~李佩璇}
+\institute{中国科学院物理研究所}
+%\mail{lipeixuan21@mails.ucas.ac.cn}
+
+\renewcommand{\today}{\number\year ~年 \number\month ~月 \number\day ~日}
+
+\equote{\today}
+
+\logo{ucas.pdf}
+\cover{cover1.jpg}
+
+\let\le\leqslant
+\let\leq\leqslant
+\let\ge\geqslant
+\let\geq\geqslant
+
+\usepackage{bbm}
+\usepackage{cases}
+\usepackage{multicol}%双栏
+\usepackage{bm}
+\usepackage{arydshln}%表格虚线
+\usepackage{float}
+\RequirePackage{cancel}
+\usepackage{ulem}
+\usepackage{simplewick}
+\setCJKfamilyfont{kai}[BoldFont=Adobe Heiti Std]{Adobe Kaishu Std}
+
+\newcommand{\kai}[1]{{\CJKfamily{kai}#1}}   	 
+\newcommand{\hei}[1]{{\CJKfamily{hei}#1}}   	  
+\newcommand{\fsong}[1]{{\CJKfamily{fsong}#1}}	 
+\setCJKfamilyfont{kd}{华文行楷}
+\usepackage{color}
+\definecolor{structure}{RGB}{0,70,139}
+\definecolor{thingray}{RGB}{230,226,221}
+\usepackage{extarrows}
+\usepackage{subfigure}% subfigure 环境对费曼图不友好.
+% \usepackage{subfig}
+\usepackage{tikz}
+\usetikzlibrary{decorations}% 用于 tikz-feynman 的自定义相互作用线类型.
+\usetikzlibrary{arrows.meta}
+% \usepackage{tikz-feynman}
+\usepackage{tikz-feynhand}% 可用于 lualatex 以外的编译环境, 但顶点的位置命令较麻烦, 代码较长.
+% \tikzfeynmanset{compat=1.1.0}
+\setlength{\feynhandlinesize}{1pt}
+\usepackage{caption} 
+\usepackage{tabu}
+% \usetikzlibrary{arrows}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable, theorems}
+\usepackage{fancybox}
+\definecolor{lightblue}{rgb}{0.9336,0.9961,0.9883}
+\newtcbtheorem{question}{习题}%
+  {enhanced, breakable,
+    colback=lightblue, colframe = structure, colbacktitle = structure,
+    attach boxed title to top left = {yshift = -2mm, xshift = 5mm},
+    boxed title style = {sharp corners},
+    fonttitle = \bfseries, separator sign = {~}}{qst}
+
+\newtcbtheorem{question2}{习题}%
+  {enhanced, breakable,
+    colback=lightblue, colframe = structure, colbacktitle = structure,
+    attach boxed title to top left = {yshift = -2mm, xshift = 5mm},
+    boxed title style = {sharp corners},
+    fonttitle = \bfseries, separator sign = {~}}{qst}
+
+
+\DeclareSymbolFont{ugmL}{OMX}{mdugm}{m}{n}
+\SetSymbolFont{ugmL}{bold}{OMX}{mdugm}{b}{n}
+\DeclareMathAccent{\wideparen}{\mathord}{ugmL}{"F3}
+\newcommand{\rmd}{\mathrm{d}}
+\newcommand*{\circled}[1]{\lower.7ex\hbox{\tikz\draw (0pt, 0pt)%
+    circle (.5em) node {\makebox[1em][c]{\small #1}};}}
+\robustify{\circled}
+\usepackage{esint}
+\usepackage{wrapfig}
+\usepackage{cite}
+% \usepackage{pxfonts}
+% \usepackage[math-style = TeX]{unicode-math}
+
+
+
+%%%%%%%%newcommands%%%%%%%%%%%%%
+
+\newcommand{\fun}[1]{\mathrm{#1}}
+\newcommand{\vct}[1]{\boldsymbol{#1}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+\newcommand{\ii}{\hspace{0.1em}\fun{i}\hspace{0.1em}}
+\newcommand{\e}{\fun{e}}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\lag}{\langle}
+\newcommand{\rag}{\rangle}
+\newcommand{\llag}{\left\langle}
+\newcommand{\rrag}{\right\rangle}
+\newcommand{\ts}{\thinspace}
+\newcommand{\ls}{\left(}
+\newcommand{\rs}{\right)}
+\newcommand{\lmi}{\left[}
+\newcommand{\rmi}{\right]}
+\newcommand{\lb}{\left\{}
+\newcommand{\rb}{\right\}}
+\newcommand{\ua}{\uparrow}
+\newcommand{\da}{\downarrow}
+\newcommand{\dg}{\dagger}
+\newcommand{\pt}{\partial}
+\newcommand{\dd}{\fun{d}}
+\newcommand{\lk}{\left|}
+\newcommand{\rk}{\right|}
+
+%%%%%%%%%%%%%%%%%%%%费曼图相关宏定义%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 自定义双线箭头费曼图, 参考:https://github.com/JP-Ellis/tikz-feynman/issues/44 
+\tikzfeynhandset{doublefermion/.style={
+  /tikz/line width=\feynhandlinesize,%修改 feynhand 线宽时, 这里的线宽不会改变(tikz默认线宽是 0.4pt), 所以需要这一行. 其他在tikz环境内, feynhand环境外定义的图形同理.
+  /tikz/double distance=2pt,
+  /tikz/decoration={name=none},
+  /tikz/postaction={
+  /tikz/with arrow=0.53, % 箭头在正中间经常会怼到虚线末端, 不美观. 左移 0.03.
+  /tikz/arrow size=8pt, % 箭头默认为 6pt, 双点线上不清晰, 手动调整成8pt. 同理, 单独使用 double 时也要修改箭头大小.
+}
+}
+}
+
+
+% 自定义 charged double photon, inspired by chatGPT.
+\tikzset{doublepho/.style={
+  thick,
+  % with arrow=0.5,
+  decorate,
+  decoration={
+    complete sines,
+    amplitude=7pt,
+    segment length=10pt,
+  },
+%   /tikz/postaction={
+%     with arrow=0.5,
+%     arrow size=10pt,
+% }, % 箭头不能对准中点坐标, 手动用tikz控制.
+  /tikz/double distance=2pt,
+}
+}
+
+\newcommand{\arrowdoublepho}{
+  \begin{tikzpicture}[baseline=(l.center)]
+    \begin{feynhand}
+      \vertex(l)at(0,-0.1);
+      \propag[doublepho](1,0)to(-1,0);
+      \draw [-{Latex[length=14pt, width=10pt]}] (-0.3,0) to (-0.3001,0);
+    \end{feynhand}
+  \end{tikzpicture}
+}
+
+
+% 注意: 实线需要标明\propag[plain]<code...>, 不写 plain 的话线宽默认为 0.4 pt, 写 plain 后线宽为\feynhandlinesize, 此处定义为 1pt.
+
+% 费曼图环境, 已手动对齐.
+\newcommand{\feyndiagram}[1]{
+  \begin{tikzpicture}[baseline=(l.center)]
+    \begin{feynhand}
+      \vertex (l) at (0,-0.1);
+      #1
+    \end{feynhand}
+  \end{tikzpicture}
+}
+
+%自能图
+\newcommand{\selfenergy}{\tikz {\draw (-0.15,-0.25) -- (0.25,0.15);\draw (-0.25,-0.15) -- (0.15,0.25);\draw (-0.15,0.25) -- (0.25,-0.15);\draw (-0.25,0.15) -- (0.15,-0.25);}}%自能图里面的双叉
+
+\newcommand{\singleselfenergy}{
+  \feyndiagram{
+        \vertex[ringblob]{\selfenergy};
+  }
+}% 不需要考虑位置和对齐方式的单只自能图(已居中对齐, 不需要写tikz/feynhand 环境)
+
+\newcommand{\selfsigma}[2]{\vertex[ringblob] (#1) at (#2){\selfenergy}}%\selfsigma{顶点名}{坐标}, 要考虑位置的自能图, 画图时坐标要上下对称.
+
+%正规自能图
+\newcommand{\normalselfenergy}{\tikz {\draw (-0.15,0.25) -- (0.25,-0.15);\draw (-0.25,0.15) -- (0.15,-0.25);}}%正规自能图里面的双斜线
+
+\newcommand{\singlenormalselfenergy}{
+  \feyndiagram{
+        \vertex[ringblob]{\normalselfenergy};
+  }}%不需要考虑位置和对齐方式的单只正规自能图(已居中对齐)
+
+\newcommand{\selfnormalsigma}[2]{\vertex[ringblob] (#1) at (#2){\normalselfenergy}}%\selfsigma{顶点名}{坐标}, 要考虑位置的正规自能图, 画图时坐标要上下对称.
+
+%极化图
+\newcommand{\polarize}{\tikz {
+  \draw (-0.15,-0.3) -- (0.15,0.15);\draw (-0.15,-0.15) -- (0.15,0.3);\draw (-0.15,0.3) -- (0.15,-0.15);\draw (-0.15,0.15) -- (0.15,-0.3);
+  \draw (-0.15,-0.3) -- (-0.15,0.3);
+  \draw (0.15,-0.3) -- (0.15,0.3);
+}}%极化图里面
+
+\newcommand{\singlepolar}{
+  \feyndiagram{
+        \vertex[ringblob]{\polarize};
+  }}%不需要考虑位置和对齐方式的单只极化图(已居中对齐)
+
+  \newcommand{\polar}[2]{\vertex[ringblob] (#1) at (#2){\polarize}}%\selfsigma{顶点名}{坐标}, 要考虑位置的极化图, 画图时坐标要上下对称.
+
+  %正规极化图
+  \newcommand{\normalpolarize}{\tikz {
+  \draw (-0.15,-0.3) -- (0.15,0.15);\draw (-0.15,-0.15) -- (0.15,0.3);
+  \draw (-0.15,-0.3) -- (-0.15,0.3);
+  \draw (0.15,-0.3) -- (0.15,0.3);
+}}%正规极化图里面
+
+\newcommand{\singlenormalpolar}{
+  \feyndiagram{
+        \vertex[ringblob]{\normalpolarize};
+  }}%不需要考虑位置和对齐方式的单只正规极化图(已居中对齐)
+
+  \newcommand{\normalpolar}[2]{\vertex[ringblob] (#1) at (#2){\normalpolarize}}%\normalpolar{顶点名}{坐标}, 要考虑位置的正规极化图, 画图时坐标要上下对称.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \setmathfont{Latin Modern Math}
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+\thispagestyle{empty}
+~
+\vspace{6.5cm}
+\begin{center}
+{\erhao\textit{This page is intentionally left blank.}}
+\end{center}
+
+
+\newpage
+\pagenumbering{roman}
+\chapter*{前\hspace{2em}言}
+\addcontentsline{toc}{chapter}{前\hspace{2em}言} 
+本资料是笔者2021-2022学年春季学期在中国科学院大学物理科学学院金彪老师讲授的《量子多体理论》课程上留下的笔记。
+
+由于笔者能力有限，本资料中一定还存在着大量错误，欢迎勘误。
+
+\newpage
+
+
+\chapter*{致\hspace{2em}谢}
+\addcontentsline{toc}{chapter}{致\hspace{2em}谢}
+感谢中国科学院大学物理科学学院金彪老师的教导。
+
+感谢中国科学院物理研究所2021级研究生管子卿提供了部分习题解答。
+
+感谢中国科学院物理研究所2022级研究生白士聪、韩泓波；中国科学院大学物理科学学院2022级研究生李胜超、李明阳；中国科学院精密测量科学与技术创新研究院2022级研究生张煜基指出本资料中的错误。
+
+感谢所有关注与使用本资料的同学和老师。
+
+\tableofcontents
+
+
+\mainmatter
+\hypersetup{pageanchor=true}
+
+%\include{chapters/ch0}
+\include{chapters/ch1}
+\include{chapters/ch2}
+\include{chapters/ch3}
+\include{chapters/ch4}
+\include{chapters/ch5}
+
+\appendix
+\renewcommand{\chaptermark}[1]{\markboth{\appendixname \; #1\;}{}}
+\include{chapters/chA}
+\include{chapters/chB}
+
+
+% \newpage
+
+% \bibliographystyle{unsrt}
+% \bibliography{lzdtll}
+% \nocite{*}
+% \addcontentsline{toc}{chapter}{参考文献}
+\end{document}
+

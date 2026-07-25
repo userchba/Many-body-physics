@@ -1,0 +1,812 @@
+\setcounter{chapter}{4}
+\chapter{相干态路径积分及其应用}
+\begin{introduction}
+\item 谐振子相干态
+\item 多体理论中的玻色子系统相干态
+\item 多体理论中的费米子系统相干态
+\item Stratonovich-Hubbard 变换
+\item 路径积分方法在超导理论中的应用
+\end{introduction}
+\section{谐振子相干态}
+一维谐振子的哈密顿量可以写为如下形式:
+\begin{equation}
+\hat{H}=\left(\hat{a}^{\dagger} \hat{a}+\frac{1}{2}\right) \hbar\omega,
+\end{equation}
+这里$\hat{a}^\dagger$、$\hat a$分别是产生、消灭算符, 满足如下玻色子对易关系:
+\begin{equation}
+\left[\hat{a}, \hat{a}^{\dagger}\right]_{-}=1,\quad\left[\hat{a}, \hat{a}\right]_{-}=\left[\hat{a}^{\dagger}, \hat{a}^{\dagger}\right]_{-}=0.
+\end{equation}
+
+产生、消灭算符本身不是厄米算符, 但两者的乘积可以构成厄米算符:
+\begin{equation}
+\hat{N}=\hat{a}^{\dagger} \hat{a},
+\end{equation}
+即粒子数算符. 粒子数算符与哈密顿量对易, 可以得到共同本征态 $|n\rangle(n=0,1,2, \cdots)$ 满足如下本征方程:
+\begin{align}
+&\hat{N}|n\rangle=n|n\rangle, \nonumber\\
+&\hat{H}|n\rangle=\left(n+\frac{1}{2}\right)\hbar \omega|n\rangle .
+\end{align}
+同样可以证明 $|n\rangle$ 是一组正交完备的本征态, 满足如下关系:
+\begin{align}
+\sum_{n}|n\rangle\langle n| &=\mathbbm 1 &\text {(完备性), }\nonumber\\
+\left.\left\langle n^{\prime}\right| n\right\rangle &=\delta_{n n^{\prime}} & \text{(正交性). }
+\end{align}
+定义粒子真空态 $|0\rangle$, 满足:
+\begin{equation}
+\hat{a}|0\rangle=0,
+\end{equation}
+一般地, 有:
+\begin{align}
+|n\rangle&=\frac{\left(\hat{a}^{\dagger}\right)^n}{\sqrt{n!}}|0\rangle,\nonumber\\
+\hat{a}^{\dagger}|n\rangle &=\sqrt{n+1}|n+1\rangle, \nonumber\\
+\hat{a}|n\rangle &=\sqrt{n}|n-1\rangle .
+\end{align}
+
+
+下面在谐振子本征态的基础上引入谐振子相干态, 即消灭算符的本征态:
+\begin{equation}
+\hat{a}|\alpha\rangle=\alpha|\alpha\rangle,
+\end{equation}
+其共轭式为:
+\begin{equation}
+\langle\alpha| \hat{a}^{\dagger}=\alpha^{*}\langle\alpha| .
+\end{equation}
+这里 $\alpha$ 是一个复数, 且 $|\alpha\rangle$ 具有如下形式:
+\begin{equation}
+|\alpha\rangle=\e^{-\frac{|\alpha|^{2}}{2}} \e^{\alpha \hat{a}^{\dagger}}|0\rangle,
+\end{equation}
+前面的常数因子是归一化常数. 
+
+相干态首先是归一的, 即
+\begin{equation}
+\left.\left\langle\alpha \right| \alpha\right\rangle=1.
+\end{equation}
+但其一般不正交，有如下关系:
+\begin{equation}
+\left.\left\langle\alpha^{\prime} \right| \alpha\right\rangle=\exp \left[-\frac{|\alpha|^2}{2}-\frac{\left|\alpha^{\prime}\right|^{2}}{2}+\alpha \alpha^{\prime *}\right],
+\end{equation}
+进一步可以得到:
+\begin{equation}
+\left.\left|\left\langle\alpha^{\prime} \right| \alpha\right\rangle\right|^{2}=\e^{-\left|\alpha-\alpha^{\prime}\right|^{2}},
+\end{equation}
+在复平面上, 当 $\left|\alpha-\alpha^{\prime}\right| \rightarrow \infty$ 时, 有 $\left\langle\alpha^{\prime} \mid \alpha\right\rangle \rightarrow 0$, 这时两个态近似正交.谐振子的相干态虽然不正交, 却是一组完备基, 这种性质称为\textbf{超完备性}. 有如下完备性关系:
+\begin{equation}
+\int \frac{\mathrm{d}^{2} \alpha}{\pi}|\alpha\rangle\langle\alpha|=\mathbbm{1},
+\end{equation}
+其中积分测度为:
+\begin{equation}
+\mathrm{d}^{2} \alpha=\mathrm{d} (\operatorname{Re}\alpha) \mathrm{d} (\operatorname{Im}\alpha).
+\end{equation}
+取$\alpha = x+\mathrm i y,\alpha^*=x-\mathrm i y$，则
+\begin{equation}
+\mathrm{d} (\operatorname{Re}\alpha)=\mathrm{d} x, \quad \mathrm{d} (\operatorname{Im}\alpha)=\mathrm{d} y ,
+\end{equation}
+这样完备性条件可以写为:
+\begin{equation}
+\iint \frac{\mathrm{d} x \mathrm{d} y}{\pi}|\alpha\rangle\langle\alpha|=\mathbbm 1 .
+\end{equation}
+
+由于相干态具有完备性, 可以利用相干态展开任意态, 称这种表象为\textbf{相干态表象}:
+\begin{equation}
+|\psi\rangle=\int \frac{\mathrm{d}^{2} \alpha}{\pi}|\alpha\rangle\langle\alpha | \psi\rangle,
+\end{equation}
+但是由于超完备性, 这种展开并不唯一. 同样, 算符也可以展开为:
+\begin{equation}
+\hat{A}=\int \frac{\mathrm{d}^{2} \alpha}{\pi} \int \frac{\mathrm{d}^{2} \alpha^{\prime}}{\pi}|\alpha\rangle\langle\alpha|\hat{A}| \alpha^{\prime}\rangle\langle\alpha^{\prime}| .
+\end{equation}
+可以得到如下关系:
+\begin{align}
+\hat{a}|\alpha\rangle &=\alpha|\alpha\rangle, \nonumber\\
+\langle\alpha| \hat{a}^{\dagger} &=\langle\alpha| \alpha^{*}, \nonumber\\
+\hat{a}^{\dagger}|\alpha\rangle &=\left(\frac{\partial}{\partial \alpha}+\frac{\alpha^{*}}{2}\right)|\alpha\rangle, \nonumber\\
+\langle\alpha| \hat{a} &=\left(\frac{\partial}{\partial \alpha^{*}}+\frac{\alpha}{2}\right)\langle\alpha| .
+\end{align}
+特别地, 对体系本征态求迹可以写为对相干态的“求迹”:
+\begin{align}
+\operatorname{Tr} \hat{A} &=\sum_{n}\langle n|\hat{A}| n\rangle\nonumber\\
+&=\sum_{n}\left\langle n\left|\int \frac{\mathrm{d}^{2} \alpha}{\pi}\right| \alpha\right\rangle\langle\alpha|\hat{A}| n\rangle \nonumber\\
+&=\int \frac{\mathrm{d}^{2} \alpha}{\pi} \sum_{n}\langle n | \alpha\rangle\langle\alpha|\hat{A}| n\rangle\nonumber\\
+&=\int \frac{\mathrm{d}^{2} \alpha}{\pi} \sum_{n}\langle\alpha|\hat{A}| n\rangle\langle n |\alpha\rangle \nonumber\\
+&=\int \frac{\mathrm{d}^{2} \alpha}{\pi}\langle\alpha|\hat{A}| \alpha\rangle.
+\end{align}
+
+
+\section{多体理论中的玻色子系统相干态}
+前面已经介绍了一维谐振子相干态, 而对于全同粒子体系, 每一个单粒子态都对应着不同的相干态. 下面介绍凝聚态场论中全同玻色子系统的相干态. 为简单起见, 先从单分量的情况考虑, 这实际上就是一维谐振子相干态.
+
+\subsection{单分量玻色子相干态}
+场论中我们用 $|\phi\rangle$ 代替 $|\alpha\rangle$ 表示相干态, 这里 $|\phi\rangle$ 仍然是消灭算符的本征态. 为方便起见, 凝聚态场论中考虑如下没有归一化的相干态:
+\begin{equation}
+|\phi\rangle\equiv\e^{\phi \hat{a}^{\dagger}}|0\rangle,
+\end{equation}
+这里 $\phi$ 仍是复数, $|0\rangle$ 是粒子真空态. 有如下本征方程:
+\begin{equation}
+\hat{a}|\phi\rangle=\phi|\phi\rangle,
+\end{equation}
+上式的厄米共轭为:
+\begin{equation}
+\langle\phi| \hat{a}^{\dagger}=\phi^{*}\langle\phi|,
+\end{equation}
+可以得到如下关系:
+\begin{equation}
+\left\{\begin{aligned}
+\hat{a}^{\dagger}|\phi\rangle &=\frac{\partial}{\partial \phi}|\phi\rangle, \\
+\langle\phi| \hat{a} &=\frac{\partial}{\partial \phi^{*}}\langle\phi| .
+\end{aligned}\right.
+\end{equation}
+
+下面讨论单分量情况玻色子系统相干态的性质:
+\begin{itemize}
+\item 内积(非正交归一) \\
+凝聚态场论中用到的相干态是非归一化的, 而且相干态本身不同的态之间不正交，一般有如下关系:
+\begin{equation}
+\langle\phi| \phi\rangle=\e^{\phi^{*} \phi}=\e^{|\phi|^{2}}.
+\end{equation}
+\begin{proof}
+\begin{align}
+\langle\phi | \phi\rangle &=\left\langle 0\left|\e^{\hat{a} \phi^{*}} \e^{\phi \hat{a}^{\dagger}}\right| 0\right\rangle\\
+&=\left\langle 0\left|\sum_{m} \frac{\left(\hat{a} \phi^{*}\right)}{m !} \sum_{n} \frac{\phi \hat{a}^{\dagger}}{n !}\right| 0\right\rangle \nonumber\\
+&=\sum_{m} \sum_{n} \frac{\left(\phi^{*}\right)^{m}}{m !} \frac{\phi^{n}}{n !}\left\langle 0\left|\hat{a}^{m}\left(\hat{a}^{\dagger}\right)^{n}\right| 0\right\rangle\nonumber\\
+&=\sum_{m} \sum_{n} \frac{\left(\phi^{*}\right)^{m}}{m !} \frac{\phi^{n}}{n !}\langle m|\sqrt{m !} \sqrt{n !}| n\rangle \nonumber\\
+&=\sum_{m} \sum_{n} \frac{(\phi^{*})^{m}}{m !} \frac{\phi^{n}}{n !} \sqrt{m !} \sqrt{n !} \delta_{m n}\nonumber\\
+&=\sum_{n} \frac{\left(\phi^{*} \phi\right)^{n}}{n !} \nonumber\\
+&=\e^{\phi^{*} \phi}.
+\end{align}
+\end{proof}
+一般地, 有:
+\begin{equation}
+\langle\phi^\prime | \phi\rangle=\e^{\phi^{\prime *} \phi}.
+\end{equation}
+
+\item 完备性\\
+相干态本身具有超完备性, 但是这里我们使用的是未归一化的相干态, 所以单位算符和前面的形式有所不同:
+\begin{equation}
+\int \frac{\mathrm{d}^{2} \phi}{\pi} \e^{-\phi^{*} \phi}|\phi\rangle\langle\phi|=\mathbbm 1 .
+\end{equation}
+\end{itemize}
+
+同样地, 可以在相干态表象下对算符求迹:
+\begin{equation}
+\operatorname{Tr} \hat{A}=\int \frac{\mathrm{d}^{2} \phi}{\pi} \e^{-\phi^{*} \phi}\langle\phi|\hat{A}| \phi\rangle,
+\end{equation}
+这是下面推导配分函数路径积分形式的基础.
+
+考虑 $\hat{H}$ 写成了产生、消灭算符的函数形式 $\hat{H}\left(\hat{a}^{\dagger}, \hat{a}\right)$, 而且产生、消灭算符是按正规乘积的顺序排列的, 则单分量玻色子情况的配分函数函数可以写成如下求迹的形式:
+\begin{equation}
+\mathcal{Z}=\operatorname{Tr}\left[\e^{-\beta \hat{H}\left(\hat{a}^{\dagger}, \hat{a}\right)}\right]=\int \frac{\mathrm{d}^{2} \phi}{\pi} \e^{-\phi^{*} \phi}\left\langle\phi\left|\e^{-\beta \hat{H}\left(\hat{a}^{\dagger}, \hat{a}\right)}\right| \phi\right\rangle.
+\end{equation}
+按量子力学中路径积分的方法, 把 $\beta$ 看成是时间(虚时), 分为 $N$ 个等份, 每一份为 $\displaystyle \Delta \tau=\frac{\beta}{N}$, 得到:
+\begin{align}
+\left\langle\phi\left|\e^{-\beta \hat{H}}\right| \phi\right\rangle &=\left\langle\phi\left|\left(\e^{-\Delta \tau \hat{H}}\right)^{N}\right| \phi\right\rangle \nonumber\\
+&=\left\langle\phi\left|\e^{-\Delta \tau \hat{H}} \cdots \e^{-\Delta \tau \hat{H}} \cdots \e^{-\Delta \tau \hat{H}}\right| \phi\right\rangle,
+\end{align}
+在任意两个相邻 $\e^{-\Delta \tau \hat{H}}$ 之间插入单位算符 $\displaystyle\int \frac{\mathrm{d}^{2} \phi}{\pi} \e^{-\phi^{*} \phi}|\phi\rangle\langle\phi|$, 得到:
+\begin{align}
+\left\langle\phi\left|\e^{-\beta \hat{H}}\right| \phi\right\rangle=& \int \frac{\mathrm{d}^{2} \phi_{1}}{\pi} \cdots \frac{\mathrm{d}^{2} \phi_{N-1}}{\pi} \e^{-\phi_{1}^{*} \phi^{}_{1}} \cdots \e^{-\phi_{j}^{*} \phi^{}_{j}} \cdots \e^{\phi_{N-1}^{*} \phi^{}_{N-1}} \nonumber\\
+&\times\left\langle\phi\left|\e^{-\Delta \tau \hat{H}}\right| \phi_{N-1}\right\rangle \cdots\left\langle\phi_{j}\left|\e^{-\Delta \tau \hat{H}}\right| \phi_{j-1}\right\rangle \cdots\left\langle\phi_{1}\left|\e^{-\Delta \tau \hat{H}}\right| \phi\right\rangle,
+\end{align}
+为了方便表示, 令:
+\begin{equation}
+|\phi\rangle \equiv\left|\phi_{0}\right\rangle, \quad\langle\phi| \equiv\left\langle\phi_{N}\right|,
+\end{equation}
+实际上 $\phi_{0}=\phi_{N}$. 考虑 $N \rightarrow \infty, \Delta\tau \rightarrow 0^{+}$ 是小量, 展开到一阶, 这时上式中的通项可以展开为:
+\begin{align}
+\left\langle\phi_{j}\left|\e^{-\Delta \tau \hat{H}}\right| \phi_{j-1}\right\rangle & \approx\left\langle\phi_{j}\left|(1-\Delta \tau \hat{H})\right| \phi_{j-1}\right\rangle \nonumber\\
+&=\left.\left\langle\phi^{}_{j} \right| \phi^{}_{j-1}\right\rangle-\Delta \tau\left\langle\phi^{}_{j}\left|\hat{H}\left(\hat{a}^{\dagger}, \hat{a}\right)\right| \phi^{}_{j-1}\right\rangle \nonumber\\
+&=\left.\left\langle\phi^{}_{j} \right| \phi^{}_{j-1}\right\rangle-\Delta \tau\left\langle\phi^{}_{j}\left|H\left(\phi_{j}^{*}, \phi^{}_{j-1}\right)\right| \phi^{}_{j-1}\right\rangle\nonumber \\
+&=\left[1-\Delta \tau H\left(\phi_{j}^{*}, \phi^{}_{j-1}\right)\right]\left.\left\langle\phi^{}_{j} \right| \phi^{}_{j-1}\right\rangle \nonumber\\
+&=\e^{-\Delta \tau H\left(\phi_{j}^{*}, \phi^{}_{j-1}\right)} \e^{\phi_{j}^{*} \phi^{}_{j-1}}.
+\end{align}
+定义
+\begin{equation}
+\mathscr{D}_{N}\left(\phi^{*}, \phi\right)=\prod_{j=1}^{N}\left(\frac{\mathrm{d}^{2} \phi_{j}}{\pi}\right),
+\end{equation}
+这样配分函数可以写为:
+\begin{align}
+\mathcal{Z} &=\lim _{N \rightarrow \infty} \int \mathscr{D}_{N}\left(\phi^{*}, \phi\right) \exp \left\{-\sum_{j=1}^{N}\left[\phi_{j}^{*}\left(\phi^{}_{j}-\phi^{}_{j-1}\right)+\Delta \tau H\left(\phi_{j}^{*}, \phi^{}_{j-1}\right)\right]\right\} \nonumber\\
+&=\lim _{N \rightarrow \infty}\int \mathscr{D}_{N}\left(\phi^{*}, \phi\right) \exp \left\{-\Delta \tau \sum_{j=1}^{N}\left[ \frac{\phi_{j}^{*}\left(\phi^{}_{j}-\phi^{}_{j-1}\right)}{\Delta \tau}+H\left(\phi_{j}^{*}, \phi^{}_{j-1}\right)\right]\right\} \nonumber\\
+&\equiv\lim _{N \rightarrow \infty} \int \mathscr{D}_{N}\left(\phi^{*}, \phi\right) \e^{-S_{N}},
+\end{align}
+其中
+\begin{equation}
+S_{N}=\Delta \tau \sum_{j=1}^{N}\left[ \frac{\phi_{j}^{*}\left(\phi^{}_{j}-\phi^{}_{j-1}\right)}{\Delta \tau}+H\left(\phi_{j}^{*}, \phi^{}_{j-1}\right)\right]
+\end{equation}
+是作用量. 当 $N \to\infty$ 时, 进一步做变换:
+\begin{align}
+\phi_{j} & \rightarrow \phi(\tau), \nonumber\\
+\frac{\phi_{j}^{*}\left(\phi^{}_{j}-\phi^{}_{j-1}\right)}{\Delta \tau}& \rightarrow \phi^{*}(\tau) \frac{\partial}{\partial \tau} \phi(\tau), \nonumber\\
+\sum_{j=1}^{N}\Delta \tau & \rightarrow \int_{0}^{\beta} \mathrm{d} \tau,\nonumber \\
+\mathscr{D}_{N}\left(\phi^{*}, \phi\right) & \rightarrow \mathscr{D}\left(\phi^{*}, \phi\right),\nonumber\\
+S_N&\rightarrow S,
+\end{align}
+可将离散情况连续化, 这里 $0<\tau<\beta$. 这样配分函数可以写为:
+\begin{equation}
+\mathcal{Z}=\int \mathscr{D}\left(\phi^{*}, \phi\right) \e^{-S\left(\phi^{*}, \phi\right)},
+\end{equation}
+其中作用量 $S$ 是 $\left(\phi^{*}, \phi\right)$ 的泛函:
+\begin{equation}
+S=\int_{0}^{\beta} \mathrm{d} \tau\left[\phi^{*}(\tau) \frac{\partial}{\partial \tau} \phi(\tau)+H\left(\phi^{*}(\tau), {\phi}(\tau)\right)\right],
+\end{equation}
+边界条件为:
+\begin{equation}
+\phi(0)=\phi(\beta), \quad \phi^{*}(0)=\phi^{*}(\beta).
+\end{equation}
+
+\begin{example}谐振子哈密顿量为:
+\begin{equation}
+\hat{H}=(\varepsilon-\mu) \hat{a}^{\dagger} \hat{a},
+\end{equation}
+此时的作用量为:
+\begin{align}
+S=&\int_{0}^{\beta} \mathrm{d} \tau\left[\phi^{*}(\tau) \frac{\partial}{\partial \tau} \phi(\tau)+H\left(\phi^{*}, {\phi}\right)\right]\nonumber\\
+=&\int_{0}^{\beta} \mathrm{d} \tau \phi^{*}(\tau)\left[\frac{\partial}{\partial \tau}+(\varepsilon-\mu)\right] \phi(\tau) .
+\end{align}
+\end{example}
+
+\subsection{多分量玻色子相干态}
+多分量(多粒子)系统的相干态是单变量(单粒子)系统相干态的直积, 哈密顿量为
+\begin{equation}
+\hat H=\sum_k(\varepsilon_k^0-\mu) \hat{a}_k^{\dagger} \hat{a}^{}_k + \frac{1}{2}\sum_{kk^\prime}\sum_{q}V(\vct q)\hat{a}^{\dagger}_{k+q}\hat{a}^{\dagger}_{k^\prime-q}\hat{a}^{}_{k^\prime}\hat{a}^{}_{k},
+\end{equation}
+其中
+\begin{equation}
+\left[\hat{a}^{}_{k}, \hat{a}^{\dagger}_{k^\prime}\right]_{-}=\delta_{kk^\prime},\quad\left[\hat{a}^{}_{k}, \hat{a}^{}_{k^\prime}\right]_{-}=\left[\hat{a}_{k}^{\dagger}, \hat{a}_{k^\prime}^{\dagger}\right]_{-}=0.
+\end{equation}
+定义多分量系统相干态为:
+\begin{equation}
+|\phi\rangle \equiv \prod_{k} \e^{\phi^{}_{k} \hat{a}_{k}^{\dagger}}|0\rangle,
+\end{equation}
+这一相干态是任意单粒子态消灭算符 $\hat{a}_{k}$ 的本征态, 有如下本征方程:
+\begin{equation}
+\hat{a}_{k}|\phi\rangle=\phi_{k}|\phi\rangle,
+\end{equation}
+其厄米共轭为:
+\begin{equation}
+\langle\phi| \hat{a}^{\dagger}=\phi_{k}^{*}\langle\phi|.
+\end{equation}
+同样可以得到如下关系:
+\begin{equation}
+\left\{\begin{aligned}
+\hat{a}_{k}^{\dagger}|\phi\rangle=\frac{\partial}{\partial \phi_{k}}|\phi\rangle, \\
+\langle\phi| \hat{a}_{k}=\frac{\partial}{\partial \phi_{k}^{*}}\langle\phi| .
+\end{aligned}\right.
+\end{equation}
+
+下面讨论多分量情况玻色子系统相干态的性质.
+\begin{itemize}
+\item 内积(非正交归一)
+\begin{equation}
+\left.\left\langle\phi \right|\phi\right\rangle=\exp \left(\sum_{k} \phi_{k}^{*} \phi^{}_{k}\right)=\prod_{k} \e^{\phi^{*}_{k} \phi^{}_{k}},
+\end{equation}
+一般地, 有:
+\begin{equation}
+\left.\left\langle\phi^{\prime} \right| \phi\right\rangle=\exp \left(\sum_{k} \phi_{{k}^{\prime}}^{*} \phi^{}_{k}\right)=\prod_{k} \e^{\phi^{*}_{k^{\prime}} \phi^{}_{k}}.
+\end{equation}
+
+\item 完备性\\
+有如下恒等算符:
+\begin{equation}
+\int\left(\prod_{k} \frac{\mathrm{d}^{2} \phi_{k}}{\pi}\right) \e^{-\sum\limits_{k} \phi_{k}^{*} \phi^{}_{k}}|\phi_k\rangle\langle\phi_k|=\mathbbm 1 .
+\end{equation}
+\end{itemize}
+
+同样, 多分量情况下对玻色子系统本征态的求迹可以写为对相干态的积分形式:
+\begin{equation}
+\operatorname{Tr} \hat{A}=\int\left(\prod_{k} \frac{\mathrm{d}^{2} \phi_{k}}{\pi}\right) \e^{-\sum\limits_{k} \phi^*_{k} \phi^{}_{k}}\langle\phi|\hat{A}| \phi\rangle.
+\end{equation}
+
+对多分量情况中的每一个分量进行前面单分量情况下的路径积分操作, 可以得到配分函数:
+\begin{equation}
+\mathcal{Z}=\int\mathscr{D}\left(\phi^{*}, \phi\right) \e^{-S\left(\phi^{*}, \phi\right)},
+\end{equation}
+其中泛函积分测度为:
+\begin{equation}
+\mathscr{D}\left(\phi^{*}, \phi\right)=\prod_{k}\mathscr{D}\left(\phi_{k}^{*}, \phi^{}_{k}\right),
+\end{equation}
+作用量为:
+\begin{equation}
+S=\int_{0}^{\beta} \mathrm{d} \tau\sum_{k}\left[\left(\phi_{k}^{*}(\tau) \frac{\partial}{\partial \tau} \phi^{}_{k}(\tau)\right)+H\left(\phi_{k}^{*}, \phi^{}_k\right)\right].
+\end{equation}
+
+\begin{example}对多分量系统, 作用量为:
+\begin{align}
+S=&\int_{0}^{\beta} \mathrm{d} \tau\Bigg[\sum_{k}\left(\phi_{k}^{*}(\tau) \frac{\partial}{\partial \tau} \phi^{}_{k}(\tau)\right)+\sum_k(\varepsilon_k^0-\mu) {\phi}_k^{*}(\tau) {\phi}^{}_k(\tau)\nonumber\\
+ &+ \frac{1}{2}\sum_{kk^\prime}\sum_{q}V(\vct q){\phi}^{*}_{k+q}(\tau){\phi}^{*}_{k^\prime-q}(\tau){\phi}^{}_{k^\prime}(\tau){\phi}^{}_{k}(\tau)\Bigg].
+\end{align}
+\end{example}
+
+\section{多体理论中的费米子系统相干态}
+\subsection{Grassmann数}
+费米系统的产生、消灭算符可以记作$\hat{C}^\dagger$、$\hat C$, 满足如下费米子对易关系:
+\begin{equation}
+\left[\hat{C}, \hat{C}^{\dagger}\right]_{+}=1,
+\end{equation}
+且有
+\begin{equation}
+\hat C \hat C=\hat{C}^{\dagger}\hat{C}^{\dagger}=0.
+\end{equation}
+引入粒子数算符:
+\begin{equation}
+\hat{N}=\hat{C}^{\dagger} \hat{C},
+\end{equation}
+其满足本征方程:
+\begin{equation}
+\hat{N}|n\rangle=n|n\rangle,
+\end{equation}
+对应本征态为
+\begin{align}
+|n=0\rangle&=|0\rangle,\nonumber\\
+|n=1\rangle&=|1\rangle=\hat C^{\dagger}|0\rangle.
+\end{align}
+
+费米子体系中的消灭算符没有本征值为非零复数的本征态. 为方便研究, 我们直接假设 $\hat C$ 的本征态为 $|\xi\rangle$, 本征值为 $\xi$, 即:
+\begin{equation}
+\hat C |\xi\rangle=\xi|\xi\rangle,
+\end{equation}
+其复共轭为:
+\begin{equation}
+\langle\xi| \hat{C}^{\dagger}=\xi^{*}\langle\xi|,
+\end{equation}
+此时的 $\xi$ 和 $\xi^{*}$ 已经不再是普通的数(复数). 我们称这个“奇怪”的数为\textbf{Grassmann 数}.
+
+Grassmanss 数 $\xi$ 满足如下关系(Grassmann 代数):
+\begin{equation}
+\left[\xi, \xi^{*}\right]_{+}=0, \quad \xi^{2}=\left(\xi^{*}\right)^{2}=0,
+\end{equation}
+这里 $\xi^{*}$ 是 $\xi$ 的复共轭, 但是两者是相互独立的. 对于复数 $\lambda$, 有如下关系:
+\begin{equation}
+(\lambda \xi)^{*}=\lambda^{*} \xi^{*}.
+\end{equation}
+Grassmann 数自身的乘积运算满足反对易关系, 其与费米子产生和消灭算符间的乘积运算也满足如下反对易关系:
+\begin{equation}
+\left[\hat{C}, \xi\right]_{+}=\left[\hat{C}, \xi^{*}\right]_{+}=\left[\hat{C}^{\dagger}, \xi\right]_{+}=\left[\hat{C}^{\dagger}, \xi^{*}\right]_{+}=0 .
+\end{equation}
+Grassmann 数的函数可以用其泰勒展开定义, 例如函数 $f\left(\xi, \xi^{*}\right)$ 为:
+\begin{equation}
+f\left(\xi, \xi^{*}\right)=f_{0}+f_{1} \xi+\bar{f}_{1} \xi^{*}+f_{12} \xi^{*} \xi,
+\end{equation}
+可以看出由于 Grassmann 数之间的反对易关系, Grassmann 数的函数的展开总是有限的, 这一点可以推广到多变量的情况.
+
+下面讨论 Grassmann 数的微分和积分. 首先是微分运算, 这里以对 $f\left(\xi, \xi^{*}\right)$ 的微分为例:
+\begin{equation}
+\frac{\partial}{\partial \xi} f\left(\xi, \xi^{*}\right)=f_{1}+f_{12} \frac{\partial}{\partial \xi}\left(\xi^{*}\xi\right),
+\end{equation}
+上式最后的微分运算可以利用 Grassmann 数间的反对易关系将 $\xi$ 移动到靠近前面微分的位置然后计算得到:
+\begin{equation}
+\frac{\partial}{\partial \xi} f\left(\xi, \xi^{*}\right)=f_{1}-f_{12} \xi^{*},
+\end{equation}
+因此也可以定义对 Grassmann 数的微分 $\displaystyle\frac{\partial}{\partial \xi}$ 与 Grassmann 数 $\xi^{*}$ 是反对易的:
+\begin{equation}
+\left[\frac{\partial}{\partial \xi}, \xi^{*}\right]_{+}=0.
+\end{equation}
+同样地, 可以得到如下一阶微分:
+\begin{equation}
+\frac{\partial}{\partial \xi^{*}} f\left(\xi, \xi^{*}\right)=\bar{f}_{1}+f_{12} \xi.
+\end{equation}
+通过一阶微分可以计算得到二阶微分:
+\begin{equation}
+\frac{\partial^{2}}{\partial \xi^{*} \partial \xi} f\left(\xi, \xi^{*}\right)=\frac{\partial}{\partial \xi^{*}}\left(f_{1}-f_{12} \xi^{*}\right)=-f_{12},
+\end{equation}
+对 Grassmann 数的二阶微分不同于普通数的二阶微分, 而是有顺序的, 这里是先对 $\xi$ 微分, 然后对 $\xi^{*}$ 微分. 交换微分顺序, 可以得到:
+\begin{equation}
+\frac{\partial^{2}}{\partial \xi \partial \xi^{*}} f\left(\xi, \xi^{*}\right)=f_{12},
+\end{equation}
+结果与刚才不同, 相差一个负号. 为方便, 可以认为 Grassmann 数的微分之间也是反对易的:
+\begin{equation}
+\left[\frac{\partial}{\partial \xi}, \frac{\partial}{\partial \xi^{*}}\right]_{+}=0,
+\end{equation}
+注意这里的 $\xi$ 和 $\xi^{*}$ 是两个独立的量.
+
+下面考虑积分运算. 首先对 Grassmann 数的积分做如下定义:
+\begin{align}
+\int \mathrm{d} \xi \cdot 1&=0, \quad \int \mathrm{d} \xi^{*} \cdot 1=0,\nonumber\\
+\int \mathrm{d} \xi \cdot \xi&=1, \quad \int \mathrm{d} \xi^{*} \cdot \xi^{*}=1,
+\end{align}
+即任意常数对 Grassmann 数的积分为零, 只有当被积函数是积分变量的一次项时积分才不为零. 根据定义, 可以得到 Grassmann 数的积分有如下推论:
+\begin{corollary}{}{}
+\begin{equation} 
+\int \mathrm{d} \xi \cdot \xi^{*}=0, \quad \int \mathrm{d} \xi^{*} \cdot \xi=0.
+\end{equation}
+\end{corollary}
+
+下面计算 $f\left(\xi, \xi^{*}\right)$ 对 $\xi$ 的积分:
+\begin{align}
+\int \mathrm{d} \xi f\left(\xi, \xi^{*}\right) &=\int \mathrm{d} \xi\left[f_{0}+f_{1} \xi+\bar{f}_{1} \xi^{*}+f_{12} \xi^{*} \xi\right]\nonumber \\
+&=f_{1}-f_{12} \xi^{*} \int \mathrm{d} \xi \cdot   \xi \nonumber\\
+&=f_{1}-f_{12} \xi^{*},
+\end{align}
+同样地, 可以计算 $f\left(\xi, \xi^{*}\right)$ 对 $\xi ^*$ 的积分:
+\begin{equation}
+\int \mathrm{d} \xi^* f\left(\xi, \xi^{*}\right) =\int \mathrm{d} \xi^*\left[f_{0}+f_{1} \xi+\bar{f}_{1} \xi^{*}+f_{12} \xi^{*} \xi\right] =\bar{f}_{1}+f_{12} \xi.
+\end{equation}
+可以看到, Grassmann 数的积分运算结果与前述微分运算结果一致.
+
+\subsection{单分量费米子相干态}
+在 Grassmann 数的基础上可以定义单分量情况下费米子系统相干态 $|\xi\rangle$ 为：
+\begin{equation}
+|\xi\rangle \equiv \e^{-\xi \hat{C}^{\dagger}}|0\rangle,
+\end{equation}
+这里 $|0\rangle$ 仍代表粒子真空态, 满足 $\langle 0 | 0\rangle=1$. 这样定义的费米子相干态是费米子消灭算符的本征态, 满足如下本征方程:
+\begin{equation}
+\hat{C}|\xi\rangle=\xi|\xi\rangle.
+\end{equation}
+\begin{proof}
+\begin{align}
+\hat{C}|\xi\rangle&=\hat{C} \e^{-\xi \hat{C}^{\dagger}}|0\rangle=\hat{C}\left(1-\xi \hat{C}^{\dagger}\right)|0\rangle=-\hat{C} \xi \hat{C}^{\dagger}|0\rangle\nonumber\\
+&=\xi \hat{C} \hat{C}^{\dagger}|0\rangle=\xi\left(1-\hat{C}^{\dagger} \hat{C}\right)|0\rangle=\xi|0\rangle\nonumber\\
+&=\xi\left(1-\xi \hat{C}^{\dagger}\right)|0\rangle=\xi \e^{-\xi \hat{C}^{\dagger}}|0\rangle=\xi|\xi\rangle .
+\end{align}
+\end{proof}
+和玻色子情况类似, 可以得到如下关系:
+\begin{equation}
+\left\{\begin{aligned} \hat{C}|\xi\rangle &=\xi|\xi\rangle, \\\langle\xi| \hat{C}^{\dagger} &=\xi^{*}\langle\xi|, \end{aligned}\right.\quad\left\{\begin{aligned}\hat{C}|\xi\rangle & =-\frac{\partial}{\partial \xi}|\xi\rangle, \\ \langle\xi| \hat{C}^{\dagger} & =\frac{\partial}{\partial \xi^{*}}\langle\xi| .\end{aligned}\right.
+\end{equation}
+
+下面考虑单分量情况下费米子相干态的性质.
+\begin{itemize}
+\item 内积(非正交归一)
+\begin{equation}
+\langle\xi^{\prime} | \xi \rangle=1+\xi^{\prime*} \xi=\e^{\xi^{\prime*} \xi}.
+\end{equation}
+\begin{proof}
+\begin{align}
+\langle\xi^{\prime} | \xi \rangle &=\left\langle 0\left|\e^{-\hat{C} \xi^{\prime*}} \e^{-\xi \hat{C}^{\dagger}}\right| 0\right\rangle\nonumber\\
+&=\left\langle 0\left|\left(1-\hat{C} \xi^{\prime*}\right)\left(1-\xi \hat{C}^{\dagger}\right)\right| 0\right\rangle \nonumber\\
+&=\langle 0 |0\rangle+\left\langle 0\left|\hat{C} \xi^{\prime*} \xi \hat{C}^{\dagger}\right| 0\right\rangle\nonumber\\
+&=\langle 0 | 0\rangle+\xi^{\prime*} \xi\left\langle 0\left|\hat{C} \hat{C}^{\dagger}\right| 0\right\rangle \nonumber\\
+&=\langle 0 | 0\rangle+\xi^{\prime*} \xi\left\langle 0\left|\left(1-\hat{C}^{\dagger} \hat{C}\right)\right| 0\right\rangle\nonumber\\
+&=1+\xi^{\prime*} \xi .
+\end{align}
+\end{proof}
+\item 完备性
+
+费米子相干态也是超完备的, 有如下单位算符:
+\begin{equation}
+\int \mathrm{d} \xi^{*} \mathrm{d} \xi \e^{-\xi^{*} \xi}|\xi\rangle\langle\xi|=\mathbbm 1 .
+\end{equation}
+\begin{proof}
+\begin{align}
+\int \mathrm{d} \xi^{*} \mathrm{d} \xi \e^{-\xi^{*} \xi}|\xi\rangle\langle\xi| =&\int \mathrm{d} \xi^{*} \mathrm{d} \xi\left(1-\xi^{*} \xi\right)\left(1-\xi \hat{C}^{\dagger}\right)|0\rangle\langle 0|\left(1-\hat{C} \xi^{*}\right) \nonumber\\
+=&\int \mathrm{d} \xi^{*} \mathrm{d} \xi\left(1-\xi^{*} \xi-\xi \hat{C}^{\dagger}+  \xi^{*} \xi \xi \hat{C}^{\dagger}  \right)|0\rangle\langle 0|\left(1-\hat{C} \xi^{*}\right) \nonumber\\
+=&\int \mathrm{d} \xi^{*} \mathrm{d} \xi\left(1-\xi^{*} \xi-\xi \hat{C}^{\dagger}\right)|0\rangle\langle 0|\nonumber\\
+&-\int \mathrm{d} \xi^{*} \mathrm{d} \xi\left(1-\xi^{*} \xi-\xi \hat{C}^{\dagger}\right)| 0\rangle\langle 0| \hat{C} \xi^{*} \nonumber\\
+=&|0\rangle\langle 0|+\hat{C}^{\dagger}|0\rangle\langle 0|\hat{C} \nonumber\\
+=&|0\rangle\langle 0|+|1\rangle\langle 1|=\mathbbm 1.
+\end{align}
+\end{proof}
+
+\end{itemize}
+
+同样地, 在相干态表象下对费米子本征态的求迹可以写成对相干态的积分:
+\begin{align}
+\operatorname{Tr} \hat{A}=&\langle 0|\hat{A}| 0\rangle+\langle 1|\hat{A}| 1\rangle \nonumber\\
+=& \int \mathrm{d} \xi^{*} \mathrm{d} \xi \e^{-\xi^{*} \xi}\langle-\xi|\hat{A}| \xi\rangle,
+\end{align}
+注意这里左矢中的负号. 下面证明上式最后一行就是求迹:
+\begin{proof}
+\begin{align}
+\int \mathrm{d} \xi^{*} \mathrm{d} \xi \e^{-\xi^{*} \xi}\langle-\xi|\hat{A}| \xi\rangle=& \int \mathrm{d} \xi^{*} \mathrm{d} \xi\left(1-\xi^{*} \xi\right)\left\langle 0\left|\left(1+\hat{C} \xi^{*}\right) \hat{A}\left(1-\xi \hat{C}^{\dagger}\right)\right| 0\right\rangle \nonumber\\
+=& \int \mathrm{d} \xi^{*} \mathrm{d} \xi\left\langle 0\left|\left(1+\hat{C} \xi^{*}\right) \hat{A}\left(1-\xi \hat{C}^{\dagger}\right)\right| 0\right\rangle \nonumber\\
+&-\int \mathrm{d} \xi^{*} \mathrm{d} \xi \xi^{*} \xi\left\langle 0\left|\left(1+\hat{C} \xi^{*}\right) \hat{A}\left(1-\xi \hat{C}^{\dagger}\right)\right| 0\right\rangle \nonumber\\
+=&-\int \mathrm{d} \xi^{*} \mathrm{d} \xi\left\langle 0\left|\hat{C} \xi^{*} \hat{A} \xi \hat{C}^{\dagger}\right| 0\right\rangle-\int \mathrm{d} \xi^{*} \mathrm{d} \xi \xi^{*} \xi\langle 0|\hat{A}| 0\rangle \nonumber\\
+=&\langle 1|\hat{A}| 1\rangle+\langle 0|\hat{A}| 0\rangle \nonumber\\
+=&\operatorname{Tr} \hat{A}.
+\end{align}
+\end{proof}
+
+考虑无相互作用体系哈密顿量具有形式
+\begin{equation}
+\hat{H}=(\varepsilon-\mu)\hat{C}^{\dagger}\hat{C},
+\end{equation}
+则其配分函数为:
+\begin{align}
+\mathcal{Z}&=\operatorname{Tr}\left[\e^{-\beta \hat{H}}\right]=\operatorname{Tr}\left[\e^{-\beta(\varepsilon-\mu)\hat{C}^{\dagger} \hat{C}} \right]\nonumber\\
+&=\int \dd \xi^{*} \dd \xi \e^{-\xi^{*} \xi}\left\langle-\xi\left|\e^{-\beta(\varepsilon-\mu) \hat{C}^{\dagger} \hat{C}}\right| \xi\right\rangle.
+\end{align}
+考虑配分函数具有正规形式:
+\begin{equation}
+\hat N\left[\e^{-\beta(\varepsilon-\mu)\hat{C}^{\dagger} \hat{C}} \right]=1+\left[\e^{-\beta(\varepsilon-\mu)} -1\right]\hat{C}^{\dagger} \hat{C},
+\end{equation}
+则
+\begin{align}
+\mathcal{Z}&=\int \dd \xi^{*} \dd \xi \e^{{-\xi^{*} \xi}}\left\langle-\xi\left|\left[1+\left(\e^{-\beta(\varepsilon-\mu)}-1\right) \hat{C}^{\dagger} \hat{C}\right]\right| \xi\right\rangle\nonumber\\
+&=\int \dd \xi^{*} \dd \xi \e^{-\xi^{*} \xi}\left[\langle -\xi | \xi\rangle+\left(\e^{-\beta(\varepsilon-\mu)}-1\right)\left\langle-\xi\left| \hat{C}^{\dagger} \hat{C} \right| \xi\right\rangle\right]\nonumber\\
+&=\int \dd \xi^{*} \dd \xi \e^{-\xi^{*} \xi}\left[\langle-\xi | \xi\rangle+\left(\e^{-\beta(\varepsilon-\mu)}-1\right)\left(-\xi^{*} \xi\right)\langle-\xi | \xi\rangle\right]\nonumber\\
+&=\int \dd \xi^{*} \dd \xi \e^{-\xi^{*} \xi}\left[1+\left(\e^{-\beta(\varepsilon-\mu)}-1\right)\left(-\xi^{*} \xi\right)\right] \e^{-\xi^{*} \xi}\nonumber\\
+&=\int \dd \xi^{*} \dd \xi \e^{-2 \xi^{*} \xi}\left[1+\left(-\xi^{*} \xi\right)\left(\e^{-\beta(\varepsilon-\mu)}-1\right)\right]\nonumber\\
+&=\int \dd \xi^{*} \dd \xi\left(1-2 \xi^{*} \xi\right)\left[1-\xi^{*} \xi\left(\e^{-\beta(\varepsilon-\mu)}-1\right)\right]\nonumber\\
+&=\int \dd \xi^{*} \dd \xi\left[1-\xi^{*} \xi\left(\e^{-\beta(\varepsilon-\mu)}-1\right)-2 \xi^{*} \xi+2 \xi^{*} \xi\xi^{*} \xi\left(\e^{-\beta(\varepsilon-\mu)}-1\right)\right]\nonumber\\
+&=-\int \dd \xi^{*} \dd \xi \xi^{*} \xi\left(\e^{-\beta(\varepsilon-\mu)}-1\right)-2 \int \dd \xi^{*} \dd \xi \xi^{*} \xi \nonumber\\
+&=\left[\e^{-\beta(\varepsilon-\mu)}-1\right]+2\nonumber\\
+&=1+\e^{-\beta(\varepsilon-\mu)}.
+\end{align}
+将其写成路径积分的形式, 有
+\begin{align}
+\mathcal{Z}&=\operatorname{Tr}\left[\e^{-\beta \hat{H}}\right]=\int \dd \xi^{*} \dd \xi \e^{-\xi^{*} \xi}\left\langle-\xi\left|\e^{-\beta\hat{H}}\right| \xi\right\rangle\nonumber\\
+&=\lim _{N \rightarrow \infty} \int\left(\prod_{j=1}^{N} \dd \xi_{j}^{*} \dd \xi^{}_{j}\right) \exp \left[-\sum_{j=1}^{N} \xi_{j}^{*}\left(\xi^{}_{j}-\xi^{}_{j-1}\right)+\Delta \tau(\varepsilon-\mu) \xi_{j}^{*} \xi^{}_{j-1}\right].
+\end{align}
+写成连续形式, 有
+\begin{equation}
+\mathcal{Z}=\int \mathscr{D}\left(\xi^{*}, \xi\right) \e^{-S} ,
+\end{equation}
+其中
+\begin{equation}
+S=\int_{0}^{\beta} \dd \tau \xi^{*}(\tau)\left[\frac{\partial}{\partial \tau}+(\varepsilon-\mu)\right] \xi(\tau) ,
+\end{equation}
+具有边界条件: 
+\begin{equation}
+\xi(0)=-\xi(\beta), \quad \xi^{*}(0)=-\xi^{*}(\beta) .
+\end{equation} 
+
+
+
+\subsection{多分量费米子相干态}
+考虑多分量情况下哈密顿量为
+\begin{equation}
+\hat{H}=\sum_{k \sigma}\left(\varepsilon_{k}^{0}-\mu\right) \hat{C}_{k \sigma}^{\dagger} \hat{C}^{}_{k \sigma}+\frac{1}{2} \sum_{k k^{\prime}} \sum_{\sigma \sigma^\prime} \sum_{q} V(\boldsymbol{q}) \hat{C}_{k+q , \sigma}^{\dagger} \hat{C}_{k^{\prime}- q,\sigma^\prime }^{\dagger} \hat{C}^{}_{k^{\prime} \sigma^{\prime}} \hat{C}^{}_{k \sigma}.
+\end{equation}
+引入产生、消灭算符对应的本征值:
+\begin{equation}
+\hat{C}^{}_{k} \rightarrow \xi^{}_{k} ,\quad \hat{C}_{k}^{\dagger} \rightarrow \xi_{k}^{\dagger},
+\end{equation}
+则可以定义相干态:
+\begin{equation}
+\left\{\begin{aligned}
+\hat{C}_{k} |\xi\rangle&=\xi_{k}|\xi\rangle,\\
+\langle\xi| \hat{C}_{k}^{\dagger}&=\langle\xi|\xi_{k}^{*},
+\end{aligned}\right.
+\end{equation}
+满足以下反对易关系:
+\begin{equation}
+\left\{\begin{aligned}
+&{\left[\xi^{}_{k}, \xi_{k^{\prime}}^{*}\right]_{+}=\left[\xi^{}_{k}, \xi^{}_{k^{\prime}}\right]_{+}=\left[\xi_{k}^{*}, \xi_{k^{\prime}}^{*}\right]_{+}=0 .} \\ 
+&{\left[\hat{C}^{}_{k}, \xi^{}_{k^{\prime}}\right]_{+}=\left[\hat{C}_{k}^{\dagger}, \xi^{}_{k^{\prime}}\right]_{+}=\left[\hat{C}^{}_{k}, \xi_{k^{\prime}}^{*}\right]_{+}=\left[\hat{C}_{k}^{\dagger}, \xi_{k^{\prime}}^{*}\right]_{+}=0 .}\end{aligned}\right.
+\end{equation}
+定义厄米共轭:
+\begin{equation}
+\left(\hat{C}^{}_{k} \xi^{}_{k^{\prime}}\right)^{\dagger} \equiv \xi_{k^{\prime}}^{*} \hat{C}_{k}^{\dagger}.
+\end{equation}
+
+类似于玻色子情况, 多分量情况费米子体系的相干态是单分量情况费米子体系相干态的直积, 可以写为:
+\begin{equation}
+|\xi\rangle\equiv\e^{-\sum\limits_{k} \xi^{}_{k} \hat{C}_{k}^{\dagger}}|0\rangle=\prod_{k} \e^{-\xi^{}_{k} C_{k}^{\dagger}}|0\rangle,
+\end{equation}
+这是任意单粒子消灭算符的本征态. 
+
+这样定义的费米子相干态有如下性质：
+\begin{itemize} 
+\item 内积(非正交归一)
+\begin{equation}
+\langle\xi^{\prime} | \xi \rangle=\e^{\sum\limits_{k} \xi_{k}^{\prime *} \xi^{}_k} .
+\end{equation}
+\item 完备性
+\begin{equation}
+\int\left(\prod_{k} \mathrm{d} \xi_{k}^{*} \mathrm{d} \xi^{}_{k}\right) \e^{-\sum\limits_{k} \xi^*_{k} \xi^{}_{k}}|\xi\rangle\langle\xi|=\mathbbm 1 .
+\end{equation}
+\end{itemize}
+
+同样地, 求迹可以表示为:
+\begin{equation}
+\operatorname{Tr} \hat{A}=\int\left(\prod_{k} \mathrm{d} \xi_{k}^{*} \mathrm{d} \xi^{}_{k}\right) \e^{-\sum\limits_{k} \xi^*_{k} \xi^{}_{k}}\langle-\xi|\hat{A}| \xi\rangle .
+\end{equation}
+
+而多分量费米子体系配分函数的路径积分形式与玻色子情况的计算过程相似, 这里直接给出结果:
+\begin{equation}
+\mathcal{Z}=\int \mathscr{D}\left(\xi^{*}, \xi\right) \e^{-S},
+\end{equation}
+其中作用量为:
+\begin{equation}
+S=\int_{0}^{\beta} \mathrm{d} \tau\left[\sum_{k}\xi_{k}^{*}(\tau) \frac{\partial}{\partial \tau} \xi_{k}(\tau)+H\left(\xi_{k}^{*} , \xi^{}_{k}\right)\right] ,
+\end{equation}
+边界条件为:
+\begin{equation}
+\xi^{}_{k}(0) =-\xi^{}_{k} ( \beta ),\quad \xi_{k}^{*}(0)=-\xi_{k}^{*}(\beta).
+\end{equation}
+
+\section{Stratonovich-Hubbard 变换}
+Stratonovich-Hubbard (S-H) 变换为:
+\begin{align}
+\e^{-g A B}&=\frac{\displaystyle\int \frac{\dd z^{*} \dd z}{2 \mathrm{i}} \e^{-|z|^{2} / g- \mathrm{i}\left(A z^{*}+B z\right)} }{ \displaystyle\int \frac{\dd z^{*} \dd z}{2  \mathrm{i}} \e^{-|z|^{2} / g}},\nonumber\\
+\e^{g A B}&=\frac{\displaystyle\int \frac{\dd z^{*} \dd z}{2  \mathrm{i}} \e^{-|z|^{2}g+\left(A z^{*}+B z\right)}}{\displaystyle\int \frac{\dd z^{*} \dd z}{2  \mathrm{i}} \e^{-|z|^{2} / g}},
+\end{align}
+其中 $g>0$. 可以看到 S-H 变换为一种脱耦合手续.
+
+下面对第一式进行证明, 第二式证明类似.
+\begin{proof}
+令
+\begin{equation}
+z=x+ \mathrm{i}y,\quad z^*=x- \mathrm{i}y,
+\end{equation}
+则
+\begin{align}
+&\displaystyle\int \frac{\dd z^{*} \dd z}{2 \mathrm{i}} \e^{-|z|^{2} / g- \mathrm{i}\left(A z^{*}+B z\right)}\nonumber\\
+=&\iint \dd x \dd y \e^{-\frac{x^{2}+y^{2}}{g}-i[A(x- \mathrm{i}y)+B(x+ \mathrm{i} y)]}\nonumber\\
+=&\iint \dd x \dd y \e^{-\frac{x^{2}+y^{2}}{g}- \mathrm{i}[(A+B) x+ \mathrm{i}(B-A) y]}\nonumber\\
+=&\int \dd x \e^{-\frac{x^{2}}{g}- \mathrm{i}(A+B) x} \int \dd y \e^{-\frac{y^2}{g}+(B-A) y}\nonumber\\
+=&\int \dd x \e^{-\frac{1}{g}\left[x^{2}+ \mathrm{i} g(A+B) x\right]} \int \dd y \e^{-\frac{1}{g}\left[y^{2}-g(B-A) y\right]}\nonumber\\
+=&\int \dd x \e^{-\frac{1}{g}\left\{\left[x+\frac{ \mathrm{i}g}{2}(A+B)\right]^2-\left[\frac{ \mathrm{i}g}{2}(A+B)\right]^2\right\} }\nonumber\\
+ &\times\int \dd y \e^{-\frac{1}{g}\left\{\left[y-\frac{g}{2}(B-A)\right]^2-\left[\frac{g}{2}(B-A)\right]^2\right\} }\nonumber\\
+=&\int \dd x \e^{-\frac{x^{2}}{g}}\e^{-g\left(\frac{A+B}{2}\right)^2} \int \dd y \e^{-\frac{y^2}{g}}\e^{g\left(\frac{B-A}{2}\right)^2}\nonumber\\
+=&\e^{-g\left[\left(\frac{A+B}{2}\right)^2-\left(\frac{B-A}{2}\right)^2\right]}\iint \dd x \dd y \e^{-\frac{x^{2}+y^{2}}{g}}\nonumber\\
+=&\e^{-gA B} \int \frac{\dd z^{*} \dd z}{2  \mathrm{i}} \e^{-\frac{|z|^{2}}{g}},
+\end{align}
+即有:
+\begin{equation}
+\e^{-g A B}=\frac{\displaystyle\int \frac{\dd z^{*} \dd z}{2 \mathrm{i}} \e^{-|z|^{2} / g- \mathrm{i}\left(A z^{*}+B z\right)} }{ \displaystyle\int \frac{\dd z^{*} \dd z}{2  \mathrm{i}} \e^{-|z|^{2} / g}}.
+\end{equation}
+\end{proof}
+
+\section{路径积分方法在超导理论中的应用}
+超导体的哈密顿量具有以下形式:
+\begin{equation}
+\hat{H}=\sum_\sigma \int \dd \boldsymbol{x}\hat{\psi}_{\sigma}^{\dagger}(\boldsymbol{x})\left(-\frac{\nabla^{2}}{2 m}-\mu\right) \hat{\psi}^{}_{\sigma}(\boldsymbol{x})-g \int \dd \boldsymbol{x} \hat{\psi}_{\uparrow}^{\dagger}(\boldsymbol{x}) \hat{\psi}_{\downarrow}^{\dagger}(\boldsymbol{x}) \hat{\psi}^{}_{\downarrow}(\boldsymbol{x}) \hat{\psi}^{}_{\uparrow}(\boldsymbol{x}),
+\end{equation}
+将升降算符对应的 Grassmann 数记作
+\begin{equation}
+\hat{C}^{}_{k} \rightarrow C^{}_{k}, \hat{C}_{k}^{\dagger} \rightarrow \bar{C}^{}_{k}, \hat{\psi}^{}_{\uparrow}(\boldsymbol{x}) \rightarrow \psi^{}_{\uparrow}(\boldsymbol{x}), \hat{\psi}_{\uparrow}^{\dagger}(\boldsymbol{x}) \rightarrow \bar{\psi}^{}_{\uparrow}(\boldsymbol{x}) ,
+\end{equation}
+则配分函数可以写作
+\begin{equation}
+\mathcal{Z}=\int \mathscr{D}\bar{\psi}\mathscr{D}\psi \e^{-S},
+\end{equation}
+其中
+\begin{align}
+S=\int_{0}^{\beta} \dd \tau \int \dd \boldsymbol{x}&\Bigg[\sum_{\sigma} \bar{\psi}_{\sigma}(\boldsymbol{x}, \tau)\left(\frac{\partial}{\partial \tau}-\frac{\nabla^{2}}{2 m}-\mu\right) \psi_{\sigma}(\boldsymbol{x}, \tau)\nonumber\\
+&-g \bar{\psi}_{\uparrow}(\boldsymbol{x}, \tau) \bar{\psi}_{\downarrow}(\boldsymbol{x}, \tau) \psi_{\downarrow}(\boldsymbol{x}, \tau) \psi_{\uparrow}(\boldsymbol{x}, \tau)\Bigg].
+\end{align}
+引入四维坐标和四维动量, 即:
+\begin{align}
+x &\rightarrow\{\boldsymbol{x}, \tau\}, &\dd x &\rightarrow \dd \boldsymbol{x} \dd \tau;\nonumber\\
+k &\rightarrow\left\{\boldsymbol k, \mathrm i \omega_{n}\right\}, &\sum_{k} &\rightarrow \sum_{\boldsymbol k} \sum_{\omega_{n}},
+\end{align}
+有
+\begin{equation}
+\e^{\mathrm i k x}=\e^{\mathrm i \boldsymbol{k} \cdot \boldsymbol{x}-\mathrm i \omega_{n} \tau},
+\end{equation}
+此时作用量可以写作
+\begin{align}
+S&=\int \dd x\left[{\sum_{\sigma} \bar{\psi}_{\sigma}(x)\left(\frac{\partial}{\partial \tau}-\frac{\nabla^{2}}{2 m}-\mu\right) \psi_{\sigma}(x)}{-g \bar{\psi}_{\uparrow}(x) \bar{\psi}_{\downarrow}(x) \psi_{\downarrow}(x) \psi_{\uparrow}(x)}\right]\nonumber\\
+&\equiv S_0+S^\prime.
+\end{align}
+注意到
+\begin{equation}
+ \e^{-S^\prime}=\exp\left[g \int \dd x\bar{\psi}_{\uparrow}(x) \bar{\psi}_{\downarrow}(x) \psi_{\downarrow}(x) \psi_{\uparrow}(x)\right],
+\end{equation}
+其指数上有四次项, 可利用 S-H 变换解耦合. 首先, 令
+\begin{equation}
+A(x)=\psi_{\downarrow}(x) \psi_{\uparrow}(x)\equiv \Delta^*(x),\quad B(x)=\bar{\psi}_{\uparrow}(x) \bar{\psi}_{\downarrow}(x)\equiv\Delta(x),
+\end{equation}
+则
+\begin{align}
+\e^{g \bar{\psi}_{\uparrow}(x) \bar{\psi}_{\downarrow}(x) \psi_{\downarrow}(x) \psi_{\uparrow}(x)}&=\frac{\displaystyle\int \frac{\dd \Delta^{*} \dd \Delta}{2 \mathrm{i}} \e^{-\frac{|\Delta(x)|^{2}}{g}+\left[\Delta^{*}( x)\psi_{\downarrow}(x) \psi_{\uparrow}(x)+\Delta(x) \bar{\psi}_{\uparrow}(x) \bar{\psi}_{\downarrow}(x)\right]}} { \displaystyle\int \frac{\dd \Delta^{*} \dd \Delta}{2 \mathrm{i}} \e^{-\frac{|\Delta(x)|^{2}}{g}}}\nonumber\\
+&\sim\int \dd \Delta^{*} \dd \Delta \e^{-\frac{|\Delta(x)|^{2}}{g}+\left[\Delta^{*}( x)\psi_{\downarrow}(x) \psi_{\uparrow}(x)+\Delta(x) \bar{\psi}_{\uparrow}(x) \bar{\psi}_{\downarrow}(x)\right]} ,
+\end{align}
+其中 $\sim$ 是忽略系数得到的. 则
+\begin{equation}
+\e^{-S^{\prime}}=\int \mathscr{D} \Delta^{*} \mathscr{D} \Delta \exp \left\{-\int \dd x\left[\frac{\left|\Delta(x)\right|^{2}}{g}-\left[\Delta^{*}( x)\psi_{\downarrow}(x) \psi_{\uparrow}(x)+\Delta(x) \bar{\psi}_{\uparrow}(x) \bar{\psi}_{\downarrow}(x)\right]\right]\right\},
+\end{equation}
+因此配分函数可以写作:
+\begin{align}
+\mathcal{Z}=&\int \mathscr{D} \bar{\psi} \mathscr{D} \psi \e^{-S}\nonumber\\
+=&\int \mathscr{D} \bar{\psi} \mathscr{D} \psi \e^{-S_{0}} \e^{-S^{\prime}}\nonumber\\
+=&\int \mathscr{D} \bar{\psi} \mathscr{D} \psi \e^{-\int \dd x\left[\sum\limits_{\sigma} \bar{\psi}_{\sigma}(x)\left(\frac{\partial}{\partial \tau}-\frac{\nabla^{2}}{2 m}-\mu\right) \psi_{\sigma}(x)\right]}\nonumber\\
+&\times \int \mathscr{D} \Delta^{*} \mathscr{D} \Delta \e^{-\int \dd x \left\{\frac{|\Delta(x)|^2 }{g}-\left[\Delta^{*}( x)\psi_{\downarrow}(x) \psi_{\uparrow}(x)+\Delta(x) \bar{\psi}_{\uparrow}(x) \bar{\psi}_{\downarrow}(x)\right]\right\}}\nonumber\\
+=&\int \mathscr{D} \Delta^{*} \mathscr{D} \Delta \e^{-\int \dd x \frac{|\Delta(x)|^2 }{g}}\nonumber\\
+&\times \int \mathscr{D} \bar{\psi} \mathscr{D} \psi \e^{-\int \dd x\left\{\sum\limits_{\sigma} \bar{\psi}_{\sigma}(x)\left(\frac{\partial}{\partial \tau}-\frac{\nabla^{2}}{2 m}-\mu\right) \psi_{\sigma}(x)-\left[\Delta^{*}( x)\psi_{\downarrow}(x) \psi_{\uparrow}(x)+\Delta(x) \bar{\psi}_{\uparrow}(x) \bar{\psi}_{\downarrow}(x)\right]\right\}}\nonumber\\
+\equiv&\int\mathscr{D} \Delta^{*}\mathscr{D} \Delta \e^{-\int \dd x \frac{|\Delta(x)|^{2}}{g}} F\left(\Delta^{*}, \Delta\right),
+\end{align}
+其中
+\begin{equation}
+F\left(\Delta^{*}, \Delta\right)=\int\mathscr{D} \bar{\psi} \mathscr{D} \psi \e^{-\int \dd x\left\{\sum\limits_{\sigma} \bar{\psi}_{\sigma}(x)\left(\frac{\partial}{\partial \tau}-\frac{\nabla^{2}}{2 m}-\mu\right) \psi_{\sigma}(x)-\left[\Delta^{*}( x)\psi_{\downarrow}(x) \psi_{\uparrow}(x)+\Delta(x) \bar{\psi}_{\uparrow}(x) \bar{\psi}_{\downarrow}(x)\right]\right\}}.
+\end{equation}
+
+下面用平均场近似处理上式, 为此将 $\Delta(x), \Delta^*(x)$ 近似为常量:
+\begin{equation}
+\Delta(x)=\Delta^{}_0, \quad \Delta^*(x)=\Delta^*_0,
+\end{equation}
+则
+\begin{align}
+F\left(\Delta^{*}, \Delta\right)&=F\left(\Delta_0^{*}, \Delta^{}_0\right)\nonumber\\
+&=\int \mathscr{D} \bar{\psi} \mathscr{D} \psi \e^{-\int \dd x\left\{\sum\limits_{\sigma} \bar{\psi}^{}_{\sigma}(x)\left(\frac{\partial}{\partial \tau}-\frac{\nabla^{2}}{2 m}-\mu\right) \psi^{}_{\sigma}(x)-\left[\Delta_0^{*}( x)\psi_{\downarrow}(x) \psi_{\uparrow}(x)+\Delta^{}_0(x) \bar{\psi}_{\uparrow}(x) \bar{\psi}_{\downarrow}(x)\right]\right\}}.
+\end{align}
+引入傅里叶变换:
+\begin{equation}
+\left\{\begin{aligned}
+\psi_{\sigma}(x)&=\frac{1}{\sqrt{V\beta}} \sum_{k} C_{\sigma}(k) \e^{\mathrm{i} k x} ,\\
+\bar{\psi}_{\sigma}(x)&=\frac{1}{\sqrt{V\beta}} \sum_{k} \bar{C}_{\sigma}(k) \e^{-\mathrm{i} k x},
+\end{aligned}\right.
+\end{equation}
+则
+\begin{equation}
+ F\left(\Delta_{0}^{*}, \Delta^{}_{0}\right)=\int \mathscr{D} \bar{C} \mathscr{D} C \e^{-\sum\limits_{kk^\prime} \bar{\phi}(k) M_{kk^\prime} \phi({k^\prime})},
+\end{equation}
+其中
+\begin{equation}
+\phi(k)\equiv\left(\begin{array}{c}
+C_{\uparrow}(k) \\
+\bar{C}_{\downarrow}(-k)
+\end{array}\right), \bar{\phi}{(k)}=\left(\bar{C}_{\uparrow}(k), {C}_{\downarrow}(-k)\right) ,M_{k k^{\prime}}=\delta_{k k^{\prime}} M_{k k},
+\end{equation}
+我们常称 $\phi(k)$ 为 Nambu 旋量, 且
+\begin{equation}
+M_{k k} \equiv\left[\begin{array}{cc}
+\mathrm{i} \omega_{n}-\xi_{k} & -\Delta_{0} \\
+-\Delta_{0}^{*} & \mathrm{i} \omega_{n}+\xi_{k}
+\end{array}\right],
+\xi_{k}=\frac{k^2}{2m}-\mu,
+\end{equation}
+推出
+\begin{equation}
+ F\left(\Delta_{0}^{*}, \Delta^{}_{0}\right)=\int \mathscr{D} \bar{C} \mathscr{D} C \e^{-\sum\limits_{k} \bar{\phi}(k) M_{kk} \phi({k})}=\prod_{k} \operatorname{Det}\left[M_{k k}\right],
+\end{equation}
+代回配分函数, 得到
+\begin{align}
+\mathcal Z &=\int \mathscr{D} \Delta^{*}  \mathscr{D} \Delta \e^{-\int \dd x \frac{|\Delta(x)|^2}{g}} F\left(\Delta^{*}, \Delta\right) \nonumber\\
+&=\int  \mathscr{D} \Delta^{*} \mathscr{D} \Delta \e^{-\int \dd x \frac{|\Delta (x)|^{2}}{g}} \e^{\ln F\left(\Delta^{*} , \Delta\right)}\nonumber \\
+&\equiv\int  \mathscr{D} \Delta^{*} \mathscr{D} \Delta \e^{- S_{\operatorname{eff}}\left(\Delta^{*}, \Delta\right)}, 
+\end{align}
+其中取平均场近似后, 有
+\begin{align}
+ S_{\operatorname{eff}}\left(\Delta^{*}, \Delta\right)&=\int \dd x \frac{|\Delta_0|^{2}}{g}-\ln F\left(\Delta^{*}, \Delta\right)  \nonumber\\
+& =\frac{|\Delta_0|^{2}}{g} V \beta-\ln \prod_{k} \operatorname{Det}\left[M_{k k}\right] .
+\end{align}
+
+接下来考虑\textbf{鞍点近似} (Saddle-point approximation), 又叫\textbf{最速下降法}, 即令
+\begin{equation}
+\frac{\partial S_{\operatorname{eff}}\left(\Delta_0^{*}, \Delta^{}_0\right) }{\partial\Delta_0^{*} }=0,
+\end{equation} 
+可以得到
+\begin{equation}
+\frac{\Delta_0}{g} \beta V-\frac{\sum\limits_{k} \frac{\partial}{\partial \Delta_0^{*}} \operatorname{Det}\left[M_{k k}\right]}{\operatorname{Det}\left[M_{k k}\right]}=0,
+\end{equation}
+其中
+\begin{align}
+\operatorname{Det}\left[M_{k k}\right]&=\left(\mathrm{i} \omega_{n}- \xi_{k}\right)\left(\mathrm{i} \omega_{n}+\xi_{k}\right)-|\Delta_0|^{2} ,\nonumber \\
+\frac{\partial}{\partial \Delta_{0}^{*}} \operatorname{Det}\left[M_{k k}\right]&=-\Delta_0.
+\end{align}
+则
+\begin{equation}
+\frac{\Delta_0}{g} \beta V=\sum_{k}\sum_{\omega_n}\frac{ -\Delta_0}{\left(\mathrm{i} \omega_{n}- \xi_{k}\right)\left(\mathrm{i} \omega_{n}+\xi_{k}\right)-|\Delta_0|^{2} },
+\end{equation}
+移项化简可得:
+\begin{align}
+1&=-\frac{g}{\beta V}\sum_{k}\sum_{\omega_n}\frac{1}{\left(\mathrm{i} \omega_{n}- \xi_{k}\right)\left(\mathrm{i} \omega_{n}+\xi_{k}\right)-|\Delta_0|^{2} }\nonumber\\
+&=-\frac{g}{\beta V}\sum_{k}\sum_{\omega_n}\frac{1}{\left(\mathrm{i} \omega_{n}\right)^2-\xi_{k}^2-|\Delta_0|^{2} }.
+\end{align}
+定义
+\begin{equation}
+E_k \equiv \sqrt{\xi_{k}^2+|\Delta_0|^{2}},
+\end{equation}
+有
+\begin{equation}
+1=-\frac{g}{V}\sum_{k}\frac{1}{\beta} \sum_{\omega_{n}} \frac{1}{\left(\mathrm i \omega_{n}+E_{k}\right)\left(\mathrm i \omega_{n}-E_{k}\right)}.
+\end{equation}
+利用 Matsubara 求和公式对 $\displaystyle \frac{1}{\beta} \sum_{\omega_{n}} \frac{1}{\left(\mathrm i \omega_{n}+E_{k}\right)\left(\mathrm i \omega_{n}-E_{k}\right)}$ 求和, 有
+\begin{align}
+1&=-\frac{g}{V}\sum_{k}\left[\left.\operatorname{Res} \frac{n_{\mathrm{F}}(z)}{\left(z+E_{k}\right)\left(z-E_{k}\right)}\right|_{z=E_{k}}+\left.\operatorname{Res} \frac{n_{\mathrm{F}}(z)}{\left(z+E_{k}\right)\left(z-E_{k}\right)}\right|_{z=-E_{k}}\right] \nonumber\\
+&=-\frac{g}{V}\sum_{k}\left[\frac{n_{\mathrm{F}}\left(E_{k}\right)}{2 E_{k}}+\frac{n_{\mathrm{F}}\left(-E_{k}\right)}{-2 E_{k}}\right]\nonumber \\
+&=-\frac{g}{V}\sum_{k}\frac{1}{2 E_{k}}\left[n_{\mathrm{F}}\left(E_{k}\right)-\left(n_{\mathrm{F}}\left(-E_{k}\right)\right)\right] \nonumber\\
+&=-\frac{g}{V}\sum_{k}\frac{1}{2 E_{k}}\left[\frac{1}{\e^{\beta E_k}+1}-\frac{1}{\e^{-\beta E_k}+1}\right] \nonumber\\
+&=\frac{g}{V}\sum_{k}\frac{\tanh \frac{\beta E_{k}}{2}}{2 E_{k}},
+\end{align}
+按照
+\begin{equation}
+\frac{1}{V}\sum_k \to N(0)\int_{-\omega_{\mathrm{D}}}^{\omega_{\mathrm{D}}}\dd \xi_k=2N(0)\int_{0}^{\omega_{\mathrm{D}}}\dd \xi_k
+\end{equation}
+将对 $\boldsymbol k$ 的求和转为积分, 有
+\begin{equation}
+1=gN(0)\int_0^{\omega_{\mathrm{D}}} \dd \xi_k \frac{\tanh \frac{\beta E_{k}}{2}}{ E_{k}},
+\end{equation}
+此即BCS能隙方程, 与第四章结果相同. 
+
+最后, 如果继续考虑鞍点附近的函数, 可以得到更多有趣的东西.
+
+
+
+
+
+
+
+
+
+

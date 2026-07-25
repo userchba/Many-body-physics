@@ -1,0 +1,793 @@
+\chapter{三个绘景, 诸量子力学场算符表达式及其表象}
+\begin{introduction}
+\item 薛定谔绘景
+\item 海森伯绘景
+\item 相互作用绘景
+\item 绘景变换
+\item 力学量算符的场算符表达式
+\item 场算符的不同表象
+\item 不同表象的实例
+\end{introduction}
+在高量课程中, 我们在进行绘景变换时, 考虑的只是单电子问题. 但在多体理论中, 我们将要考虑的是 $10^{23}$ 数量级的粒子相互作用的多体系统. 这与单电子问题不同, 但基本方法思路是一致的, 我们同样可以考虑多体波函数和多体算符等概念. 我们首先来回顾一下三个绘景的相关知识. 
+
+\section{薛定谔绘景}
+
+\subsection{态矢量}
+
+在薛定谔绘景中, 态矢量 $|\Psi_S(t)\rangle$ 的演化由多体薛定谔方程来确定: 
+\begin{equation}
+   \mathrm{i}\hbar\frac{\mathrm{d}}{\mathrm dt}|\Psi_S(t)\rangle=\hat{H}(t)|\Psi_S(t)\rangle, 
+\end{equation}
+
+其中 $\hat H(t)$ 是多体系统的哈密顿量. 不同于牛顿方程需要两个初始条件, 薛定谔方程是一个一阶微分方程, 这也就是说, 只需要知道一个初值, 我们就能够唯一地确定方程的解. 
+
+我们的主要任务是在 $|\Psi_S(t_0)\rangle$ 给定的情况下, 求解 $|\Psi_S(t)\rangle$ 的表达式 ($t_0>t$). 
+
+为简化问题, 首先需要引入时间演化算符. 
+
+\subsection{时间演化算符}
+
+时间演化算符 $\hat U_S(t, t_0)$ 的定义式是
+\begin{equation}
+   |\Psi_S(t)\rangle=\hat U_S(t, t_0)|\Psi_S(t_0)\rangle, 
+\end{equation}
+将这个定义式应用到薛定谔方程中, 就可以得到时间演化算符满足的动力学方程
+\begin{equation}
+   \mathrm{i}\hbar\frac{\mathrm{d}}{\mathrm{d} t}\hat U_S(t, t_0)=\hat H(t)\hat U_S(t, t_0), 
+\end{equation}
+可以看出这个方程与薛定谔方程形式一致, 但是其中的变量是算符 $\hat U_S$ , 而初始条件也不同. 
+
+令 $t=t_0$ , 得到时间演化算符的初始条件是
+\begin{equation}
+   \hat U_S(t_0, t_0)=\mathbbm{1}, 
+\end{equation}
+时间演化算符还是一个幺正算符, 即
+\begin{equation}
+   \hat U_S^{-1}(t, t_0)=\hat U_S^\dagger (t, t_0). 
+\end{equation}
+可以得到时间演化算符的两个重要性质: 
+\begin{itemize}
+\item $\hat U_S^{-1}(t, t_0)=\hat U_S(t_0, t)$, 
+\item $\hat U_S(t, t')=\hat U_S(t, t'')\hat U_S(t'', t')$ (传递性). 
+\end{itemize}
+
+对时间演化算符满足的动力学方程积分, 可以用迭代法得到一般解的形式: 
+\begin{equation}
+   \hat U_S(t, t_0)=\mathbbm{1}+\sum_{n=1}^{\infty}\left( -\frac{\mathrm{i}}{\hbar} \right)^n \int_{t_0}^t \mathrm dt_1\int_{t_0}^{t_1}\mathrm dt_2\cdots\int_{t_0}^{t_{n-1}}\mathrm dt_n\hat H(t_1)\hat H(t_2)\cdots\hat H(t_n), 
+\end{equation}
+其中 $t>t_1>t_2>\cdots >t_n$, 但这样的形式解很难直接应用. 
+
+为此, 引入编时算符 $\hat T$ . 它的作用相当于一个命令, 将不同的算符按时间先后顺序排序. 例如编时算符作用在两个哈密顿算符上, 得到的编时乘积是: 
+\begin{equation}
+   \hat T[\hat H(t_1)\hat H(t_2)]=\Theta(t_1-t_2)\hat H(t_1)\hat H(t_2)+\Theta(t_2-t_1)\hat H(t_2)\hat H(t_1), 
+\end{equation}
+其中 $\Theta(t_1-t_2)$ 是阶跃函数, 它的表达式是: 
+\begin{equation}
+   \Theta(x)=\left\{
+\begin{aligned}
+&1, \quad x>0, \\
+&0, \quad x<0. 
+\end{aligned}
+\right. 
+\end{equation}
+它满足性质 $\Theta(x)+\Theta(-x)=1$. 
+
+在这里, 我们描述的是粒子数不变的系统, 因此哈密顿算符中产生消灭算符两两出现, 总的哈密顿算符将始终是玻色型算符, 按时序对换时不会改变符号. 
+
+于是时间演化算符的形式解可以简化为: 
+\begin{equation}
+   \hat U_S(t, t_0)=\hat T\exp\left[ -\frac{\mathrm i}{\hbar}\int_{t_0}^{t}\mathrm dt'\hat H(t') \right]. 
+\end{equation}
+利用这样的表达式, 我们可以考虑一些简单的情况. 
+
+\begin{enumerate}
+\item 如果 $\hat H(t_i)$ 之间相互对易, 那么有
+\begin{equation}
+   \hat U_S(t, t_0)=\exp\left[ -\frac{\mathrm i}{\hbar}\int_{t_0}^{t}\mathrm dt'\hat H(t') \right]. 
+\end{equation}
+\item 如果 $\hat H(t)=\hat H$ 不显含时, 那么有
+\begin{equation}
+   \hat U_S(t, t_0)=\exp\left[ -\frac{\mathrm i}{\hbar} \hat H(t-t_0)\right]. 
+\end{equation}
+\end{enumerate}
+
+\subsection{力学量算符}
+
+薛定谔绘景下, 力学量算符不显含时 $\hat A_S(t)=\hat A_S$ , 即
+\begin{equation}
+   \frac{\partial}{\partial t}\hat A_S(t)=0. 
+\end{equation}
+
+\subsection{力学量的平均值}
+
+薛定谔绘景下的力学量平均值可以表示成
+\begin{equation}
+   \langle \hat A\rangle_t=\langle \Psi_S(t)|\hat A_S|\Psi_S(t) \rangle. 
+\end{equation}
+
+
+\section{海森伯绘景}
+
+\subsection{ 态矢量}
+
+海森伯绘景下, 态矢量可以表示为
+\begin{equation}
+   |\Psi_H(t)\rangle\equiv \hat U_S^\dagger (t, t_0)|\Psi_S(t)\rangle, 
+\end{equation}
+在 $t=t_0$ 时, 两个绘景重合
+\begin{equation}
+   |\Psi_H(t_0)\rangle=|\Psi_S(t_0)\rangle. 
+\end{equation}
+
+态矢量对时间微分, 得到
+\begin{equation}
+   \frac{\mathrm d}{\mathrm d t}|\Psi_H(t)\rangle=0, 
+\end{equation}
+态矢量不显含时, 即 
+\begin{equation}
+   |\Psi_H(t_1)\rangle=|\Psi_H(t_2)\rangle=|\Psi_H(t_0)\rangle. 
+\end{equation}
+
+
+\subsection{ 力学量算符}
+
+海森伯绘景下的力学量算符的定义式是
+\begin{equation}
+   \hat A_H(t)\equiv\hat U_S^\dagger(t, t_0)\hat A_S\hat U_S(t, t_0), 
+\end{equation}
+对时间 $t$ 求导数, 就得到了(著名的)海森伯运动方程
+\begin{equation}
+   \mathrm i\hbar \frac{\mathrm d}{\mathrm dt}\hat A_H(t)=\left[ \hat A_H(t), \hat H_H(t) \right]_-, 
+\end{equation}
+其中对易式满足
+\begin{equation}
+   \left[ \hat A, \hat B \right]_-=\hat A\hat B-\hat B\hat A. 
+\end{equation}
+
+
+这也是一个一阶微分方程. 初始条件是
+\begin{equation}
+   \hat A_H(t_0)=\hat A_S. 
+\end{equation}
+考虑最简单情况, 哈密顿算符不显含时间 $\hat H(t)=\hat H$ , 此时有态矢量的形式解
+\begin{equation}
+   |\Psi_H(t)\rangle=\mathrm e^{\frac{\mathrm i}{\hbar}\hat H(t-t_0)}|\Psi_S(t)\rangle, 
+\end{equation}
+以及算符的表达式
+\begin{equation}
+   \hat A_H(t)=\mathrm e^{\frac{\mathrm i}{\hbar}\hat H(t-t_0)}\hat A_S\mathrm e^{-\frac{\mathrm i}{\hbar}\hat H(t-t_0)}, 
+\end{equation}
+用薛定谔绘景下的算符对易式表示海森伯方程就是
+\begin{equation}
+   \mathrm i\hbar \frac{\mathrm d}{\mathrm dt}\hat A_H(t)=\left[ \hat A_S, \hat H \right]_{-H}. 
+\end{equation}
+
+\subsection{ 力学量的平均值}
+
+力学量平均值在不同绘景下是相同的, 即
+   \begin{align}
+      \langle\hat A\rangle_t&=\langle \Psi_H(t)|\hat A_H(t)|\Psi_H(t)\rangle\nonumber\\
+      &=\langle\Psi_S(t)|\hat A_S|\Psi_S(t)\rangle. 
+   \end{align}
+
+\section{ 相互作用绘景}
+
+哈密顿算符含时, 但可以分成已知的不含时部分 $\hat H_0$ , 和含时的微扰小量 $\hat V(t)$ , 即
+\begin{equation}
+   \hat H(t)=\hat H_0+\hat V(t), 
+\end{equation}
+这时可以用相互作用绘景, 对小量微扰展开进行求解. 
+
+\subsection{ 态矢量}
+
+相互作用绘景下, 态矢量表示成
+\begin{equation}
+   |\Psi_I(t)\rangle\equiv \exp\left[ \frac{\mathrm i}{\hbar}\hat H_0(t-t_0) \right]|\Psi_S(t)\rangle, 
+\end{equation}
+态矢量的演化方式由微扰量 $\hat V(t)$ 确定, 
+\begin{equation}
+   \mathrm i\hbar\frac{\mathrm d}{\mathrm dt}|\Psi_I(t)\rangle=\hat V_I(t)|\Psi_I(t)\rangle, 
+\end{equation}
+其中, 相互作用绘景下的微扰量表示为
+\begin{equation}
+   \hat V_I(t)\equiv\exp\left[ \frac{\mathrm i}{\hbar}\hat H_0(t-t_0) \right]\hat V(t)\exp\left[ -\frac{\mathrm i}{\hbar}\hat H_0(t-t_0) \right]. 
+\end{equation}
+
+\subsection{ 时间演化算符}
+
+相互作用绘景下, 时间演化算符 $\hat U_I(t, t_0)$ 的定义式是
+\begin{equation}
+   |\Psi_I(t)\rangle=\hat U_I(t, t_0)|\Psi_I(t_0)\rangle, 
+\end{equation}
+相应满足的微分方程是
+\begin{equation}
+   \mathrm i\hbar\frac{\mathrm d}{\mathrm dt}\hat U_I(t, t_0)=\hat V_I(t)\hat U_I(t, t_0), 
+\end{equation}
+初始条件是 $\hat U_I(t_0, t_0)=\mathbbm 1$ . 时间演化算符具有形式解
+\begin{equation}
+   \hat U_I(t, t_0)=\mathbbm 1+\sum_{n=1}^\infty \left( -\frac{\mathrm i}{\hbar} \right)^n\int_{t_0}^t\mathrm dt_1\int_{t_0}^{t_1}\mathrm dt_2\cdots\int_{t_0}^{t_{n-1}}\mathrm dt_n\hat V_I(t_1)\hat V_I(t_2)\cdots\hat V_I(t_n), 
+\end{equation}
+其中 $t>t_1>t_2>\cdots >t_n$. 同样, 引入编时算符后, 形式解可以化简成
+\begin{equation}
+   \hat U_I(t, t_0)=\hat T\exp\left[ -\frac{\mathrm i}{\hbar}\int_{t_0}^t \mathrm dt'\hat V_I(t') \right]. 
+\end{equation}
+
+\subsection{ 力学量算符}
+
+相互作用绘景下的力学量算符定义式是
+\begin{equation}
+   \hat A_I(t)\equiv \exp\left[ \frac{\mathrm i}{\hbar}\hat H_0(t-t_0) \right]\hat A_S\exp\left[ -\frac{\mathrm i}{\hbar}\hat H_0(t-t_0) \right], 
+\end{equation}
+取 $t=t_0$ 时刻, 三个绘景的力学量重合
+\begin{equation}
+   \hat A_I(t_0)=\hat A_S=\hat A_H(t_0). 
+\end{equation}
+相互作用绘景下的力学量算符 $\hat A_I(t)$ 的运动方程是
+\begin{equation}
+   \mathrm i\hbar\frac{\mathrm d}{\mathrm dt}\hat A_I(t)=\left[ \hat A_I(t), \hat H_0 \right]_-=\left[ \hat A_S, \hat H_0 \right]_{-I}. 
+\end{equation}
+
+\subsection{ 力学量平均值}
+
+三个绘景中, 力学量平均值重合, 即
+   \begin{align}
+      \langle \hat A \rangle_t&=\langle \Psi_I(t)|\hat A_I(t)|\Psi_I(t) \rangle\nonumber\\
+      &=\langle\Psi_S(t)|\hat A_S|\Psi_s(t)\rangle\nonumber\\
+      &=\langle \Psi_H(t)|\hat A_H(t)|\Psi_H(t)\rangle. 
+      \end{align}
+\section{ 绘景变换}
+
+这一部分已经在高等量子力学中详细讨论过, 在此主要给出结论. 
+
+\subsection{ 时间演化算符之间的关系}
+
+时间演化算符之间的关系为: 
+\begin{equation}\label{huijingbianhuan}
+   \hat U_I(t, t')=\mathrm e^{\frac{\mathrm i}{\hbar}\hat H_0(t-t_0)}\hat U_S(t, t')\mathrm e^{-\frac{\mathrm i}{\hbar}\hat H_0(t'-t_0)}. 
+\end{equation}
+
+\begin{question}{}{}
+证明式\eqref{huijingbianhuan}.
+\end{question}
+
+通常取 $t_0=0$, 形式可以简化成
+\begin{equation}
+   \hat U_I(t, t')=\mathrm e^{\frac{\mathrm i}{\hbar}\hat H_0t}\hat U_S(t, t')\mathrm e^{-\frac{\mathrm i}{\hbar}\hat H_0t'}. 
+\end{equation}
+如果取 $t=0$, $t'=t$, 得到
+\begin{equation}
+   \hat U_I(0, t)=\hat U_S(0, t)\mathrm e^{-\frac{\mathrm i}{\hbar}\hat H_0t}=\hat U_S^{-1}(t, 0)\mathrm e^{-\frac{\mathrm i}{\hbar}\hat H_0t}, 
+\end{equation}
+如果取 $t=t$, $t'=0$, 得到
+\begin{equation}
+   \hat U_I(t, 0)=\mathrm e^{\frac{\mathrm i}{\hbar}\hat H_0t}\hat U_S(t, 0). 
+\end{equation}
+
+\subsection{ 算符之间的关系}
+
+从相互作用绘景中的算符定义式
+\begin{equation}
+   \hat A_I(t)=\mathrm e^{\frac{\mathrm i}{\hbar}\hat H_0t}\hat A_S\mathrm e^{-\frac{\mathrm i}{\hbar}\hat H_0t}
+\end{equation}
+中, 反解出 $\hat A_S$ , 然后代入 $\hat A_H(t)$ 的表达式
+\begin{align}
+      \hat A_H(t)&=\hat U_S^\dagger (t, 0)\hat A_S\hat U_S(t, 0)\nonumber\\
+      &=\hat U_S^\dagger(t, 0)\mathrm e^{-\frac{\mathrm i}{\hbar}\hat H_0t}\hat A_I(t)\mathrm e^{\frac{\mathrm i}{\hbar}\hat H_0t}\hat U_S(t, 0)\nonumber\\
+      &=\hat U_I(0, t)\hat A_I(t)\hat U_I(t, 0), 
+      \end{align}
+即
+\begin{equation}
+   \boxed{\hat A_H(t)=\hat U_I^\dagger(t, 0)\hat A^{}_I(t)\hat U^{}_I(t, 0). }
+\end{equation}
+
+\subsection{态矢量之间的关系}
+
+   \begin{align}
+      |\Psi_H(t)\rangle&=|\Psi_H(0)\rangle
+      =|\Psi_S(0)\rangle\nonumber\\
+      &=\hat U_S^{-1}(t, 0)|\Psi^{}_S(t)\rangle\nonumber\\
+      &=\hat U_S^{-1}(t, 0)\mathrm e^{-\frac{\mathrm i}{\hbar}\hat H_0t}|\Psi^{}_I(t)\rangle, 
+      \end{align}
+
+即
+\begin{equation}
+   \boxed{|\Psi_H(t)\rangle=\hat U_I(0, t)|\Psi_I(t)\rangle. }
+\end{equation}
+
+
+\section{ 力学量算符的场算符表达式}
+
+\subsection{ 场算符(薛定谔绘景)}
+
+给定自旋 ${\sigma}$ 的场算符 $\hat \Psi_{\sigma}(\vct x)$ 和 $\hat \Psi_{\sigma}^\dagger(\vct x)$ 满足的对易关系是
+\begin{equation}
+   \left\{\begin{aligned}
+      \left[ \hat\Psi^{}_{\sigma}(\vct x), \hat \Psi_{{\sigma}'}^\dagger(\vct x') \right]_{\mp}&=\delta(\vct x-\vct x')\delta_{{\sigma}{\sigma}'}, \\
+      \left[ \hat\Psi^\dagger_{\sigma}(\vct x), \hat\Psi_{{\sigma}'}^\dagger(\vct x') \right]_{\mp}&=\left[ \hat\Psi_{\sigma}(\vct x), \hat\Psi_{{\sigma}'}(\vct x') \right]_{\mp}=0. 
+      \end{aligned}\right. 
+\end{equation}
+\subsection{ 单体算符}
+
+定义单体密度算符 $\hat F^{(1)}(\vct x)$, 单体算符可以写成
+\begin{equation}
+   \hat F^{(1)}=\int\mathrm d\vct x \hat F^{(1)}(\vct x), 
+\end{equation}
+以下都考虑自旋相关, 比如电子系统中有 $S=1/2$. 单体算符在自旋空间下展开
+\begin{equation}
+   \hat F^{(1)}(\vct x)=\sum_\alpha\sum_{\beta}\hat \Psi_{\alpha}^\dagger(\vct x)\hat f^{}_{\alpha\beta}\hat \Psi^{}_\beta(\vct x), 
+\end{equation}
+其中 $\hat f_{\alpha\beta}(\vct x)$ 是 Pauli 空间下的矩阵元
+\begin{equation}
+   \hat f_{\alpha\beta}(\vct x)=\langle \alpha |\hat f(\vct x)| \beta\rangle. 
+\end{equation}
+
+以下是一些单体算符的常见例子. 
+
+\begin{example}总动能算符
+
+定义动能密度算符
+\begin{equation}
+   \hat F^{(1)}(\vct x)=\sum_\alpha\sum_\beta\hat\Psi^\dagger_{\alpha}(\vct x)\left( -\frac{\hbar^2}{2m}\nabla^2 \right)\delta^{}_{\alpha\beta}\hat \Psi^{}_\beta(\vct x), 
+\end{equation}
+总动能算符就可以写成
+\begin{equation}
+   \hat T=\int\mathrm d \vct x\sum_\alpha\sum_\beta\hat\Psi_\alpha^\dagger(\vct x)\left( -\frac{\hbar^2}{2m}\nabla^2 \right)\delta^{}_{\alpha\beta}\hat\Psi^{}_\beta(\vct x), 
+\end{equation}
+这里给出的表达式是一般情况, 总动能算符的具体形式取决于场算符的表象选取, 不同的表象对应着不同的表达式. 这一点将在稍后展开讨论. 
+\end{example}
+
+\begin{example}总粒子数算符
+
+定义粒子数密度算符
+\begin{equation}
+   \hat F^{(1)}(\vct x)=\hat n(\vct x)=\sum_{\alpha\beta}\hat\Psi_{\alpha}^\dagger(\vct x)\hat\Psi^{}_\beta(\vct x)\delta^{}_{\alpha\beta}=\sum_\alpha\Psi_\alpha^\dagger(\vct x)\hat\Psi^{}_\alpha(\vct x), 
+\end{equation}
+于是有总粒子数算符
+\begin{equation}
+   \hat N=\sum_\alpha\int\mathrm d\vct x\hat\Psi_\alpha^\dagger(\vct x)\hat\Psi^{}_\alpha(\vct x). 
+\end{equation}
+\end{example}
+
+\begin{example}总电流算符
+
+在量子力学中已经讨论过, 电流密度的表达式是
+\begin{equation}
+   \hat F^{(1)}(\vct x)=\hat J(\vct x)=\frac{\mathrm ie\hbar}{2m}\sum_\alpha\sum_\beta\left[ \hat\Psi^\dagger_\alpha(\vct x)\nabla\hat\Psi_\beta(\vct x)-\nabla\hat\Psi_\alpha^\dagger(\vct x)\hat\Psi_\beta(\vct x) \right]\delta_{\alpha\beta}, 
+\end{equation}
+这也是电流连续性方程的结果. 于是有总电流算符
+\begin{equation}
+   \hat J=\frac{\mathrm ie\hbar}{2m}\sum_\alpha\int\mathrm d\vct x\left[ \hat\Psi_\alpha^\dagger(\vct x)\nabla\hat\Psi^{}_\alpha(\vct x)-\nabla\hat\Psi_\alpha^\dagger(\vct x)\hat\Psi^{}_\alpha(\vct x) \right]. 
+\end{equation}
+\end{example}
+
+\begin{example}总自旋算符
+
+定义自旋密度算符
+\begin{equation}
+   \hat S(\vct x)=\frac{\hbar}{2}\sum_\alpha\sum_\beta\hat\Psi_\alpha^\dagger(\vct x)\langle \alpha|\hat {\sigma}|\beta \rangle\hat\Psi^{}_\beta(\vct x), 
+\end{equation}
+于是得到总自旋算符
+\begin{equation}
+   \hat S=\frac{\hbar}{2}\sum_\alpha\sum_\beta\int\mathrm d\vct x\hat\Psi_\alpha^\dagger(\vct x)\langle \alpha|\hat {\sigma}|\beta\rangle\hat\Psi^{}_\beta(\vct x). 
+\end{equation}
+\end{example}
+
+\subsection{ 二体算符}
+
+二体算符的一般形式是
+\begin{equation}
+   \hat F^{(2)}=\frac{1}{2}\sum_\alpha \sum_{\alpha'}\sum_\beta\sum_{\beta'}\iint\mathrm d\vct x\mathrm d\vct x'\hat\Psi_\alpha^\dagger(\vct x)\hat\Psi_\beta^\dagger(\vct x')\hat V_{\alpha\alpha';\beta\beta'}(\vct x, \vct x')\hat\Psi_{\beta'}(\vct x')\hat\Psi_{\alpha'}(\vct x), 
+\end{equation}
+
+如果不考虑自旋-轨道耦合, 二体相互作用与自旋无关(例如库仑相互作用). 此时势场在粒子对换时保持不变: 
+\begin{equation}
+   V_{\alpha\alpha';\beta\beta'}(\vct x, \vct x')= V_{\beta\beta';\alpha\alpha'}(\vct x', \vct x), 
+\end{equation}
+则有
+\begin{equation}
+   \hat V_{_{\alpha\alpha';\beta\beta'}}(\vct x, \vct x')=\hat V(\vct x, \vct x')\delta_{\alpha\alpha'}\delta_{\beta\beta'}. 
+\end{equation}
+这样就得到了简化后的二体算符表达式
+\begin{equation}
+   \hat F^{(2)}=\frac{1}{2}\sum_\alpha\sum_\beta\iint\mathrm d\vct x\mathrm d\vct x'\hat \Psi_\alpha^\dagger(\vct x)\hat\Psi_\beta^\dagger(\vct x')\hat V(\vct x, \vct x')\hat\Psi_\beta(\vct x')\hat\Psi_\alpha(\vct x). 
+\end{equation}
+
+如果系统的哈密顿量也与自旋无关, 那么可以写成两项和的形式, 即
+\begin{align}
+   \hat H=&\sum_\alpha\int\mathrm d\vct x\hat\Psi_\alpha^\dagger(\vct x)\left( -\frac{\hbar^2\nabla^2}{2m} \right)\hat\Psi_\alpha(\vct x)\nonumber\\
+&+\frac{1}{2}\sum_\alpha\sum_\beta\iint \mathrm d\vct x\mathrm d\vct x'\hat\Psi_\alpha^\dagger(\vct x)\hat\Psi_\beta^\dagger(\vct x')\hat V(\vct x, \vct x')\hat\Psi_\beta(\vct x')\hat\Psi_\alpha(\vct x), 
+\end{align}
+其中第一项是单体项, 即动能项; 第二项是两体相互作用项. 
+
+\subsection{哈密顿算符}
+\begin{equation}
+   \hat H=\sum_\alpha\int\mathrm d\vct x\hat\Psi_\alpha^\dagger(\vct x)  \hat h (\vct x) \hat\Psi_\alpha(\vct x)+\hat{H}^{\prime}, 
+\end{equation}
+其中$\hat h (\vct x)$是单体算符, $\hat{H}^{\prime}$是两体哈密顿量. 
+
+\section{ 场算符的不同表象}
+\remark{以下都是在薛定谔绘景下展开的讨论. }
+\subsection{平面波表象}
+
+如果考虑在整个固体材料中运动的巡游电子, 我们常采用场算符的平面波表象来描述具体问题, 平面波函数是单粒子动能算符与动量算符的共同本征态. 如果考虑局域在原子附近的电子, 则需要考虑瓦尼尔表象或其他表象, 这种情况将在后面讨论. 
+
+在平面波表象中, 常采用箱归一化和周期性边界条件. 即系统的体积 $V=L^3$, 可以看成长度为 $L$ 的立方体. 最简单的情况是单粒子薛定谔方程的平面波解
+\begin{equation}
+   \phi_{{k}}(\vct x)=\frac{1}{\sqrt V}\mathrm e^{\mathrm i\vct k\cdot\vct x}, \quad k_x=\frac{2\pi n_x}{L}, k_y=\frac{2\pi n_y}{L}, k_z=\frac{2\pi n_z}{L}, 
+\end{equation}
+其中 $\phi_{{k}}(\vct x)$ 是动量算符 $\vct{\hat p}$ 的本征态, 由于动量算符是厄米算符, 它的本征态具有正交性和完备性等很好的性质, 即
+\begin{equation}
+   \left\{
+\begin{aligned}
+&\int\phi_{ k'}^*(\vct x)\phi_{ k}^{ }(\vct x)\mathrm d\vct x =\delta_{ k k'}, \\
+&\sum_{k}\phi_{k}^*(\vct x')\phi_{ k}^{}(\vct x)=\delta(\vct x-\vct x'), 
+\end{aligned}
+\right. 
+\end{equation}
+于是场算符可以很方便地利用 $\phi_{ k}(\vct x)$ 展开. 
+
+我们定义
+\begin{equation}
+   \hat\Psi_{\sigma}(\vct x)=\sum_k\hat C_{ k{\sigma}}\phi_{ k}(\vct x), 
+\end{equation}
+ 其中 $\hat C_{ k{\sigma}}$ 是动量为 $\vct k$ , 自旋为 ${\sigma}$ 的粒子的消灭算符(产生算符同理), 如果考虑电子(费米子)系统, 那么它们之间的对易关系是
+\begin{equation}
+   \left\{
+\begin{aligned}
+&\left[ \hat C_{ k{\sigma}}^{ }, \hat C_{ k', {\sigma}'}^\dagger \right]_+=\delta_{{kk}'}\delta_{{\sigma}{\sigma}'}, \\
+&\left[ \hat C^{}_{ k{\sigma}}, \hat C_{ k'{\sigma}'} \right]_+=\left[ \hat C_{ k{\sigma}}^\dagger, \hat C_{ k'{\sigma}'}^\dagger \right]=0. 
+\end{aligned}
+\right. 
+\end{equation}
+由于算符在自身表象下是对角的, 总动量算符可以写成
+\begin{equation}
+   \vct{\hat p}=\sum_{ k{\sigma}}\hbar\vct k\;\hat C_{ k{\sigma}}^\dagger\hat C_{ k{\sigma}}^{ }, 
+\end{equation}
+以及总动能算符
+\begin{equation}
+   \hat T=\sum_{k{\sigma}}\frac{\hbar^2\vct k^2}{2m}\hat C_{ k{\sigma}}^\dagger \hat C_{ k{\sigma}}^{}, 
+\end{equation}
+还有总粒子数算符
+\begin{equation}
+   \hat N=\sum_{ k{\sigma}}\hat C_{ k{\sigma}}^\dagger \hat C_{ k{\sigma}}^{}. 
+\end{equation}
+但是有外场作用下的单体算符是非对角的. 例如
+\begin{align}
+      \hat V&=\sum_\sigma \int\hat\Psi_\sigma^\dg(\vct{x})\hat{V}(\vct{x})\hat{\Psi}_\sigma(\vct{x})\fun{d}\vct{x}\nonumber\\
+      &=\sum_\sigma\sum_{ k}\sum_{k'}V^{}_{kk'}\hat C_{ k'\sigma}^\dg\hat C^{}_{ k\sigma}, 
+   \end{align}
+其中有
+\begin{equation}
+   V_{{kk'}}=\int \phi^*_{ k'}(\vct x)\hat V(\vct x)\phi^{}_k(\vct x)\fun d\vct x. 
+\end{equation}
+
+下面来考虑一些相应的密度算符进行傅里叶变换后的表达式. 
+
+\begin{example}粒子数算符
+
+对于粒子数算符 
+\begin{equation}
+   \hat n(\vct x)=\sum_\alpha\hat \Psi_\alpha^\dagger(\vct x)\hat\Psi_\alpha(\vct x), 
+\end{equation}
+有傅里叶变换以及逆变换: 
+\begin{equation}
+   \left\{
+\begin{aligned}
+&\hat n(\vct x)=\frac{1}{V}\sum_{ q}\hat n(\vct q)\mathrm e^{\mathrm i\vct q\cdot \vct x}, \\
+&\hat n(\vct q)=\int \hat n(\vct x)\mathrm e^{-\mathrm i\vct q\cdot\vct x}\mathrm d\vct x=\sum_{ k{\sigma}}\hat C_{ k{\sigma}}^\dagger\hat C_{{k+q}, {\sigma}}^{}\;. 
+\end{aligned}
+\right. 
+\end{equation}
+\end{example}
+
+\begin{example}电流密度算符
+
+对于电流密度算符, 有傅里叶变换及逆变换: 
+\begin{equation}\label{dianliumidu}
+   \left\{
+\begin{aligned}
+&\hat J(\vct x)=\frac{1}{V}\sum_{ q}\hat J(\vct q)\mathrm e^{\mathrm i\vct q\cdot \vct x}, \\
+&\hat J(\vct q)=-\frac{e\hbar}{m}\sum_{ k}\sum_{\sigma}\left( \vct k+\frac{\vct q}{2} \right)\hat C_{ k{\sigma}}^\dagger \hat{C}_{{k+q}, {\sigma}}^{}\;. 
+\end{aligned}
+\right. 
+\end{equation}
+\end{example}
+
+\begin{example}自旋密度算符
+
+对于自旋密度算符 
+\begin{equation}
+   \hat S(\vct x)=\frac{\hbar}{2}\sum_\alpha\sum_\beta\hat\Psi_\alpha^\dagger(\vct x)\langle \alpha|\hat{\sigma}|\beta \rangle \hat\Psi_\beta(\vct x), 
+\end{equation}
+有傅里叶变换及逆变换: 
+\begin{equation}\label{zixuanmidu}
+   \left\{
+\begin{aligned}
+&\hat S(\vct x)=\frac{1}{V}\sum_{{q}} \hat S(\vct q)\mathrm e^{\mathrm i\vct q\cdot\vct x}, \\
+&\hat S(\vct q)=\sum_{{k}}\sum_\alpha\sum_\beta\hat C_{ k\alpha}^\dagger\left( \frac{\hbar}{2}\langle \alpha|\hat {\sigma}|\beta \rangle \right)\hat C_{{k+q}, \beta}^{}\;. 
+\end{aligned}
+\right. 
+\end{equation}
+\end{example}
+
+\begin{question}{}{}
+证明式\eqref{dianliumidu}和\eqref{zixuanmidu}.
+\end{question}
+
+平面波表象下的哈密顿算符是
+\begin{align}
+      \hat H=&\sum_{ k\sigma}\frac{\hbar^2\vct{k}^2}{2m}\hat C_{ k\sigma}^\dg \hat C_{ k\sigma}^{}\nonumber\\
+      &+\frac{1}{2V}\sum_{k}\sum_{k'}\sum_{q}\sum_\alpha\sum_\beta \hat{V}({\boldsymbol q})\hat{C}_{{k+q}, \alpha}^\dg\hat{C}_{{k'-q}, \beta}^\dg \hat{C}^{}_{k', \beta}\hat C^{}_{k, \alpha}, 
+   \end{align}
+其中, 动能和自旋是守恒量. 
+
+平面波表象是一种比较极端的巡游电子情形. 这一表象的物理含义是, 多体系统中的电子处于巡游状态, 此时认为电子的动能远大于受到的势能. 如果讨论固体中“不那么自由”的巡游电子(比如固体中受周期势调制的波函数), 就需要采用下面将要讨论的布洛赫表象. 
+
+\subsection{布洛赫表象}
+考虑这样一个单体哈密顿量: 
+\begin{equation}
+   \hat h^B(\vct x)=-\frac{\hbar^2\nabla^2}{2m}+\hat{V}(\vct x), 
+\end{equation}
+其中 $\hat V(\vct x)$ 是晶格周期势, 它是关于正格矢的周期函数, 即有
+\begin{equation}
+   \hat V(\vct x+\vct R_l)=\hat V(\vct x). 
+\end{equation}
+它的本征态就是布洛赫函数 $\psi_{ k}^B(\vct x)$, 其中的 $\vct k$ 是属于第一布里渊区的箱归一化波矢. 本征方程是
+\begin{equation}
+   \hat h^B(\vct x)\psi_{ k}^B(\vct x)=E^{}_{ k}\psi_{ k}^B(\vct x), \quad \vct k\in \fun{1\;BZ}. 
+\end{equation} 
+
+根据布洛赫定理, 布洛赫函数可以写成一个平面波与一个关于正格矢的周期函数之积, 有
+\begin{equation}
+   \psi_{ k}^B(\vct x)=u_{ k}(\vct x)\e^{\ii\vct k\cdot\vct x}, \quad u_{ k}(\vct x+\vct R_l)=u_{k}(\vct x). 
+\end{equation}
+此外, 在倒格矢中, 布洛赫函数具有如下性质: 
+\begin{equation}
+   \psi_{{k+K}}^B(\vct x)=\psi_{{k}}^B(\vct x), 
+\end{equation}
+其中 $\vct K$ 是倒格矢. 
+
+布洛赫函数同样具有正交性和完备性关系, 即
+\begin{equation}
+   \left\{
+\begin{aligned}
+   &\int\psi_{ k'}^{B*}(\vct x)\psi_{ k}^B(\vct x)\fun{d}\vct x=\delta_{{kk'}}, \\
+   &\sum_{ k}\psi_{ k}^{B*}(\vct{x}')\psi_{ k}^B(\vct x)=\delta(\vct x-\vct x'). 
+\end{aligned}
+   \right. 
+\end{equation}
+因此场算符也可以用布洛赫函数展开, 即
+\begin{equation}
+   \hat\psi_\sigma(\vct{x})=\sum_{ k}\psi_{ k}^B(\vct x)\hat b^{}_{ k\sigma}, \quad \hat\psi_{\sigma}^\dg (\vct x)=\sum_{ k}\psi_{ k}^{B*}(\vct x)\hat b_{ k\sigma}^\dg, 
+\end{equation}
+其中 $\hat b^{}_{k\sigma}$ 和 $\hat b_{ k\sigma}^\dg$ 是布洛赫电子对应的消灭、产生算符. 它们之间的对易关系是
+\begin{equation}
+   \left\{
+\begin{aligned}
+   &\left[ \hat b^{}_{ k\sigma}, \hat b_{k'\sigma'}^\dg \right]_+=\delta_{{kk}'}\delta_{\sigma\sigma'}, \\
+   &\left[ \hat b_{ k\sigma}, \hat b_{k'\sigma'} \right]_+=\left[ \hat b_{ k\sigma}^\dg, \hat b_{{k'}\sigma'}^\dg \right]_+=0. 
+\end{aligned}
+   \right. 
+\end{equation}
+
+这就是我们考虑的布洛赫表象. 在实际模型中, 我们主要考虑的是最接近费米面的能带, 这是最重要的. 
+\subsection{瓦尼尔表象}
+
+前面提到, 布洛赫表象是关于倒格矢的周期性函数. 对于这样的函数, 我们可以用正格矢中的波函数展开, 也就是对它作傅里叶变换. 即
+\begin{equation}
+   \psi_{ k}^B(\vct x)=\frac{1}{\sqrt{N}}\sum_{ R_l}a(\vct x, \vct R_l)\e^{\ii\vct k\cdot \vct R_l}, 
+\end{equation}
+其中, 展开系数 $a(\vct x, \vct R_l)$ 称为瓦尼尔函数, 它是局域在某一个格点上的函数. 与布洛赫函数相比, 这是另一种极端情况的电子(定域的波函数). 根据固体理论中的结论, 布洛赫函数只是 $\vct x-\vct R_l$ 的函数, 即
+\begin{equation}
+   a(\vct x, \vct R_l)=a(\vct x-\vct R_l). 
+\end{equation}
+对于这样的局域在格点上的波函数, 它的量子数是格点 $\vct R_l$. 这一波函数也满足正交性和完备性条件, 即
+\begin{equation}
+   \left\{
+\begin{aligned}
+   &\int a^*(\vct x-\vct R_{l'})a(\vct x-\vct R_l)\fun{d}\vct x=\delta_{ R_l R_{l'}}, \\
+   &\sum_{ R_l}a^*(\vct x'-\vct R_l)a(\vct x-\vct R_l)=\delta(\vct x-\vct x'). 
+\end{aligned}
+   \right. 
+\end{equation}
+
+场算符在瓦尼尔表象下的表达式是
+\begin{equation}
+   \hat\psi_\alpha(\vct x)=\sum_{ R_l}a(\vct x-\vct R_l)\hat a_{l\alpha}, \quad \hat\psi_\alpha^\dg(\vct x)=\sum_{ R_l}a^*(\vct x-\vct R_l)\hat a_{l\alpha}^\dg. 
+\end{equation}
+
+同一个场算符既可以用布洛赫函数展开, 也可以用瓦尼尔函数展开, 而两种表象之间可以通过傅里叶变换联系. 因此两种表象下的产生消灭算符之间的变换关系应该是反向的傅里叶变换, 即
+\begin{equation}
+   \hat b_{ k\sigma}=\frac{1}{\sqrt{N}}\sum_{ R_l}\hat a_{l\sigma}\e^{-\ii \vct {k\cdot R_l}}, \quad \hat a_{l\sigma}=\frac{1}{\sqrt{N}}\sum_{ k}\hat b_{k\sigma}\e^{\ii\vct {k\cdot R_l}}. 
+\end{equation}
+
+利用这些结论, 下面我们讨论一些不同表象中的实例. 
+
+\section{不同表象的实例}
+\subsection{凝胶模型(Jellium model)}
+首先考虑金属材料. 认为价电子是近自由的, 电子间库仑相互作用和电子动能处于相同数量级. 此外, 离子间相互作用也很大, 这些相互作用都不能忽略. 因此如果我们采用平面波表象, 并仅仅认为其中电子是近自由的, 将不够准确. 
+在固体中, 我们感兴趣的是电子和电子之间的关联作用. 直观来说, 就是一个电子的运动轨迹会受到周围许多电子运动的影响. 这样的关联效应很容易产生一些集体运动, 比如等离子体振荡、屏蔽作用等等. 
+这样的关联相互作用使得体系的模型十分复杂, 难以直接求解. 为了简化问题, 我们就要做出合适的近似来研究问题. 
+
+出于上述考虑, 人们提出了凝胶模型. 凝胶模型的近似处理如下: 假设格点上的离子是经典的, 保持静止不动, 那么就可以把离散分布的正电荷看作均匀抹平的正电背景, 然后讨论其中的电子关联效应. 
+
+在此我们仅考虑单价金属. 电子(离子)数为 $N$, 体积为 $V$, 近似认为离子系统是均匀抹平的正电背景, 它的作用是保持系统电中性. 那么离子数密度就是
+\begin{equation}
+   n(\vct x)=\frac{N}{V}, 
+\end{equation}
+从而这一模型的哈密顿量是
+\begin{equation}
+   \hat H=\hat H_{\fun{electron}}+\hat H_{\fun{ion}}+\hat H_{\fun{electron-ion}}, 
+\end{equation}
+其中第一项是电子的哈密顿量, 可表示为电子的动能项+电子间库仑相互作用项. 严格的表达式是
+\begin{equation}
+   \hat H_{\fun{electron}}=\sum_{i=1}^N\left(-\frac{\hbar^2\nabla_i^2}{2m}\right)+\frac{1}{2}\sum_{i\ne j}\frac{e^2}{|\vct r_i-\vct r_j|}, 
+\end{equation}
+第二项是离子-离子相互作用的哈密顿量, 严格的表达式是
+\begin{equation}
+   \hat H_{\fun{ion}}=\frac{e^2}{2}\iint \frac{n_{\fun{ion}}(\vct x) n_{\fun{ion}}(\vct x')}{|\vct x-\vct x'|}\fun d\vct x\fun{d}\vct{x}', 
+\end{equation}
+第三项是电子和离子之间相互作用的哈密顿量, 这一项需要作近似处理, 即
+\begin{align}
+      \hat H_{\fun{electron-ion}}&=-e^2\iint\frac{n_{\fun{ion}}(\vct x)n_{\fun{electron}}(\vct r)}{|\vct x-\vct r|}\fun{d}\vct r\fun{d}\vct x\nonumber\\
+      &\approx -e^2\frac{N}{V}\iint\frac{ \sum_{i=1}^N\delta(\vct r-\vct r_i) }{|\vct x-\vct r|}\fun{d}\vct r\fun{d}\vct x\nonumber\\
+      &=-e^2\frac{N}{V}\sum_{i=1}^N\int\frac{\fun{d}\vct x}{|\vct x-\vct r_i|}.
+   \end{align}
+
+在哈密顿量的这三项中, 被积函数都出现了形如 $1/|\vct r|$ 的形式. 为了处理这一项, 我们在箱归一化和周期边界条件下进行傅里叶变换. 即对于任意函数, 认为它满足
+\begin{equation}
+   f(\vct r+\hat iL)=f(\vct r+\hat jL)=f(\vct r+\hat kL), 
+\end{equation}
+其中, $\hat i, \hat j, \hat k$ 是三个方向的单位矢量. 这样的规定确定了函数傅里叶变换及其逆变换的形式, 即
+\begin{equation}
+   \left\{
+      \begin{aligned}
+         &f(\vct r)=\frac{1}{V}\sum_{k}f(\vct k)\e^{\ii\vct k\cdot \vct r}, \\
+         &f(\vct k)=\int f(\vct r)\e^{-\ii\vct k\cdot \vct r}\fun{d}\vct r. 
+      \end{aligned}
+   \right. 
+\end{equation}
+当 $f(\vct r)=1/r$ 时, 有
+\begin{equation}
+   \left\{
+      \begin{aligned}
+         &\frac{1}{r}=\frac{1}{V}\sum_{ k}V(\vct k)\e^{\ii\vct k\cdot\vct r}, \\
+         &V(\vct k)=\int\frac{1}{ r}\e^{-\ii\vct k\cdot\vct r}\fun{d}\vct r, 
+      \end{aligned}
+   \right. 
+\end{equation}
+但是这里的逆变换在数学上是发散的, 物理上我们称它紫外发散. 然而在实际的凝胶模型中, 不应该出现这样的发散项. 为在数学上处理这一问题, 我们引入收敛因子, 做变换
+\begin{equation}\label{shoulianyinzi}
+   V(\vct k)=\int\frac{1}{r}\e^{-\ii\vct k\cdot \vct r}\fun{d}\vct r\Rightarrow \int\frac{1}{r}\e^{-\ii\vct k\cdot\vct r}\e^{-\eta r}\fun{d}\vct r=\frac{4\pi}{k^2+\eta^2}. 
+\end{equation}
+这样, 哈密顿量中的离子-离子相互作用项可以写成
+\begin{equation}
+   \hat H_{\fun{ion-ion}}=\frac{1}{2}\left( \frac{eN}{V} \right)^2\frac{4\pi}{\eta^2}V, 
+\end{equation}
+电子-离子相互作用项是
+\begin{equation}
+   \hat H_{\fun{electron-ion}}=-\left( \frac{eN}{V} \right)^2\frac{4\pi}{\eta^2}V, 
+\end{equation}
+$\hat H_{\fun{electron}}$ 中的二体部分是
+\begin{align}
+      \frac{1}{2}\sum_{i\ne j}\frac{e^2}{|\vct r_i-\vct r_j|}&=\frac{e^2}{2}\sum_{i\ne j}\frac{1}{V}\sum_{ k}\frac{4\pi}{k^2+\eta^2}\e^{\ii\vct k\cdot(\vct r_i-\vct r_j)}\nonumber\\
+      &=\frac{e^2}{2}\sum_{i\ne j}\frac{1}{V}\left[ \frac{4\pi}{\eta^2}+\sum_{{k}\ne 0}\frac{4\pi}{k^2}\e^{\ii\vct k\cdot (\vct r_i-\vct r_j)} \right]\nonumber\\
+      &=\frac{e^2}{2}\sum_{i\ne j}\frac{1}{V}\frac{4\pi}{\eta^2}+\frac{e^2}{2}\sum_{i\ne j}\frac{1}{V}\sum_{k\ne 0}\frac{4\pi}{k^2}\e^{\ii\vct k\cdot(\vct r_i-\vct r_j)}\nonumber\\
+      &=\frac{e^2}{2}(N^2-N)\frac{1}{V}\frac{4\pi}{\eta^2}+\frac{e^2}{2}\sum_{i\ne j}\frac{1}{V}\sum_{ k\ne 0}\frac{4\pi}{k^2}\e^{\ii\vct k\cdot(\vct r_i-\vct r_j)}\nonumber\\
+      &=\frac{e^2}{2}N(N-1)\frac{1}{V}\frac{4\pi}{\eta^2}+\frac{e^2}{2}\sum_{i\ne j}\frac{1}{V}\sum_{ k\ne 0}\frac{4\pi}{k^2}\e^{\ii\vct k\cdot(\vct r_i-\vct r_j)}\nonumber\\
+      &\approx \frac{e^2}{2}N^2\frac{1}{V}\frac{4\pi}{\eta^2}+\frac{e^2}{2}\sum_{i\ne j}\frac{1}{V}\sum_{k\ne 0}\frac{4\pi}{k^2}\e^{\ii\vct k\cdot(\vct r_i-\vct r_j)}\nonumber\\
+      &= \frac{1}{2}\left( \frac{eN}{V} \right)^2 \frac{4\pi}{\eta^2}V+\frac{e^2}{2}\sum_{i\ne j}\frac{1}{V}\sum_{ k\ne 0}\frac{4\pi}{k^2}\e^{\ii\vct k\cdot(\vct r_i-\vct r_j)}. 
+   \end{align}
+综合上述三项可以看到, 三个发散项会相互抵消, 这与实际的物理模型相符. 
+
+\begin{question}{}{}
+证明式\eqref{shoulianyinzi}.
+\end{question}
+
+这样我们就得到了坐标表象下一次量子化的凝胶模型哈密顿量, 即
+\begin{equation}
+   \hat H=\sum_{i=1}^N\left( -\frac{\hbar^2\nabla_i^2}{2m} \right)+\frac{1}{2V}\sum_{i\ne j}\sum_{q\ne 0}\frac{4\pi e^2}{q^2}\e^{\ii \vct q\cdot(\vct r_i-\vct r_j)}. 
+   \label{1qtH_jellium}
+\end{equation}
+对比前面给出的两体算符的一般表达式, 可以写出两体相互作用是
+\begin{equation}
+   v(\vct r_i-\vct r_j)=\frac{1}{V}\sum_{q\ne 0}\frac{4\pi e^2}{q^2}\e^{\ii\vct q\cdot (\vct r_i-\vct r_j)}. 
+\end{equation}
+这样, 就能够写出场算符下的凝胶模型哈密顿量表达式, 即
+ \begin{align}
+      \hat H=&\sum_{\alpha}\int\hat\psi_\alpha^\dg(\vct x)\left( -\frac{\hbar^2\nabla^2}{2m} \right)\hat \psi_\alpha(\vct x)\fun{d}\vct x\nonumber\\
+      &+\frac{1}{2}\sum_\alpha\sum_\beta\iint\hat\psi_\alpha^\dg(\vct x)\hat\psi_\beta^\dagger(\vct x')\frac{1}{V}\sum_{ q\ne 0}\frac{4\pi e^2}{q^2}\e^{\ii\vct q\cdot(\vct x-\vct x')}\hat\psi_\beta(\vct x')\hat\psi_\alpha(\vct x)\fun{d}\vct x\fun{d}\vct x'. 
+   \end{align}
+
+如果采用平面波表象, 根据场算符的平面波表象表达式
+\begin{equation}
+   \hat\psi_\alpha(\vct x)=\sum_{ k}\frac{\e^{\ii\vct k\cdot\vct r}}{\sqrt{V}}\hat C_{ k\alpha}, \quad \hat\psi_{\alpha}^\dg(\vct x)=\sum_{k}\frac{\e^{-\ii\vct k\cdot \vct r}}{\sqrt{V}}\hat C_{ k\alpha}^\dg, 
+\end{equation}
+就可以把哈密顿量可以写成
+\begin{align}\label{bH_jellium}
+      \hat H=&\sum_{k}\sum_\alpha\frac{\hbar^2 k^2}{2m}\hat C_{k\alpha}^\dg \hat C_{k\alpha}^{} \nonumber    \\ 
+&+\frac{1}{2V}\sum_\alpha\sum_\beta\sum_{k}\sum_{k'}\sum_{q\ne 0}\frac{4\pi e^2}{q^2}\hat C_{{k+q}, \alpha}^\dg \hat C_{{k'-q}, \beta}^\dg \hat C^{}_{k'\beta}\hat C^{}_{ k \alpha}. 
+   \end{align}
+一般根据实际情况, \eqref{1qtH_jellium} 或 \eqref{bH_jellium} 都可以作为哈密顿量的具体形式. 
+
+\subsection{Hubbard 模型}
+Hubbard 模型是一个十分著名的模型. 它出现于上世纪六十年代, 人们最初用它来讨论过渡金属化合物中的金属-绝缘体转变问题. 除此之外, Hubbard 模型还可以用来描述铜氧化物高温超导体, 巡游磁性体中的铁磁性等重要模型. 
+在这个模型中, 首先我们做如下近似. 只考虑简单金属, 即一个原胞上只有一个离子. 假设每个格点上只有 $s$-波电子轨道, 那么它对应的希尔伯特空间只能有四个态矢量 $\{\mid\ua\da\rag, \mid\ua 0\rag, |0\da\rag, |00\rag \}$. 设系统的原胞数为 $N$, 电子数为 $N_e$ (原胞数和电子数不一定相同. 如果相同, 那么对应的模型具有一个半满的能带, 将体现出金属性. 如果 $N_e=2N$, 是一个全满的能带. 对应的体系是绝缘体). 材料的体积是 $V=N\Omega$, 其中 $\Omega$ 是原胞体积. 那么哈密顿量可以写成
+\begin{equation}
+   \hat H=\sum_{i=1}^N \hat h(\vct r_i)+\frac{1}{2}\sum_{i\ne j}\hat v(\vct r_i-\vct r_j), 
+\end{equation}
+在这里我们仍然不考虑格点上离子振动. 离子和电子间相互作用可以用周期势来描述, 把这一项归到哈密顿量的单体项中, 即
+\begin{equation}
+   \hat h(\vct r)=-\frac{\hbar^2\nabla^2}{2m}+\hat V(\vct r), 
+\end{equation}
+它的本征态就是布洛赫函数. 形式上我们可以写出布洛赫表象下的本征方程(这里我们用布洛赫表象的讨论并不准确, 因为这种模型的电子的局域性很强): 
+\begin{equation}
+   \hat h(\vct r)\psi_{k}^B(\vct r)=E^{}_k\psi_{ k}^B(\vct r).
+\end{equation}
+
+那么布洛赫表象下的模型哈密顿量可以写成
+\begin{align}
+      \hat H=&\sum_{ k}\sum_{\alpha}E^{}_{k}\hat b_{ k\alpha}^\dg \hat b_{k\alpha}^{}\nonumber\\
+      &+\frac{1}{2}\sum_{ k_1}\sum_{k_2}\sum_{k_3}\sum_{ k_4}\sum_\alpha\sum_\beta\lag k_1 k_2|\hat v| k_3 k_4 \rag\hat b_{k_1, \alpha}^\dg \hat b_{k_2, \beta}^\dg \hat b_{k_3, \beta}^{}\hat b_{k_4, \alpha}^{}. 
+   \end{align}
+两体相互作用的矩阵元按定义是
+\begin{equation}
+   \lag \vct{k_1k_2}|\hat v |\vct{k_3k_4} \rag\equiv \iint \psi_{{k_1}}^{B*}(\vct x)\psi_{{k_2}}^{B*}(\vct{x}')\hat{v}(\vct{x}-\vct x')\psi_{k_3}^B(\vct x')\psi_{k_4}^B(\vct x)\fun d\vct x\fun d\vct x'. 
+\end{equation}
+
+在瓦尼尔表象下,
+\begin{equation} \hat H=\sum_\alpha\sum_l\sum_{l'}J^{}_{ll'}\hat a_{l\alpha}^\dg \hat a_{l'\alpha}^{ }+\frac{1}{2}\sum_{i}\sum_{j}\sum_{l}\sum_{m}\sum_{\alpha}\sum_{\beta}\langle ij |\hat v|lm\rangle \hat{a}^{\dagger}_{i\alpha}\hat{a}^{\dagger}_{j\beta}\hat{a}^{}_{m\beta}\hat{a}^{}_{l\alpha},\end{equation}
+其中$J_{ll'}$ 是交叠积分, 表达式是
+\begin{equation}
+   J_{ll'}\equiv \int a^*(\vct r-\vct R_l)\hat h(\vct r)a(\vct r-\vct R_{l'})\fun{d}\vct r. 
+\end{equation}
+
+哈密顿量中的单体算符可以拆分成 $l=l'$ 和 $l\ne l'$ 两项, 即
+   \begin{align}
+      \hat H_0&=\sum_\alpha\sum_l\sum_{l'}J^{}_{ll'}\hat a_{l\alpha}^\dg \hat a_{l'\alpha}^{ }\nonumber\\
+      &=\sum_{\alpha}\sum_{l}J^{}_{ll}\hat a_{l\alpha}^\dg \hat a_{l\alpha}^{ }+\sum_\alpha\sum_{l\ne l'}J^{}_{ll'}\hat a_{l\alpha}^\dg \hat a_{l'\alpha}^{ }, 
+   \end{align}
+其中
+\begin{equation}
+   J_{ll}\equiv \int a^*(\vct r-\vct R_l)\hat h(\vct r)a(\vct r-\vct R_l)\fun{d}\vct r=\frac{1}{N}\sum_{ k}E_{k}\equiv T_0, 
+\end{equation}
+可以认为这一项的物理含义是局域在每个格点上的 $s$-波电子的轨道能量, 在此我们把它当作一个常量. 于是哈密顿量的第一项就可以写成
+\begin{equation}
+   T^{}_0\sum_\alpha \sum_l\hat a_{l\alpha}^\dg \hat a_{l\alpha}^{}. 
+\end{equation}
+下面再来看第二项. 我们考虑的是局域电子, 因此可以近似认为只有最近邻电子间存在跃迁, 即采用紧束缚近似. 于是有
+\begin{equation}
+   J^{}_{ll'}=\sum_{\alpha}\sum_l\sum_\rho J^{}_{l, l+\rho}\hat a_{l, \alpha}^\dg \hat a^{}_{l+\rho, \alpha}\approx -t\sum_\alpha\sum_l\sum_\rho \hat a_{l\alpha}^\dg \hat a^{}_{l+\rho, \alpha}, 
+\end{equation}
+其中 $\rho$ 是对 $l$ 的最近邻格点求和. 考虑各向同性, $J_{l, l+\rho}$ 是一个常量. 
+
+而矩阵元可以表示成
+\begin{equation}
+   \lag ij|\hat v|lm \rag=\iint a^*(\vct r-\vct R_i)a^*(\vct r'-\vct R_j)\hat v(\vct r-\vct r')a(\vct r'-\vct R_l)a(\vct r-\vct R_m)\fun{d}\vct r\fun d\vct r'. 
+\end{equation}
+如果 $\vct R_i\ne \vct R_j\ne \vct R_m\ne \vct R_m$, 那么积分有四个中心, 我们称这种情况为四中心积分. 当且仅当四个瓦尼尔函数都不等于零, 积分才不等于零. 所以一般来说这一项非常小. 同理也会有三中心积分、双中心积分和单中心积分. 其中只有单中心积分的贡献最大. 所以下面我们略去其他积分, 只考虑这一项. 
+
+忽略单中心积分以外的积分, 瓦尼尔表象下哈密顿量的第二项可以继续表示为
+ \begin{align}
+{}&\frac{1}{2}\sum_{i}\sum_{j}\sum_{l}\sum_{m}\sum_{\alpha}\sum_{\beta}\langle ij |\hat v|lm\rangle \hat{a}^{\dagger}_{i\alpha}\hat{a}^{\dagger}_{j\beta}\hat{a}_{m\beta}\hat{a}_{l\alpha}\nonumber\\    
+\approx & \frac{1}{2}\sum_i\sum_\alpha\sum_\beta\lag ii|\hat v|ii \rag \hat a_{i\alpha}^\dg \hat a_{i\beta}^\dg \hat a_{i\beta}^{} \hat a_{i\alpha}^{}\nonumber\\
+      \equiv& \frac{U}{2}\sum_i\sum_\alpha\sum_\beta\hat a_{i\alpha}^\dg \hat a_{i\beta}^\dg \hat a_{i\beta}^{}\hat a_{i\alpha}^{}\nonumber\\
+      =&\frac{U}{2}\sum_i\sum_\alpha\left( \hat a_{i\alpha}^\dg \hat a_{i\alpha}^\dg \hat a_{i\alpha}^{} \hat a_{i\alpha}^{} +\hat a_{i\alpha}^{\dg}\hat a_{i\bar\alpha}^\dg \hat a_{i\bar\alpha}^{}\hat a_{i\alpha}^{} \right)\nonumber\\
+      =&\frac{U}{2}\sum_i\left( \hat a_{i\ua}^\dg \hat a_{i\da}^\dg \hat a_{i\da}^{}\hat a_{i\ua}^{}+\hat a_{i\da}^\dg \hat a_{i\ua}^\dg\hat a_{i\ua}^{}\hat a_{i\da}^{} \right)\nonumber\\
+      =&U\sum_i\hat a_{i\ua}^\dg \hat a_{i\da}^\dg \hat a_{i\da}^{}\hat a_{i\ua}^{}\nonumber\\
+      =&U\sum_i\ls \hat a_{i\ua}^\dg \hat a_{i\ua}^{} \rs\ls \hat a_{i\da}^\dg \hat a_{i\da}^{} \rs\nonumber\\
+      =&U\sum_i\hat n_{i\ua}\hat n_{i\da}. 
+   \end{align}
+这里的第一步是认为矩阵元是一个常数$U\equiv \lag ii|\hat v|ii \rag$ . 第二步是对 $\beta$ 求和, 分别取 $\beta=\alpha$ 和 $\beta=\bar \alpha$ 两种情况. 其中第一种情况根据费米子 Pauli 原理得零, 第二项对 $\alpha=\ua, \da$ 两种情况求和, 得到的两项经过简单对易计算后会发现是相同的. 进而可以写成粒子数算符 $\hat n_{i\ua}$ 和 $\hat n_{i\da}$ 乘积的形式. 
+我们称 $U$ 为同位排斥能, 这一项只有在双占据态才会出现. 
+
+这样, 我们就得到了单带 Hubbard 模型的哈密顿量在瓦尼尔表象下的表达式, 即
+\begin{equation}
+   \hat H=T^{}_0\sum_l\sum_\alpha \hat a_{l\alpha}^\dg \hat a_{l\alpha}^{}-t\sum_l\sum_\rho\sum_\alpha\hat a_{l\alpha}^\dg \hat a_{l+\rho, \alpha}^{}+U\sum_i\hat n_{i\ua}\hat n_{i\da}. 
+\end{equation}
+这一模型哈密顿量只有一维情况下有严格解. 我们定义 $t/U\equiv \delta$ , 并用它用来表示体系中电子的关联作用强弱. 当 $\delta\gg 1$ 时, 认为体系是弱关联系统;当 $\delta\ll 1$ 时, 认为体系是强关联系统. 
+
+此外, 布洛赫表象下的单带 Hubbard 模型哈密顿量是
+\begin{equation}
+   \hat H=\sum_{ k\alpha}E_{k}^{ }\hat b_{ k \alpha}^\dg \hat b_{ k \alpha}^{ }+U\sum_i\hat n^{}_{i\ua}\hat n^{}_{i\da}, \quad E^{}_k=T^{}_0-t\sum_\rho\e^{\ii\vct k\cdot \vct \rho}. 
+\end{equation}

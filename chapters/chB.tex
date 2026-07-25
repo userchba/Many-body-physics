@@ -1,0 +1,426 @@
+\chapter{课后习题}
+\section{第一章课后习题}
+\begin{question2}{}{}
+证明:
+\begin{equation}
+    \hat U_I(t, t')=\mathrm e^{\frac{\mathrm i}{\hbar}\hat H_0(t-t_0)}\hat U_S(t, t')\mathrm e^{-\frac{\mathrm i}{\hbar}\hat H_0(t'-t_0)}. 
+ \end{equation}
+\end{question2}
+
+\begin{question2}{}{}
+推导电流密度算符和自旋密度算符的傅里叶变换, 即
+\begin{equation}
+    \left\{
+ \begin{aligned}
+ &\hat J(\vct x)=\frac{1}{V}\sum_{ q}\hat J(\vct q)\mathrm e^{\mathrm i\vct q\cdot \vct x}, \\
+ &\hat J(\vct q)=\frac{e}{m}\sum_{k}\sum_{\sigma}\left( \vct k+\frac{\vct q}{2} \right)\hat C_{ k{\sigma}}^\dagger \hat{C}_{{k+q}, {\sigma}}^{}\;,
+ \end{aligned}
+ \right. 
+ \end{equation}
+和
+\begin{equation}
+    \left\{
+ \begin{aligned}
+ &\hat S(\vct x)=\frac{1}{V}\sum_{{q}} \hat S(\vct q)\mathrm e^{\mathrm i\vct q\cdot\vct x}, \\
+ &\hat S(\vct q)=\sum_{{k}}\sum_\alpha\sum_\beta\hat C_{ k\alpha}^\dagger\left( \frac{\hbar}{2}\langle \alpha|\hat {\sigma}|\beta \rangle \right)\hat C_{{k+q}, \beta}^{}\;. 
+ \end{aligned}
+ \right. 
+ \end{equation}
+\end{question2}
+
+\begin{question2}{}{}
+证明引入收敛因子后, 凝胶模型相互作用的发散项可以转化成有限值, 即
+\begin{equation}
+    \int\frac{1}{r}\e^{-\ii\vct k\cdot\vct r}\e^{-\eta r}\fun{d}\vct r=\frac{4\pi}{k^2+\eta^2}. 
+\end{equation}
+\end{question2}
+\section{第二章课后习题}
+\begin{question2}{}{}
+        推导超前格林函数 $G_{AB}^{\mathrm{A}}(\omega)$ 的 Kramers-Kronig 色散关系.
+\end{question2}
+
+\begin{question2}{}{}
+自由费米子系统中, 利用对易子 $[\; ,\;]_{-}$ 重新计算格林函数运动方程.
+\end{question2}
+
+\begin{question2}{}{}
+已知相互作用系统的哈密顿量
+\begin{equation}
+\hat{H}=\sum_{k  \sigma} (E_{k}^{(1)}-\mu) \hat{a}_{k  \sigma}^{\dagger} \hat{a}_{k  \sigma}^{}+\sum_{k  \sigma} (E_{k}^{(2)}-\mu) \hat{b}_{k  \sigma}^{\dagger} \hat{b}_{k  \sigma}^{}+V\sum_{k  \sigma} \left(\hat{a}_{k  \sigma}^{\dagger} \hat{b}_{k  \sigma}^{}+\hat{b}_{k  \sigma}^{\dagger} \hat{a}_{k  \sigma}^{}\right),
+\end{equation}
+分别计算 $a$ 带和 $b$ 带的粒子态密度.
+\end{question2}
+
+\begin{question2}{}{}
+证明: 铁磁海森伯模型的基态能
+\begin{equation}
+    \hat{H}|g\rangle=E_{g}|g\rangle=-J S^{2} N Z |g\rangle.
+    \end{equation}
+\end{question2}
+
+\begin{question2}{}{}
+证明自旋缺陷态 $|\boldsymbol{l}\rangle$ 不是铁磁海森伯模型哈密顿量 $\hat{H}$ 的本征态.
+\end{question2}
+
+\begin{question2}{}{}
+证明铁磁海森伯模型中, 有 
+\begin{equation}
+    \sum_{k}\left\langle\hat{b}_{k}^{\dagger} \hat{b}^{}_{k}\right\rangle_{T}\propto T^{3 / 2}.
+    \end{equation}
+\end{question2}
+\begin{solution}
+\begin{align}
+\sum_{k}\left\langle\hat{b}_{k}^{\dagger} \hat{b}^{}_{k}\right\rangle_{T} =&\frac{V}{(2 \pi)^{3}} \int \mathrm{d}\boldsymbol{k} \frac{1}{\mathrm{e}^{\beta C k^{2}}-1} \nonumber\\
+=&\frac{V}{2 \pi^{2}} \int_{0}^{k_\mathrm{D}} \mathrm{d} k \frac{k^{2}}{\mathrm{e}^{\beta C k^{2}}-1}\nonumber \\
+\xlongequal[]{x=C\beta k^{2}} &\frac{V}{2 \pi^{2}} \int_{0}^{\beta C k_\mathrm{D}^{2}} \mathrm{d} \frac{x}{\beta} \sqrt{\frac{\beta C}{x}} \frac{x}{\beta C} \frac{1}{\mathrm{e}^{x}-1}\nonumber \\
+=&\frac{V}{2 \pi^{2}(\beta C)^{3 / 2}} \int_{0}^{\beta C k_\mathrm{D}^{2}} \mathrm{d} x \frac{\sqrt{x}}{\mathrm{e}^{x}-1},
+\end{align}
+其中 $k_\mathrm{D}$ 是德拜半径, $C$ 是常系数. 因为这里对 $k$ 的积分是在第一布里渊区中进行的, 考虑低温下积分上限很大, 可以近似取为无穷大. 则
+\begin{equation}
+\sum_{k}\left\langle\hat{b}_{k}^{\dagger} \hat{b}^{}_{k}\right\rangle_{T} \approx\frac{V}{2 \pi^{2}(\beta C)^{3 / 2}} \int_{0}^{+\infty} \mathrm{d} x \frac{\sqrt{x}}{\mathrm{e}^{x}-1} .
+\end{equation}
+又
+\begin{align}
+\int_{0}^{+\infty} \frac{x^{n}}{\mathrm{e}^{x}-1} \mathrm{d} x &=\int_{0}^{+\infty} \frac{x^{n} \mathrm{e}^{-x}}{1-\mathrm{e}^{-x}} \mathrm{d} x \nonumber\\
+&=\int_{0}^{+\infty} x^{n} \mathrm{e}^{-x} \sum_{k=0}^{+\infty}\left(\mathrm{e}^{-x}\right)^{k} \mathrm{d} x \nonumber\\
+&=\sum_{k=0}^{+\infty} \int_{0}^{+\infty} x^{n} \mathrm{e}^{-(k+1) x} \mathrm{d} x \nonumber\\
+&=\sum_{k=0}^{+\infty} \frac{1}{(k+1)^{n+1}} \int_{0}^{+\infty} x^{n} \mathrm{e}^{-x} \mathrm{d} x \nonumber\\
+&=\zeta(n+1) \Gamma(n+1),
+\end{align}
+则
+\begin{align}
+\sum_{k}\left\langle\hat{b}_{k}^{\dagger} \hat{b}^{}_{k}\right\rangle_{T} &\approx\frac{V}{2 \pi^{2}(\beta C)^{3 / 2}} \int_{0}^{+\infty} \mathrm{d} x \frac{\sqrt{x}}{\mathrm{e}^{x}-1}\nonumber\\
+&=\frac{V}{2 \pi^{2}(\beta C)^{3 / 2}}\zeta\left(\frac{3}{2}\right) \Gamma\left(\frac{3}{2}\right)\nonumber\\
+&\propto \frac{1}{\beta^{3 / 2}}=(k T)^{3 / 2} .
+\end{align}
+\end{solution}
+
+\begin{question2}{}{}
+    验证:
+    \begin{equation}
+        \left[ \hat{S}_{l^\prime}^+,\hat{H} \right]_-=-2J\sum_\rho\left[ \hat{S}_{l^\prime}^z\hat{S}_{l^\prime+\rho}^+-\hat{S}_{l^\prime}^+\hat{S}_{l^\prime+\rho}^z \right].
+    \end{equation}
+\end{question2}
+
+\begin{question2}{}{}
+    证明 $\displaystyle F=\frac{1}{N}\sum_k\frac{1}{1-\gamma_k}$ 在三维情况收敛, 而在一维和二维情况下发散.
+\end{question2}
+
+\begin{question2}{}{}
+    证明在低温区:
+    \begin{equation}
+        \psi(T)=\frac{1}{N}\sum_k\frac{1}{\mathrm{e}^{\beta\omega_k}-1}
+    \end{equation}
+    在三维情况下收敛, 在一维和二维情况下发散.
+\end{question2}
+
+\begin{question2}{}{}
+    证明
+    \begin{equation}
+        \langle\text{Néel}|\hat{H}|\text{Néel}\rangle=-2 N Z|J| S^{2} .
+        \end{equation}
+\end{question2}
+
+    \begin{question2}{}{}
+        验证 
+        \begin{equation}
+                \left(\left[ \hat{C}^\dagger,\hat{H} \right]_-,\left[ \hat{C}^\dagger,\hat{H} \right]_-\right)=\left\langle \left[ \hat{C}^\dagger,\left[ \hat{H},\hat{C} \right]_- \right]_- \right\rangle   =\left\langle \left[ \left[ \hat{C},\hat{H}\right ]_-,\hat{C}^\dagger \right]_- \right\rangle.
+            \end{equation}
+    \end{question2}
+\begin{proof}
+利用
+ \begin{equation}
+        \left( \hat{A},\left[ \hat{C}^\dagger,\hat{H} \right]_- \right)=\left\langle \left[ \hat{C}^\dagger,\hat{A}^\dagger \right]_- \right\rangle,
+        \end{equation}
+有
+\begin{align}
+& \left(\left[ \hat{C}^\dagger,\hat{H} \right]_-,\left[ \hat{C}^\dagger,\hat{H} \right]_-\right)\nonumber\\
+=&\left.\left(\hat{A},\left[\hat{C}^{\dagger}, \hat{H}\right]\right)\right|_{\hat{A}=\left[\hat{C}^{\dagger}, \hat{H}\right]_{-}}\nonumber\\
+=&\left\langle\left[\hat{C}^{\dagger}, \hat{A}^{\dagger}\right]_{-}\right\rangle_{\hat{A}=\left[\hat{C}^{\dagger}, \hat{H}\right]_{-}} \nonumber\\
+=&\left\langle\left[\hat{C}^{\dagger},\left[\hat{C}^{\dagger}, \hat{H}\right]_{-}^{\dagger}\right]_{-}\right\rangle\nonumber\\
+=&\left\langle\left[\hat{C}^{\dagger},\left(\hat{C}^{\dagger} \hat{H}-\hat{H} \hat{C}^{\dagger}\right)^{\dagger}\right]_{-}\right\rangle\nonumber \\
+=&\left\langle\left[\hat{C}^{\dagger}, \hat{H} \hat{C}-\hat{C} \hat{H}\right]_{-}\right\rangle\nonumber\\
+=&\left\langle\left[\hat{C}^{\dagger},\left[\hat{H}, \hat{C}\right]_{-}\right]_{-}\right\rangle \nonumber\\
+=&\left\langle\left[\hat{C}^{\dagger}\left(\hat{H} \hat{C}-\hat{C} \hat{H}\right)-\left(\hat{H} \hat{C}-\hat{C} \hat{H}\right) \hat{C}^{\dagger}\right]\right\rangle\nonumber \\
+=&\frac{1}{\mathcal{Z}} \operatorname{Tr}\left[\e^{-\beta \hat{H}}\left(\hat{C}^{\dagger} \hat{H} \hat{C}-\hat{C}^{\dagger} \hat{C} \hat{H}-\hat{H} \hat{C} \hat{C}^{\dagger}+\hat{C} \hat{H} \hat{C}^{\dagger}\right)\right] \nonumber\\
+=&\frac{1}{\mathcal{Z}} \operatorname{Tr}\left[\e^{-\beta \hat{H}}\left(\hat{C}^{\dagger} \hat{H} \hat{C}-\hat{H} \hat{C}^{\dagger} \hat{C}-\hat{C} \hat{C}^{\dagger} \hat{H}+\hat{C} \hat{H} \hat{C}^{\dagger}\right)\right]\nonumber\\
+=&\left\langle\left[\left[\hat{C}^{\dagger}, \hat{H}\right]_{-}, \hat{C}\right]_{-}\right\rangle \nonumber\\
+=&\left\langle\hat{C} \hat{H} \hat{C}-\hat{C}^{\dagger} \hat{C} \hat{H}-\hat{H} \hat{C} \hat{C}^{\dagger}+\hat{C} \hat{H} \hat{C}^{\dagger}\right\rangle\nonumber \\
+=&\left\langle\hat{C} \hat{H} \hat{C}^{\dagger}-\hat{H} \hat{C} \hat{C}^{\dagger}-\hat{C}^{\dagger} \hat{C} \hat{H}+\hat{C} \hat{H} \hat{C}\right\rangle \nonumber\\
+=&\left\langle\left(\hat{C} \hat{H}-\hat{H} \hat{C}\right) \hat{C}^{\dagger}-\hat{C}^{\dagger}\left(\hat{C} \hat{H}-\hat{H} \hat{C}\right)\right\rangle \nonumber\\
+=&\left\langle\left[\left[\hat{C}, \hat{H}\right]_{-}, \hat{C}^{\dagger}\right]_{-}\right\rangle.
+\end{align}
+\end{proof}
+
+\begin{question2}{}{}
+        验证
+\begin{align}
+&\left\langle\left[\left[\hat{S}_{k}^{+}, \hat{H}\right]_{-}, \hat{S}_{-k}^{-}\right]_{-}\right\rangle\nonumber \\
+= & 4 J \sum_{\rho}\left(1-\mathrm{e}^{\mathrm{i} \boldsymbol{k} \cdot \boldsymbol{\rho}}\right) \sum_{l}\left\langle\hat{S}_{l}^{z} \hat{S}_{l+\rho}^{z}+\frac{1}{4}\left(\hat{S}_{l}^{+} \hat{S}_{l+\rho}^{-}+\hat{S}_{l+\rho}^{-} \hat{S}_{l}^{+}\right)\right\rangle+2 g \mu_{\mathrm{B}} H N S^{z} ,
+\end{align}
+其中动量空间的哈密顿量为:
+\begin{equation}
+\hat{H}=-\frac{J Z}{N} \sum_{k} \gamma_{k}\left[\hat{S}_{k}^{z} \hat{S}_{-k}^{z}+\frac{1}{2}\left(\hat{S}_{k}^{+} \hat{S}_{-k}^{-}+\hat{S}_{k}^{-} \hat{S}_{-k}^{+}\right)\right]-g \mu_{\mathrm{B}} H \hat{S}_{k=0}^{z}.
+\end{equation}
+\end{question2}
+\begin{proof}
+把哈密顿量中的求和指标改成 $\vct k^{\prime}$, 有:
+\begin{align}
+\left[\hat{S}_k^{+}, \hat{H}\right]_{-}=& - \frac{JZ}{N} \sum_{k^{\prime}} \gamma_{k^{\prime}}\Big\{\left[\hat{S}_k^{+}, \hat{S}_{k^{\prime}}^z\right]_{-} \hat{S}_{-k^{\prime}}^z+\hat{S}_{k^{\prime}}^z\left[\hat{S}_k^{+}, \hat{S}_{-k^{\prime}}^z\right]_{-} \nonumber\\
+& +\frac{1}{2}\left(\hat{S}_{k^{\prime}}^{+}\left[\hat{S}_k^{+}, \hat{S}_{-k^{\prime}}^{-}\right]_{-}+\left[\hat{S}_k^{+}, \hat{S}_{k^{\prime}}^{-}\right]_{-} \hat{S}_{-k^{\prime}}^{+}\right)\Big\}-g \mu_{\mathrm{B}} H\left[\hat{S}_k^{+}, \hat{S}_{k^{\prime}=0}^z\right]_{-} \nonumber\\
+ =& \frac{JZ}{N} \sum_{k^{\prime}} \gamma_{k^{\prime}}\left\{\hat{S}_{k+k^{\prime}}^{+} \hat{S}_{-k^{\prime}}^z+\hat{S}_{k^{\prime}}^z \hat{S}_{k-k^{\prime}}^{+}-\hat{S}_{k^{\prime}}^{+} \hat{S}_{k-k^{\prime}}^z-\hat{S}_{k+k^{\prime}}^z \hat{S}_{-k^{\prime}}^{+}\right\}+g \mu_{\mathrm{B}} H \hat{S}_k^{+} ,
+\end{align}
+代入左边, 得到:
+\begin{align}
+& {\left[\left[\hat{S}_k^{+}, \hat{H}\right]_{-}, \hat{S}_{-k}^{-}\right]_{-}} \nonumber\\
+ =& \frac{JZ}{N} \sum_{k^{\prime}} \gamma_{k^{\prime}}\left\{\left[\hat{S}_{k+k^{\prime}}^{+}, \hat{S}_{-k}^{-}\right]_{-} \hat{S}_{-k^{\prime}}^z+\hat{S}_{k+k^{\prime}}^{+}\left[\hat{S}_{-k^{\prime}}^z, \hat{S}_{-k}^{-}\right]_{-}+\left[\hat{S}_{k^{\prime}}^z, \hat{S}_{-k}^{-}\right]_{-} \hat{S}_{k-k^{\prime}}^{+}\right. \nonumber\\
+&+\hat{S}_{k^{\prime}}^z\left[\hat{S}_{k-k^{\prime}}^{+}, \hat{S}_{-k}^{-}\right]_{-}-\left[\hat{S}_{k^{\prime}}^{+}, \hat{S}_{-k}^{-}\right]_{-} \hat{S}_{k-k^{\prime}}^z-\hat{S}_{k^{\prime}}^{+}\left[\hat{S}_{k-k^{\prime}}^z, \hat{S}_{-k}^{-}\right]_{-}\nonumber\\
+& \left.-\left[\hat{S}_{k+k^{\prime}}^z, \hat{S}_{-k}^{-}\right]_{-} \hat{S}_{-k^{\prime}}^{+}-\hat{S}_{k+k^{\prime}}^z\left[\hat{S}_{-k^{\prime}}^{+}, \hat{S}_{-k}^{-}\right]_{-}\right\}+g \mu_{\mathrm{B}} H\left[\hat{S}_k^{+}, \hat{S}_{-k}^{-}\right]_{-} \nonumber\\
+ =&\frac{J}{N} \sum_{k^{\prime} \rho} \mathrm{e}^{\ii \vct k^{\prime} \cdot \vct \rho}\Big\{2 \hat{S}_{k^{\prime}}^z \hat{S}_{-k^{\prime}}^z-\underbrace{\hat{S}_{k+k^{\prime}}^{+} \hat{S}_{-k-k^{\prime}}^{-}}_{\vct k^{\prime} \rightarrow \vct k^{\prime}-\vct k}-\underbrace{\hat{S}_{k^{\prime}-k}^{-} \hat{S}_{k-k^{\prime}}^{+}}_{\vct k^{\prime} \rightarrow \vct k^{\prime}+\vct k}+2 \hat{S}_{k^{\prime}}^z \hat{S}_{-k^{\prime}}^z \nonumber\\
+& -2 \underbrace{\hat{S}_{k^{\prime}-k}^z \hat{S}_{k-k^{\prime}}^z}_{\vct k^{\prime} \rightarrow \vct k^{\prime}+\vct k}+\hat{S}_{k^{\prime}}^{+} \hat{S}_{-k^{\prime}}^{-}+\hat{S}_{k^{\prime}}^{-} \hat{S}_{-k^{\prime}}^{+}-2 \underbrace{\hat{S}_{k+k^{\prime}}^z \hat{S}_{-k-k^{\prime}}^z}_{\vct k^{\prime} \rightarrow \vct k^{\prime}-\vct k}\Big\}+2 g \mu_{\mathrm{B}} H \hat{S}_{k=0}^z\nonumber \\
+ =&\frac{J}{N} \sum_{k^{\prime} \rho}\Big\{4 \hat{S}_{k^{\prime}}^z \hat{S}_{-k^{\prime}}^z \e^{\ii \vct k^{\prime} \cdot\vct \rho}-2 \hat{S}_{k^{\prime}}^z \hat{S}_{-k^{\prime}}^z \e^{\ii\left(\vct k^{\prime}-\vct k\right) \cdot\vct \rho}-2 \underbrace{\hat{S}_{k^{\prime}}^z \hat{S}_{-k^{\prime}}^z\e^{\ii\left(\vct k+\vct k^{\prime}\right)\cdot \vct \rho}}_{\vct \rho \rightarrow-\vct \rho, \vct k^{\prime} \rightarrow-\vct k^{\prime}} \nonumber\\
+& +\hat{S}_{k^{\prime}}^{+} \hat{S}_{-k^{\prime}}^{-} \e^{\ii \vct k^{\prime} \cdot\vct \rho}-\hat{S}_{k^{\prime}}^{+} \hat{S}_{-k^{\prime}}^{-} \e^{\ii\left(\vct k^{\prime}-\vct k\right) \cdot\vct \rho}+\hat{S}_{k^{\prime}}^{-} \hat{S}_{-k^{\prime}}^{+} \e^{\ii \vct k^{\prime}\cdot \vct \rho}-\underbrace{\hat{S}_{k^{\prime}}^{-} \hat{S}_{-k^{\prime}}^{+} \e^{\ii\left(\vct k^{\prime}+\vct k\right)\cdot \vct \rho}}_{\vct \rho \rightarrow-\vct \rho}\Big\}+2 g \mu_{\mathrm{B}} H \hat{S}_{k=0}^z \nonumber\\
+ =&\frac{4 J}{N} \sum_\rho\left(1-\mathrm{e}^{-\mathrm{i} \vct k \cdot \vct \rho}\right) \sum_{k^{\prime}}\left[\mathrm{e}^{\mathrm{i} \vct k^{\prime} \cdot \vct\rho}\left(\hat{S}_{k^{\prime}}^z \hat{S}_{-k^{\prime}}^z+\frac{1}{4} \hat{S}_{k^{\prime}}^{+} \hat{S}_{-k^{\prime}}^{-}\right)+\frac{1}{4}\mathrm{e}^{-\mathrm{i} \vct k^{\prime} \cdot \vct \rho} \hat{S}_{k^{\prime}}^{-} \hat{S}_{-k^{\prime}}^{+}\right]+2 g \mu_{\mathrm{B}} H \hat{S}_{k=0}^z \nonumber\\
+\stackrel{\text { F.T. }}{=}& 4 J \sum_\rho\left(1-\mathrm{e}^{-\mathrm{i} \vct k \cdot \vct \rho}\right) \sum_l\left[\hat{S}_l^z \hat{S}_{l+\rho}^z+\frac{1}{4}\left(\hat{S}_l^{+} \hat{S}_{l+\rho}^{-}+\hat{S}_{l+\rho}^{-} \hat{S}_l^{+}\right)\right]+2 g \mu_{\mathrm{B}} H N S^{z} \nonumber\\
+=& 4 J \sum_\rho\left(1-\mathrm{e}^{\mathrm{i} \vct k \cdot \vct \rho}\right) \sum_l\left[\hat{S}_l^z \hat{S}_{l+\rho}^z+\frac{1}{4}\left(\hat{S}_l^{+} \hat{S}_{l+\rho}^{-}+\hat{S}_{l+\rho}^{-} \hat{S}_l^{+}\right)\right]+2 g \mu_{\mathrm{B}} H N S^{z},
+\end{align}
+其中最后一步做了替换 $\vct \rho \rightarrow-\vct \rho$. 上式两边同时取期望便得到:
+\begin{align}
+&\left\langle\left[\left[\hat{S}_{k}^{+}, \hat{H}\right]_{-}, \hat{S}_{-k}^{-}\right]_{-}\right\rangle\nonumber \\
+= & 4 J \sum_{\rho}\left(1-\mathrm{e}^{\mathrm{i} \boldsymbol{k} \cdot \boldsymbol{\rho}}\right) \sum_{l}\left\langle\hat{S}_{l}^{z} \hat{S}_{l+\rho}^{z}+\frac{1}{4}\left(\hat{S}_{l}^{+} \hat{S}_{l+\rho}^{-}+\hat{S}_{l+\rho}^{-} \hat{S}_{l}^{+}\right)\right\rangle+2 g \mu_{\mathrm{B}} H N S^{z} .
+\end{align}
+\end{proof}
+
+\begin{question2}{}{}
+验证铁磁海森伯模型二维正方和三维简立方时的 Mermin-Wagner 定理, 即推导
+
+二维正方:
+\begin{equation}
+\left(S^{z}\right)^{2}<\frac{4 \pi J S^{2}(S+1)^{2}}{k_{\mathrm{B}} T \ln \left[1+\frac{2 J a^{2} S(S+1)}{g \mu_{\mathrm{B}} H S^{z}} k^2_{\mathrm{D}}\right]} ,
+\end{equation}
+以及三维简立方
+\begin{equation}
+\left(S^{z}\right)^{2}<\frac{S^{2}(S+1)^{2} 2 \pi^{2} J}{a k_{\mathrm{B}} T\left[k_{\mathrm{D}}-\sqrt{\frac{g \mu_{\mathrm{B}} H S^{z}}{2 J a^{2} S(S+1)}} \arctan \sqrt{\frac{2J a^{2} S(S+1) }{g \mu_{\mathrm{B}} H S^{2}}k_{\mathrm{D}}^{2}}\right]} .
+\end{equation}
+\end{question2}
+\section{第三章课后习题}
+\begin{question2}{}{}
+    证明全同费米子体系有:
+    \begin{equation}
+           \lmi \hat\psi^{ }_\alpha(\vct{x}),\hat{H} \rmi_-= -\frac{\nabla^2}{2m} \hat{\psi}^{ }_\alpha(\vct{x})+\sum_\sigma\int\dd\vct{z}' \hat{\psi}_\sigma^\dg(\vct{z}') \hat{V}(\vct{x},\vct{z}')\hat{\psi}^{ }_\sigma(\vct{z'})\hat{\psi}^{ }_\alpha(\vct{x}),
+    \end{equation}
+    其中 
+    \begin{equation}
+        \hat{H}=\hat{T}_{K}+\hat{V},
+    \end{equation}
+    动能项和势能项分别为
+     \begin{align}
+            \hat{T}_{K}&=\sum_{\sigma}\int\dd\vct{x}\hat{\psi}_\sigma^\dg(\vct{x})\ls -\frac{\nabla^2}{2m} \rs \hat{\psi}_\sigma(\vct{x}),\\
+            \hat{V}&=\frac{1}{2}\sum_\alpha\sum_\beta\iint\dd\vct{x}\dd\vct{x}'\hat{\psi}_\alpha^\dg(\vct{x})\psi_\beta^\dg(\vct{x}')\hat{V}(|\vct{x}-\vct{x}'|)\hat{\psi}_{\beta}^{ }(\vct{x}')\hat{\psi}_\alpha^{ }(\vct{x}).
+        \end{align}
+\end{question2}
+
+\begin{proof}
+费米子算符间满足的反对易关系为:
+\begin{equation}
+\left[\hat{\psi}^{ }_\alpha(\vct{x}), \hat{\psi}_\beta^{\dg}\left(\vct{x}^{\prime}\right)\right]_{+}=\delta^{ }_{\alpha \beta} \delta\left(\vct{x}-\vct{x}^{\prime}\right), \quad\left[\hat{\psi}^{ }_\alpha(\vct{x}), \hat{\psi}^{ }_\beta\left(\vct{x}^{\prime}\right)\right]_{+}=\left[\hat{\psi}_\alpha^{\dg}(\vct{x}), \hat{\psi}_\beta^{\dg}\left(\vct{x}^{\prime}\right)\right]_{+}=0,
+\end{equation}
+且对易子有如下等式:
+\begin{equation}
+[\hat{A}, \hat{B} \hat{C}]_{-}=[\hat{A}, \hat{B}]_{+} \hat{C}-\hat{B}[\hat{A}, \hat{C}]_{+} .
+\end{equation}
+将哈密顿量的表达式代入对易关系可以得到:
+\begin{align}
+{\left[\hat{\psi}^{ }_\alpha(\vct{x}), \hat{H}\right]_{-}=\left[\hat{\psi}^{ }_\alpha(\vct{x}), \sum_\sigma\right.} & \int \hat{\psi}_\sigma^{\dg}(\vct{z})\left(-\frac{\nabla^2}{2 m}\right) \hat{\psi}^{ }_\sigma(\vct{z}) \mathrm{d} \vct{z} \nonumber\\
+& \left.+\frac{1}{2} \sum_{\rho \sigma} \iint \mathrm{d} \vct{z} \mathrm{d} \vct{z}^{\prime} \psi_\rho^{\dg}(\vct{z}) \hat{\psi}_\sigma^{\dg}\left(\vct{z}^{\prime}\right) V\left(\vct{z}, \vct{z}^{\prime}\right) \hat{\psi}^{ }_\sigma\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\rho(\vct{z})\right]_- .
+\end{align}
+分别计算上式的对易关系. 第一项有:
+\begin{align}
+& \sum_\sigma \int \mathrm{d} \vct{z}\left[\hat{\psi}^{ }_\alpha(\vct{x}), \hat{\psi}_\sigma^{\dg}(\vct{z})\left(-\frac{\nabla^2}{2 m}\right) \hat{\psi}^{ }_\sigma(\vct{z})\right]_{-} \nonumber\\
+=& \sum_\sigma \int \mathrm{d} \vct{z}\left[\hat{\psi}^{ }_\alpha(\vct{x}), \hat{\psi}_\sigma^{\dg}(\vct{z})\right]_{+}\left(-\frac{\nabla^2}{2 m}\right) \hat{\psi}^{ }_\sigma(\vct{z}) \nonumber\\
+=& \sum_\sigma \int \mathrm{d} \vct{z} \delta^{ }_{\alpha \sigma} \delta(\vct{x}-\vct{z})\left(-\frac{\nabla^2}{2 m}\right) \hat{\psi}^{ }_\sigma(\vct{z})\nonumber\\
+=& -\frac{\nabla^2}{2 m} \hat{\psi}_\alpha(\vct{x}) ,
+\end{align}
+第二项有:
+\begin{align}
+& \frac{1}{2} \sum_{\rho \sigma} \iint \mathrm{d} \vct{z} \mathrm{d} \vct{z}^{\prime} V\left(\vct{z}, \vct{z}^{\prime}\right)\left[\hat{\psi}^{ }_\alpha(\vct{x}), \psi_\rho^{\dg}(\vct{z}) \hat{\psi}_\sigma^{\dg}\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\sigma\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\rho(\vct{z})\right]_- \nonumber\\
+=& \frac{1}{2} \sum_{\rho \sigma} \iint \mathrm{d} \vct{z} \mathrm{d} \vct{z}^{\prime} V\left(\vct{z}, \vct{z}^{\prime}\right)\left\{\left[\hat{\psi}^{ }_\alpha(\vct{x}), \psi_\rho^{\dg}(\vct{z})\right]_{+} \hat{\psi}_\sigma^{\dg}\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\sigma\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\rho(\vct{z})\right. \nonumber\\
+& ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\left.-\psi_\rho^{\dg}(\vct{z})\left[\hat{\psi}^{ }_\alpha(\vct{x}), \hat{\psi}_\sigma^{\dg}\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\sigma\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\rho(\vct{z})\right]_{+}\right\} \nonumber\\
+=& \frac{1}{2} \sum_{\rho \sigma} \iint \mathrm{d} \vct{z} \mathrm{d} \vct{z}^{\prime} V\left(\vct{z}, \vct{z}^{\prime}\right)\left\{\left[\hat{\psi}^{ }_\alpha(\vct{x}), \psi_\rho^{\dg}(\vct{z})\right]_{+} \hat{\psi}_\sigma^{\dg}\left(\vct{z}^{\prime}\right) \hat{\psi}_\sigma\left(\vct{z}^{\prime}\right) \hat{\psi}_\rho(\vct{z})\right. \nonumber\\
+&  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\left.-\psi_\rho^{\dg}(\vct{z})\left[\hat{\psi}^{ }_\alpha(\vct{x}), \hat{\psi}_\sigma^{\dg}\left(\vct{z}^{\prime}\right)\right]_{+} \hat{\psi}^{ }_\sigma\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\rho(\vct{z})\right\} \nonumber\\
+=& \frac{1}{2} \sum_{\rho \sigma} \iint \mathrm{d} \vct{z} \mathrm{d} \vct{z}^{\prime} V\left(\vct{z}, \vct{z}^{\prime}\right)\left[\delta^{ }_{\alpha \rho} \delta(\vct{x}-\vct{z}) \hat{\psi}_\sigma^{\dg}\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\sigma\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\rho(\vct{z})\right.\nonumber \\
+&  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\left.-\delta^{ }_{\alpha \sigma} \delta\left(\vct{x}-\vct{x}^{\prime}\right) \psi_\rho^{\dg}(\vct{z}) \hat{\psi}^{ }_\sigma\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\rho(\vct{z})\right] \nonumber\\
+=& \frac{1}{2} \sum_\sigma \int \mathrm{d} \vct{z}^{\prime} V\left(\vct{x}, \vct{z}^{\prime}\right) \hat{\psi}_\sigma^{\dg}\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\sigma\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\alpha(\vct{x})-\frac{1}{2} \sum_\rho \int \mathrm{d} \vct{z} V(\vct{z}, \vct{x}) \psi_\rho^{\dg}(\vct{z}) \hat{\psi}^{ }_\alpha(\vct{x}) \hat{\psi}^{ }_\rho(\vct{z}) \nonumber\\
+=& \frac{1}{2} \sum_\sigma \int \mathrm{d} \vct{z}^{\prime} V\left(\vct{x}, \vct{z}^{\prime}\right) \hat{\psi}_\sigma^{\dg}\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\sigma\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\alpha(\vct{x})+\frac{1}{2} \sum_\rho \int \mathrm{d} \vct{z} V(\vct{z}, \vct{x}) \psi_\rho^{\dg}(\vct{z}) \hat{\psi}^{ }_\rho(\vct{z}) \hat{\psi}^{ }_\alpha(\vct{x}) \nonumber\\
+=& \sum_\sigma \int \mathrm{d} \vct{z}^{\prime} \hat{\psi}_\sigma^{\dg}\left(\vct{z}^{\prime}\right) V\left(\vct{x}, \vct{z}^{\prime}\right) \hat{\psi}^{ }_\sigma\left(\vct{z}^{\prime}\right) \hat{\psi}^{ }_\alpha(\vct{x}),
+\end{align}
+故
+   \begin{equation}
+           \lmi \hat\psi^{ }_\alpha(\vct{x}),\hat{H} \rmi_-= -\frac{\nabla^2}{2m} \hat{\psi}^{ }_\alpha(\vct{x})+\sum_\sigma\int\dd\vct{z}' \hat{\psi}_\sigma^\dg(\vct{z}') \hat{V}(\vct{x},\vct{z}')\hat{\psi}^{ }_\sigma(\vct{z'})\hat{\psi}^{ }_\alpha(\vct{x}).
+    \end{equation}
+这里我们考虑两体相互作用 $V$ 是厄米算符, 且只与两粒子间的距离有关, 所以有 $V\left(\vct{x}, \vct{x}^{\prime}\right)=V\left(\left|\vct{x}-\vct{x}^{\prime}\right|\right)=V\left(\vct{x}^{\prime}, \vct{x}\right)$.
+\end{proof}
+
+\begin{question2}{}{}
+    证明自由费米子的格林函数可以写成下面这种形式:
+    \begin{align}
+            G_{\alpha\beta}^0(\vct{k},\omega)=&\delta_{\alpha\beta}\lmi \frac{\theta(|\vct{k}|-k_{\fun{F}})}{\omega-\epsilon_k^0+\ii\eta}+\frac{\theta(k_{\fun{F}}-|\vct{k}|)}{\omega-\epsilon_k^0-\ii\eta} \rmi\nonumber\\
+            =&\delta_{\alpha\beta}\frac{1}{\omega-\epsilon_k^0+\ii\eta\fun{sgn}(|\vct{k}|-k_{\fun{F}})},
+        \end{align}
+    其中符号函数 $\fun{sgn}(x)$ 的定义式为
+    \begin{equation}
+        \fun{sgn}(x)=\left\{ \begin{aligned}
+            1,& \quad x>0,\\
+            -1,& \quad x<0.
+        \end{aligned} \right.
+    \end{equation}
+\end{question2}
+\begin{question2}{}{}
+    证明:
+    \begin{equation}
+    \contraction{}{\hat{\psi}_{I \alpha}}{(x)}{\hat{\psi}_{I \beta}}
+    \hat{\psi}_{I \alpha}(x) \hat{\psi}_{I \beta}\left(y\right)=0,\quad
+    \contraction{}{\hat{\psi}^{\dagger}_{I \alpha}}{(x)}{\hat{\psi}^{\dagger}_{I \beta}}
+    \hat{\psi}^{\dagger}_{I \alpha}(x) \hat{\psi}^{\dagger}_{I \beta}\left(y\right)=0.
+    \end{equation}
+    \end{question2}
+
+\begin{question2}{}{}
+    计算十个二阶拓扑不等价相连图, 只要求完成对内部自旋变量求和.
+\end{question2}
+
+\begin{question2}{}{}
+    按费曼图规则写出下列动量空间费曼图各顶点和线的标记, 并对自旋求和.
+$$
+\begin{matrix}
+\begin{tikzpicture}
+\begin{feynhand}
+\vertex (a) at (-1.5,0); 
+\vertex (b) at (-1,0);
+\vertex (c) at (1,0);
+\vertex (d) at (1.5,0);
+\propag[plain](d) to (a);
+\vertex (e) at (-1,1);
+\propag [sca] (e) to (b);
+\vertex (f) at (1,1);
+\propag [sca] (f) to (c);
+\vertex (g) at (-1,1.8);
+\propag[plain](e) to [half right, looseness=1.8] (g);
+\propag[plain](g) to [half right, looseness=1.8] (e);
+\vertex (h) at (1,1.8);
+\propag[plain](f) to [half right, looseness=1.8] (h);
+\propag[plain](h) to [half right, looseness=1.8] (f);
+\vertex (i) at (-0.55,1.4);
+\vertex (j) at (0.55,1.4);
+\propag [sca] (j) to (i);
+\end{feynhand}
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\begin{feynhand}
+\vertex (a1) at (-1.5,0);
+\vertex (a2) at (-1,0);
+\vertex (a3) at (0,0);
+\vertex (a4) at (1,0);
+\vertex (a5) at (1.5,0);
+\propag[plain](a4) to (a3);
+\propag[plain](a3) to (a2);
+\propag[plain](a1) to (a5);
+\vertex (b) at (0,0.8);
+\vertex (b1) at (-1,1.4);
+\vertex (b2) at (1,1.4);
+\propag [sca] (a2) to (b1);
+\propag [sca] (a4) to (b2);
+\propag [sca] (a3) to (b);
+\propag[plain](b2) to [half right, looseness=1] (b1);
+\propag[plain](b1) to [half right, looseness=1] (b2);
+\end{feynhand}
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+\begin{feynhand}
+\vertex (a) at (1.5,0);
+\vertex (b) at (1,0);
+\vertex (c) at (0,0);
+\vertex (d) at (-1,0);
+\vertex (e) at (0,1);
+\vertex (f) at (1,2);
+\vertex (g) at (-1,2);
+\vertex (h) at (-1.5,2);
+\propag[plain](a) to (d);
+\propag[plain](d) to (f);
+\propag[plain](f) to (h);
+\propag [sca] (b) to (f);
+\propag [sca] (c) to (e);
+\propag [sca] (d) to (g);
+\end{feynhand}
+\end{tikzpicture}\\
+(1)&(2)&(3)
+\end{matrix}
+$$
+\end{question2}
+
+\begin{question2}{}{}
+    计算下面两个动量空间费曼图, 要求对所有内部自旋求和, 所有内部频率积分.
+    $$
+        \feyndiagram{
+            \propag[plain](-2,0) to (2,0);
+            \propag[plain](-1,1.5) to[half left, looseness=1.5](1,1.5);
+            \propag[plain](1,1.5) to[half left, looseness=1.5](-1,1.5);
+            \propag[sca](0,0)to(0,0.6);
+            \propag[sca](-1,0) to (-1,1.5);
+            \propag[sca](1,0)to(1,1.5);
+        }
+        \qquad
+        \feyndiagram{
+            \propag[plain](-2,0) to (2,0);
+            \propag[sca](-1.5,0)to[half left, looseness=1.6](0.5,0);
+            \propag[sca](-0.5,0) to[half left, looseness=1.6](1.5,0);
+        }
+    $$
+\end{question2}
+\section{第四章课后习题}
+\begin{question2}{}{}
+证明:
+\begin{equation}
+ G^R(\vct{k}, \omega)=\int_{-\infty}^{\infty} \mathrm{d} \omega^{\prime} \frac{A\left(\vct{k}, \omega^{\prime}\right)}{\omega-\omega^{\prime}+\ii \eta}.
+\end{equation}
+\end{question2}
+
+\begin{question2}{}{}
+    完成下列三个费曼图的内部频率和自旋求和.
+    $$
+        \feyndiagram{
+            \propag[fer](-0.7,0)to(-1.5,0);
+            \propag[fer](0.7,0)to(-0.7,0);
+            \propag[fer](1.5,0)to(0.7,0);
+            \propag[sca](-0.7,0)to(-0.7,1);
+            \propag[sca](0.7,0)to(0.7,1);
+            \propag[plain](-0.7,1)to[half left, looseness=1.5](0.7,1);
+            \propag[fer](0.7,1)to[half left, looseness=1.5](-0.7,1);
+            \vertex(a)at(0,-0.5){(a)};
+        }        
+        \qquad
+        \feyndiagram{
+            \propag[fer](-1.5,0)to(-2,0);
+            \propag[fer](-0.7,0)to(-1.5,0);
+            \propag[fer](0.7,0)to(-0.7,0);
+            \propag[fer](1.5,0)to(0.7,0);
+            \propag[fer](2,0)to(1.5,0);
+            \propag[sca](-1.5,0)to[half left, looseness=1.5](1.5,0);
+            \propag[sca](-0.7,0)to[half left, looseness=1.5](0.7,0);
+            \vertex(b)at(0,-0.5){(b)};
+        }        
+        \qquad
+        \feyndiagram{
+            \propag[fer](-1.5,0)to(-2,0);
+            \propag[fer](-0.7,0)to(-1.5,0);
+            \propag[fer](0.7,0)to(-0.7,0);
+            \propag[fer](1.5,0)to(0.7,0);
+            \propag[fer](2,0)to(1.5,0);
+            \propag[sca](-1.5,0)to[half left, looseness=1.5](0.7,0);
+            \propag[sca](-0.7,0)to[half left, looseness=1.5](1.5,0);
+            \vertex(c)at(0,-0.5){(c)};
+        }
+    $$
+\end{question2}

@@ -1,0 +1,141 @@
+\chapter{数学准备}
+\section{Dirac 函数}
+在格林函数方法中, 经常会用到如下公式:
+\begin{equation}
+    \lim_{\varepsilon\to 0^+}\int_{-\infty}^\infty\frac{f(x)}{x\pm\ii\epsilon}\mathrm{d}x=\mp\ii\pi f(0)+\mathcal{P}\int_{-\infty}^\infty\frac{f(x)}{x}\mathrm{d}x,
+\label{S-P-theorem}
+\end{equation}
+其中 $\mathcal{P}$ 表示积分主值. 如果取 $f(x)$ 是狄拉克函数, 公式变成
+\begin{equation}
+    \lim_{\varepsilon\to 0^+}\frac{1}{x\pm\ii\varepsilon}=\mp\ii\pi\delta(x)+\mathcal{P}\left( \frac{1}{x}\right).
+\end{equation}
+上式亦被称作 \textbf{Sokhotsky-Weierstrass 定理}. 下面简单证明式 \eqref{S-P-theorem}.
+
+首先引入一些概念. 狄拉克函数可以通过函数列取极限得到, 即
+\begin{equation}
+    \delta(x)=\lim_{\varepsilon\to 0^+}\eta_\varepsilon (x),
+\end{equation}
+其中 $\eta_\varepsilon(x)$ 称为\textbf{狄拉克函数列}(\textbf{nascent delta function}). 这一极限只有在积分形式下具有意义, 即
+\begin{equation}
+    \lim_{\varepsilon\to 0^+}\int_{-\infty}^{\infty}\eta_\varepsilon(x)f(x)\mathrm{d}x=f(0).
+\end{equation} 
+为讨论这些函数列的性质, 引入正核序列的概念.
+\begin{definition}{正核序列}{}
+    "正核序列" 是指满足下列条件的积分核 $\displaystyle{\{ K_n(x) \}_{n=1}^\infty}$:
+    \begin{itemize}
+        \item $\displaystyle{K_n(x)\ge 0}$;
+        \item $\displaystyle{\int_{-\infty}^\infty K_n(x)\mathrm{d}x=1}$;
+        \item $\displaystyle{\delta>0\Rightarrow\lim_{n\to\infty}\int_{|x|>\delta}K_n(x)\mathrm{d}x=0}$.
+    \end{itemize}
+\end{definition}
+\begin{theorem}{}{}
+    设 $\{K_n(x)\}$ 是正核序列, 若 $f(x)$ 可积有界并在 $x=0$ 处连续,则
+    \begin{equation}
+        \lim_{n\to\infty}\int_{-\infty}^\infty K_n(x)f(x)\mathrm{d}x=f(0),
+    \end{equation}
+    即 $\displaystyle{\lim_{n\to \infty}K_n(x)=\delta(x)}$.
+\end{theorem}
+\begin{proof}{}{}
+    因 $f(x)$ 在 $x=0$ 处连续, $\forall \varepsilon>0,\exists\delta>0$, 使得 $|x|\le \delta\Rightarrow|f(x)-f(0) |<\varepsilon$;
+\\由正核序列第二条性质得
+    \begin{equation}
+        \int_{-\infty}^{\infty}K_n(x)f(x)\mathrm{d}x-f(0)=\int_{-\infty}^\infty K_n(x)\left( f(x)-f(0) \right) \mathrm{d}x,
+    \end{equation}
+    又由核的非负性及积分基本不等式, 有
+      \begin{align}
+            \left| \int_{-\infty}^\infty K_n(x)f(x)\mathrm{d}x-f(0) \right|&\leqslant \int_{-\infty}^{\infty}K_n(x)|f(x)-f(0) |\mathrm{d}x\nonumber\\
+            &=\int_{-\delta}^\delta K_n(x)|f(x)-f(0) |\mathrm{d}x+\int_{|x|>\delta}K_n(x)|f(x)-f(0) |\mathrm{d}x\nonumber\\
+            &\leqslant \varepsilon \underbrace{\int_{-\delta}^\delta K_n(x)\mathrm{d}x}_{\leqslant 1} +\underbrace{2M\int_{|x|>\delta}K_n(x)\mathrm{d}x}_{<\varepsilon,~ \mathrm{when~}n\mathrm{~is~big~enough}}\nonumber\\
+            &<2\varepsilon.
+        \end{align}
+    所以有 $\displaystyle{\lim_{n\to\infty}\int_{-\infty}^\infty K_n(x)f(x)\mathrm{d}x=f(0)}$ 成立.
+\end{proof}
+下面证明如果 $\psi(x)\ge 0$ 且 $\displaystyle{\int_{-\infty}^\infty \psi(x)\mathrm{d}x=1}$, 则可取 $K_n(x)=n\psi(nx)$.
+
+\begin{proof}{}{}
+    这样构造的 $K_n(x)$ 显然满足正核序列的前两条性质. 为验证性质 3, 取任意 $\delta>0$, 有
+       \begin{align}
+            \int_{|x|>\delta}K_n(x)\mathrm{d}x=&n\int_{|x|>\delta}\psi(nx)\mathrm{d}x\nonumber\\
+            =&\int_{|y|>n\delta}\psi(y)\mathrm{d}y\nonumber\\
+            =&\left[ \int_{-\infty}^\infty-\int_{|y|\le n\delta} \right] \psi(y)\mathrm{d}y\nonumber\\
+            =&1-\int_{|y|\le n\delta}\psi(y)\mathrm{d}y\nonumber\\
+\stackrel{n\to\infty}{\longrightarrow}&1-1\nonumber\\
+=&0.
+        \end{align}
+    因此有 $\displaystyle{\lim_{\nu\to\infty}\nu\psi(\nu x)=\delta(x)}$.
+\end{proof}
+利用这一性质, 可以证明 $\displaystyle{\lim_{\varepsilon\to 0}\frac{1}{\pi}\frac{\varepsilon}{\varepsilon^2+x^2}=\delta(x)}$.
+\begin{proof}{}{}
+    令 $\displaystyle{\psi(x)=\frac{1}{\pi}\frac{1}{1+x^2}>0}$, 其积分为
+    \begin{align}
+            \int_{-\infty}^{\infty}\psi(x)\mathrm{d}x&=\frac{1}{\pi}\int_{-\infty}^\infty\frac{\mathrm{d}x}{1+x^2}\nonumber\\
+            &=\frac{1}{\pi}\arctan x\Big|_{-\infty}^{+\infty}\nonumber\\
+            &=\frac{1}{\pi}\left[ \frac{\pi}{2}-\left( -\frac{\pi}{2} \right) \right]\nonumber\\ 
+            &=1.
+        \end{align}
+    因此有 $\displaystyle{\lim_{\nu\to \infty}\nu\psi(\nu x)=\delta(x)}$. 取 $\nu=1/\varepsilon$, 得到
+    \begin{equation}
+        \lim_{\varepsilon\to 0}\frac{1}{\pi}\frac{\varepsilon}{\varepsilon^2+x^2}=\delta(x).
+    \end{equation}
+    亦即
+    \begin{equation}
+        \lim_{\varepsilon\to 0^+}\int\frac{1}{\pi}\frac{\varepsilon}{\varepsilon^2+x^2}f(x)\mathrm{d}x=f(0).
+        \label{nascent-delta}
+    \end{equation}
+\end{proof}
+下面重新看 \eqref{S-P-theorem}, 首先等式左边可以写成
+\begin{equation}
+    \lim_{\varepsilon\to 0^+}\int_{-\infty}^\infty \frac{f(x)}{x\pm \ii\varepsilon}\mathrm{d}x=\mp \lim_{\varepsilon\to 0^+}\int_{-\infty}^\infty\frac{\varepsilon}{\pi(x^2+\varepsilon^2)}f(x)\mathrm{d}x+\lim_{\varepsilon\to 0^+}\int_{-\infty}^\infty \frac{x^2}{x^2+\varepsilon^2}\frac{f(x)}{x}\mathrm{d}x,
+\end{equation}
+其中, 等式右边第一项由 \eqref{nascent-delta} 应为 $\mp\ii\pi f(0)$, 第二项中的因子 $x^2/(x^2+\varepsilon^2)$ 在 $|x|\gg \varepsilon$ 时等于 1, 而在 $|x|\ll \varepsilon$ 时等于 0, 是一个关于 0 对称的函数.因此在取极限后, 这一项积分将变成\textbf{柯西主值积分}.
+
+于是就得到了式 \eqref{S-P-theorem}:
+\begin{equation}
+    \lim_{\varepsilon\to 0^+}\int_{-\infty}^\infty\frac{f(x)}{x\pm\ii\varepsilon}\mathrm{d}x=\mp\ii\pi f(0)+\mathcal{P}\int_{-\infty}^\infty\frac{f(x)}{x}\mathrm{d}x.
+\end{equation}
+
+% \section{Mathematical Derivations of Kramers-Kronig Relation}
+% 设有在上半复平面解析的函数 $\chi(\omega)$, 其中 $\omega$ 是复数变量, 并且设当 $|\omega|\to \infty$ 时有 $\chi(\omega)\to 0$. 这一函数可以分成实部和虚部两部分,即
+% \begin{equation}
+%     \chi(\omega)=\chi_1(\omega)+\ii\chi_2(\omega),
+% \end{equation} 
+% Kramers-Kronig 关系给出实部和虚部之间的关系,
+% \begin{equation}
+%     \left\{
+%         \begin{aligned}
+%             \chi_1(\omega)&=\frac{1}{\pi}\mathcal{P}\int_{-\infty}^\infty\frac{\chi_2(\omega')}{\omega'-\omega}\dd\omega',\\
+%             \chi_2(\omega)&=-\frac{1}{\pi}\mathcal{P}\int_{-\infty}^{\infty}\frac{\chi_1(\omega')}{\omega'-\omega}\dd\omega',
+%         \end{aligned}
+%     \right.
+% \end{equation}
+% 其中 $\mathcal{P}$ 是柯西主值. 这也就是说, 函数的实部或虚部就包含了整个函数的全部信息. 下面利用留数定理简单证明这一关系.
+
+\section{高斯积分}
+这里列出各种高斯积分的结果:
+\begin{itemize}
+\item 实数单变量
+\begin{equation}
+\int_{-\infty}^{\infty} \e^{-\frac{a}{2} x^{2}} \mathrm{d} x=\sqrt{\frac{2 \pi}{a}}.
+\end{equation}
+
+\item 实数多变量
+\begin{equation}
+\int_{-\infty}^{\infty} \mathrm{d} x_{1} \cdots \mathrm{d} x_{n} \exp\left({-\frac{1}{2} \sum\limits_{i=1}^n\sum\limits_{j=1}^n x_{i} A_{i j} x_{j}}\right)=\frac{(2\pi)^\frac{n}{2}}{\sqrt{\det A}}.
+\end{equation}
+\item 复数单变量
+\begin{equation}
+\int \frac{\mathrm{d} z^{*} \mathrm{d} z}{2 \pi \mathrm{i}} \e^{-z^{*} a z}=\frac{1}{a}.
+\end{equation}
+\item 复数多变量
+\begin{equation}
+\int \prod_{i=1}^{n}\left(\frac{\mathrm{d} z_{i}^{*} z^{}_{i}}{2 \pi \mathrm{i}}\right) \exp \left(-\sum\limits_{i=1}^n\sum\limits_{j=1}^n z_{i}^{*} H^{}_{i j} z^{}_{j}\right)=\frac{1}{\det{H}}.
+\end{equation}
+\item Grassmann数单变量
+\begin{equation}
+\int \mathrm{d} \xi^{*} \mathrm{d} \xi \e^{-\xi^{*} a \xi}=a.
+\end{equation}
+\item Grassmann数多变量
+\begin{equation}
+\int \mathrm{d} \xi_{1}^{*} \mathrm{d} \xi^{}_{1} \cdots \mathrm{d} \xi_{n}^{*} \mathrm{d}\xi^{}_{n} \exp \left(-\sum\limits_{i=1}^n\sum\limits_{j=1}^n \xi_{i}^{*} H^{}_{i j} \xi^{}_{j}\right)=\det H.
+\end{equation}
+\end{itemize}
