@@ -84,7 +84,7 @@
 
 \PassOptionsToPackage{no-math}{fontspec}
 \ifdefstring{\ELEGANT@lang}{cn}{
-\RequirePackage[UTF8, scheme=plain]{ctex}
+\RequirePackage[UTF8, scheme=plain, fontset=fandol]{ctex}
 }
 
 \RequirePackage{ifxetex}
@@ -332,8 +332,7 @@
 	urlcolor  = winered,
 	plainpages=false,
 	pdfstartview=FitH,
-	pdfborder={0 0 0},
-	linktocpage
+	pdfborder={0 0 0}
 }
 \let\email\relax
 \newcommand\email[1]{\href{mailto:#1}{\nolinkurl{#1}}}
