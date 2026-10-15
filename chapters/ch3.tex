@@ -479,19 +479,19 @@ G_{\alpha \beta}\left(\boldsymbol{x}, t ; \boldsymbol{x}^{\prime}, t^{\prime}\ri
 \begin{equation}
 \hat{H}_{0}\left|\Phi^{0}\right\rangle=E_{g}^{0}\left|\Phi^{0}\right\rangle ,
 \end{equation}
-在薛定谔绘景下的态矢量 $\left|\psi_{S}^{0}(t)\right\rangle$ 满足薛定谔方程:
+在 $t\rightarrow-\infty$ 时 $\hat{H}_{\varepsilon}(t)\rightarrow\hat{H}_{0}$, 此时薛定谔绘景下的态矢量 $\left|\psi_{S}^{0}(t)\right\rangle$ 满足薛定谔方程:
 \begin{equation}
 \ii \frac{\mathrm{d}}{\mathrm{d} t}\left|\psi_{S}^{0}(t)\right\rangle=\hat{H}_{0}\left|\psi_{S}^{0}(t)\right\rangle .
 \end{equation}
-因为 $\hat{H}_{0}$ 是不含时的, 所以对于 $t_{0} \leqslant t \leqslant 0$, 近似有:
+因为 $\hat{H}_{0}$ 是不含时的, 且 $\left|\Phi^{0}\right\rangle$ 是它的本征态, 所以在 $t\rightarrow-\infty$ (更准确地说是 $|t|\gg 1/\varepsilon$) 时, 选取适当的整体相位, 有:
 \begin{equation}
-\left|\psi_{S}^{0}(t)\right\rangle=\e^{-\ii E_{g}^{0}\left(t-t_{0}\right)}\left|\Phi^{0}\right\rangle .
+\left|\psi_{S}^{0}(t)\right\rangle=\e^{-\ii E_{g}^{0}t}\left|\Phi^{0}\right\rangle .
 \end{equation}
-由相互作用绘景中态矢量和薛定谔绘景中态矢量间的关系, 有:
+注意这一近似只在 $t\rightarrow-\infty$ 附近成立; 当 $t$ 趋近于 $0$ 时, $\hat{V}\e^{-\varepsilon|t|}$ 不再可以忽略, 态矢量也不再是 $\left|\Phi^{0}\right\rangle$. 按照前面的约定, 三种绘景在 $t=0$ 时重合 (即参考时刻取为 $t_{0}=0$), 相互作用绘景中的态矢量与薛定谔绘景中的态矢量满足 $\left|\psi_{I}(t)\right\rangle=\e^{\ii\hat{H}_{0}t}\left|\psi_{S}(t)\right\rangle$, 于是有:
 \begin{equation}
-\left|\psi_{I}^{0}(t)\right\rangle=\e^{\ii \hat{H}_{0}\left(t-t_{0}\right)}\left|\psi_{S}^{0}(t)\right\rangle=\left|\Phi^{0}\right\rangle ,
+\left|\psi_{I}^{0}(t)\right\rangle=\e^{\ii \hat{H}_{0}t}\left|\psi_{S}^{0}(t)\right\rangle=\e^{\ii E_{g}^{0}t}\e^{-\ii E_{g}^{0}t}\left|\Phi^{0}\right\rangle=\left|\Phi^{0}\right\rangle ,
 \end{equation}
-注意现在考虑的是 $t=t_{0} \rightarrow-\infty$ 的情况, 有:
+这里 $\e^{\ii\hat{H}_{0}t}$ 作用在 $\hat{H}_{0}$ 的本征态 $\left|\Phi^{0}\right\rangle$ 上只给出相位 $\e^{\ii E_{g}^{0}t}$, 恰好与薛定谔绘景中的动力学相位相抵消. 因此取 $t\rightarrow-\infty$, 有:
 \begin{equation}
 \left|\psi_{I}^{0}(-\infty)\right\rangle=\left|\Phi^{0}\right\rangle .
 \end{equation}
